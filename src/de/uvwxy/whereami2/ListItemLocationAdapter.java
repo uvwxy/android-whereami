@@ -46,7 +46,8 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 						}
 					}
 				};
-				IntentTools.userSelectString(ActivityMain.dhis, "Select Action:", new String[] { "Set as home location", "Delete [TODO]", "Audio Navigation" }, selected);
+				IntentTools.userSelectString(ActivityMain.dhis, "Select Action:", new String[] { "Set as home location", "Send [TODO]", "Show on Map [TODO]",
+						"Audio Navigation [TODO]", "Delete [TODO]" }, selected);
 			}
 		});
 

@@ -31,11 +31,9 @@ public class WAIData {
 	public synchronized boolean loadHomeLocation(Context ctx) {
 		try {
 			FileInputStream f = ctx.openFileInput(HOME_LOCATION);
-			Log.d("WAI", "opened file output");
 			try {
 				Messages.Location tempLoc = Messages.Location.parseDelimitedFrom(f);
-				Log.d("WAI", "opened file ok");
-
+				homeLocation = tempLoc;
 				return true;
 			} catch (IOException e) {
 				e.printStackTrace();

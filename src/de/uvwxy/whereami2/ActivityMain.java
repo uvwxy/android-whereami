@@ -317,6 +317,7 @@ public class ActivityMain extends FragmentActivity {
 			
 			listAdapter = new ListItemLocationAdapter(ctx, data.getList());
 			tvSavedLocationCount.setText("" + data.getLocationCount());
+			tvSavedLocationMaxDistance.setText("[wating for fix]");
 			lvSavedLocations.setAdapter(listAdapter);
 			bus.register(this);
 			return rootView;
