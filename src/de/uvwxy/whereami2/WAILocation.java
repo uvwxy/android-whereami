@@ -3,7 +3,9 @@ package de.uvwxy.whereami2;
 import com.squareup.otto.Subscribe;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.location.Location;
+import de.uvwxy.helper.IntentTools;
 import de.uvwxy.sensors.location.GPSWIFIReader;
 import de.uvwxy.sensors.location.LocationReader;
 import de.uvwxy.sensors.location.LocationReader.LocationResultCallback;
@@ -28,7 +30,11 @@ public class WAILocation {
 	};
 
 	public WAILocation(Context ctx) {
-		readerLocation = new GPSWIFIReader(ctx, 0, 0, cbStatus, cbResult, true, true);
+		SharedPreferences prefs = IntentTools.getSettings(ctx, ActivityMain.SETTINGS);
+
+		boolean useGPS = prefs.getBoolean(ActivityMain.SETTINGS_USE_GPS, true);
+		boolean useWIFI = prefs.getBoolean(ActivityMain.SETTINGS_USE_WIFI, false);
+		readerLocation = new GPSWIFIReader(ctx, 0, 0, cbStatus, cbResult, useGPS, useWIFI);
 		ActivityMain.bus.register(this);
 
 	}

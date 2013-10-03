@@ -37,7 +37,7 @@
             android:id="@+id/cbStartUpdates"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start location updates when opening the app" />
+            android:text="Start location updates when starting the application" />
 
         <CheckBox
             android:id="@+id/cbStopUpdates"
@@ -51,6 +51,13 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:background="@color/card_separator" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The following settings require an application restart."
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <CheckBox
             android:id="@+id/cbUseGPS"

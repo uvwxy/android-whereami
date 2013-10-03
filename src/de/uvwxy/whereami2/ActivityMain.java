@@ -2,6 +2,7 @@ package de.uvwxy.whereami2;
 
 import java.util.Locale;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
@@ -30,6 +31,13 @@ import de.uvwxy.helper.IntentTools;
 public class ActivityMain extends FragmentActivity {
 	public static final String SETTINGS = "WAI_SETTINGS";
 	public static final String SETTINGS_UPDATES_ON_STARTUP = "WAI_UPDATES_ON_STARTUP";
+	public static final boolean SETTINGS_UPDATES_ON_STARTUP_DEF = true;
+	public static final String SETTINGS_STOP_UPDATES_ONPAUSE = "SETTINGS_STOP_UPDATES_ONPAUSE";
+	public static final boolean SETTINGS_STOP_UPDATES_ONPAUSE_DEF = false;
+	public static final String SETTINGS_USE_GPS = "SETTINGS_USE_GPS";
+	public static final boolean SETTINGS_USE_GPS_DEF = true;
+	public static final String SETTINGS_USE_WIFI = "SETTINGS_USE_WIFI";
+	public static final boolean SETTINGS_USE_WIFI_DEF = false;
 
 	public static boolean update_location = false;
 
@@ -37,6 +45,7 @@ public class ActivityMain extends FragmentActivity {
 	public static WAILocation loc = null;
 
 	public static Bus bus = new Bus();
+	private static Context ctx;
 
 	SectionsPagerAdapter mSectionsPagerAdapter;
 	ViewPager mViewPager;
@@ -46,6 +55,7 @@ public class ActivityMain extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		ctx = getApplicationContext();
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
@@ -58,9 +68,9 @@ public class ActivityMain extends FragmentActivity {
 		loc = new WAILocation(getApplicationContext());
 
 		SharedPreferences prefs = IntentTools.getSettings(getApplicationContext(), SETTINGS);
-		boolean startup_updates = prefs.getBoolean(SETTINGS_UPDATES_ON_STARTUP, true);
+		boolean startup_updates = prefs.getBoolean(SETTINGS_UPDATES_ON_STARTUP, SETTINGS_UPDATES_ON_STARTUP_DEF);
 
-		if (startup_updates || update_location) {
+		if (startup_updates) {
 			update_location = true;
 			loc.getReader().startReading();
 		}
@@ -71,6 +81,27 @@ public class ActivityMain extends FragmentActivity {
 	@Subscribe
 	public void onReceive(Location l) {
 		lastLocation = l;
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if (update_location) {
+			loc.getReader().startReading();
+		}
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+
+		if (IntentTools.getSettings(ctx, SETTINGS) //
+				.getBoolean(SETTINGS_STOP_UPDATES_ONPAUSE, SETTINGS_STOP_UPDATES_ONPAUSE_DEF)) {
+			loc.getReader().stopReading();
+			update_location = false;
+			FragmentCurrentLocation.swUpdates.setChecked(false);
+		}
+
 	}
 
 	@Override
@@ -160,7 +191,7 @@ public class ActivityMain extends FragmentActivity {
 		private TextView tvSpeed = null;
 		private TextView tvAcc = null;
 		private TextView tvProvider = null;
-		private Switch swUpdates = null;
+		static Switch swUpdates = null;
 		private Button btnSave = null;
 		private Button btnMap = null;
 		private Button btnSend = null;
@@ -241,7 +272,7 @@ public class ActivityMain extends FragmentActivity {
 
 		@Subscribe
 		public void onReceive(Location l) {
-
+			
 		}
 
 		@Override
@@ -269,8 +300,12 @@ public class ActivityMain extends FragmentActivity {
 			View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
 			initGUI(rootView);
 
+			IntentTools.toggleSettings(ctx, cbStartUpdates, SETTINGS, SETTINGS_UPDATES_ON_STARTUP, true);
+			IntentTools.toggleSettings(ctx, cbStopUpdates, SETTINGS, SETTINGS_STOP_UPDATES_ONPAUSE, false);
+			IntentTools.toggleSettings(ctx, cbUseGPS, SETTINGS, SETTINGS_USE_GPS, true);
+			IntentTools.toggleSettings(ctx, cbUseNetwork, SETTINGS, SETTINGS_USE_WIFI, false);
+
 			return rootView;
 		}
-
 	}
 }
