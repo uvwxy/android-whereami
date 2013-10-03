@@ -96,15 +96,20 @@ public final class Messages {
      */
     long getTime();
 
-    // required double name = 1000;
+    // required string name = 1000;
     /**
-     * <code>required double name = 1000;</code>
+     * <code>required string name = 1000;</code>
      */
     boolean hasName();
     /**
-     * <code>required double name = 1000;</code>
+     * <code>required string name = 1000;</code>
      */
-    double getName();
+    java.lang.String getName();
+    /**
+     * <code>required string name = 1000;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
   }
   /**
    * Protobuf type {@code de.uvwxy.whereami2.proto.Location}
@@ -197,9 +202,9 @@ public final class Messages {
               time_ = input.readInt64();
               break;
             }
-            case 8001: {
+            case 8002: {
               bitField0_ |= 0x00000100;
-              name_ = input.readDouble();
+              name_ = input.readBytes();
               break;
             }
           }
@@ -397,20 +402,47 @@ public final class Messages {
       return time_;
     }
 
-    // required double name = 1000;
+    // required string name = 1000;
     public static final int NAME_FIELD_NUMBER = 1000;
-    private double name_;
+    private java.lang.Object name_;
     /**
-     * <code>required double name = 1000;</code>
+     * <code>required string name = 1000;</code>
      */
     public boolean hasName() {
       return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
-     * <code>required double name = 1000;</code>
+     * <code>required string name = 1000;</code>
      */
-    public double getName() {
-      return name_;
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string name = 1000;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private void initFields() {
@@ -422,7 +454,7 @@ public final class Messages {
       provider_ = "";
       speed_ = 0D;
       time_ = 0L;
-      name_ = 0D;
+      name_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -497,7 +529,7 @@ public final class Messages {
         output.writeInt64(8, time_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeDouble(1000, name_);
+        output.writeBytes(1000, getNameBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -542,7 +574,7 @@ public final class Messages {
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(1000, name_);
+          .computeBytesSize(1000, getNameBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -676,7 +708,7 @@ public final class Messages {
         bitField0_ = (bitField0_ & ~0x00000040);
         time_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000080);
-        name_ = 0D;
+        name_ = "";
         bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
@@ -785,7 +817,9 @@ public final class Messages {
           setTime(other.getTime());
         }
         if (other.hasName()) {
-          setName(other.getName());
+          bitField0_ |= 0x00000100;
+          name_ = other.name_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1155,35 +1189,76 @@ public final class Messages {
         return this;
       }
 
-      // required double name = 1000;
-      private double name_ ;
+      // required string name = 1000;
+      private java.lang.Object name_ = "";
       /**
-       * <code>required double name = 1000;</code>
+       * <code>required string name = 1000;</code>
        */
       public boolean hasName() {
         return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
-       * <code>required double name = 1000;</code>
+       * <code>required string name = 1000;</code>
        */
-      public double getName() {
-        return name_;
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required double name = 1000;</code>
+       * <code>required string name = 1000;</code>
        */
-      public Builder setName(double value) {
-        bitField0_ |= 0x00000100;
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string name = 1000;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
         name_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required double name = 1000;</code>
+       * <code>required string name = 1000;</code>
        */
       public Builder clearName() {
         bitField0_ = (bitField0_ & ~0x00000100);
-        name_ = 0D;
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string name = 1000;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+        name_ = value;
         onChanged();
         return this;
       }
@@ -1218,7 +1293,7 @@ public final class Messages {
       "gitude\030\002 \002(\001\022\020\n\010altitude\030\003 \002(\001\022\017\n\007bearin" +
       "g\030\004 \002(\001\022\020\n\010accuracy\030\005 \002(\001\022\020\n\010provider\030\006 " +
       "\002(\t\022\r\n\005speed\030\007 \002(\001\022\014\n\004time\030\010 \002(\003\022\r\n\004name" +
-      "\030\350\007 \002(\001"
+      "\030\350\007 \002(\t"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

@@ -47,8 +47,12 @@ public class WAILocation {
 		return readerLocation;
 	}
 
-	public double getDistanceTo(Messages.Location loc) {
-		return 1337.17;
+	public static double getDistanceTo(Messages.Location from, android.location.Location dest) {
+		return WAIData.createLoc(from).distanceTo(dest);
+	}
+
+	public static double getBearingTo(Messages.Location from, android.location.Location dest) {
+		return WAIData.createLoc(from).bearingTo(dest);
 	}
 
 	public double getDistanceToHome() {

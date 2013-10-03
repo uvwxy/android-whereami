@@ -2,7 +2,9 @@ package de.uvwxy.whereami2;
 
 import java.util.Locale;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
@@ -13,15 +15,18 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
@@ -41,20 +46,22 @@ public class ActivityMain extends FragmentActivity {
 
 	public static boolean update_location = false;
 
-	private static WAIData data = new WAIData();
+	public static WAIData data = new WAIData();
 	public static WAILocation loc = null;
 
 	public static Bus bus = new Bus();
 	private static Context ctx;
+	public static ActivityMain dhis = null;
 
 	SectionsPagerAdapter mSectionsPagerAdapter;
 	ViewPager mViewPager;
-	private static Location lastLocation;
+	public static Location lastLocation;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		dhis = this;
 		ctx = getApplicationContext();
 
 		// Create the adapter that will return a fragment for each of the three
@@ -231,6 +238,39 @@ public class ActivityMain extends FragmentActivity {
 				}
 			});
 
+			btnSave.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					final Location loc = lastLocation;
+					if (loc == null) {
+						Toast.makeText(ctx, "No location yet", Toast.LENGTH_SHORT).show();
+						return;
+					}
+
+					final EditText etName = new EditText(ctx);
+
+					AlertDialog.Builder alertDialog = new AlertDialog.Builder(dhis);
+
+					alertDialog.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							String msg = "Failed to save Location";
+							if (data.appendToList(ctx, data.createLoc(etName.getText().toString(), loc))) {
+								msg = "Success: Saved Location \"" + etName.getText().toString() + "\"";
+								data.loadList(ctx);
+							}
+							Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
+						}
+					});
+					alertDialog.setView(etName);
+					alertDialog.setNegativeButton("Cancel", null);
+					alertDialog.setMessage("Please provide a name for this location:");
+					alertDialog.setTitle("Save location");
+					alertDialog.show();
+				}
+			});
+
 			// TODO: handle button clicks: Save,  View on Map, Send
 			onReceive(lastLocation != null ? lastLocation : new Location("[waiting]"));
 			bus.register(this);
@@ -256,23 +296,41 @@ public class ActivityMain extends FragmentActivity {
 	}
 
 	public static class FragmentSavedLocations extends Fragment {
+		private ListItemLocationAdapter listAdapter = null;
+		private TextView tvSavedLocationCount = null;
+		private TextView tvSavedLocationMaxDistance = null;
+		private ListView lvSavedLocations = null;
+
+		private void initGUI(View rootView) {
+			tvSavedLocationCount = (TextView) rootView.findViewById(R.id.tvSavedLocationCount);
+			tvSavedLocationMaxDistance = (TextView) rootView.findViewById(R.id.tvSavedLocationMaxDistance);
+			lvSavedLocations = (ListView) rootView.findViewById(R.id.lvSavedLocations);
+		}
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_saved_locations, container, false);
-			ListView lvSavedLocations = (ListView) rootView.findViewById(R.id.lvSavedLocations);
-			TextView tvSavedLocationCount = (TextView) rootView.findViewById(R.id.tvSavedLocationCount);
-			TextView tvSavedLocationMaxDistance = (TextView) rootView.findViewById(R.id.tvSavedLocationMaxDistance);
+			initGUI(rootView);
 
+			data.loadList(ctx);
+			data.loadHomeLocation(ctx);
+			
+			listAdapter = new ListItemLocationAdapter(ctx, data.getList());
 			tvSavedLocationCount.setText("" + data.getLocationCount());
-
+			lvSavedLocations.setAdapter(listAdapter);
 			bus.register(this);
 			return rootView;
 		}
 
 		@Subscribe
 		public void onReceive(Location l) {
-			
+			if (data.getHomeLocation() == null) {
+				tvSavedLocationMaxDistance.setText("[Home location not set. Use long press on a location below]");
+			} else {
+				String s = String.format(" %.2f m to " + data.getHomeLocation().getName(), WAILocation.getDistanceTo(data.getHomeLocation(), ActivityMain.lastLocation));
+				tvSavedLocationMaxDistance.setText(s);
+			}
+			listAdapter.notifyDataSetChanged();
 		}
 
 		@Override

@@ -12,5 +12,5 @@ message Location {
     required double speed = 7;
     required int64 time = 8;
     
-    required double name = 1000;
+    required string name = 1000;
 }
