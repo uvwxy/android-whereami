@@ -15,7 +15,7 @@ public class WAIData {
 	private static final String HOME_LOCATION = "home.loc";
 	ArrayList<Messages.Location> listLocations = new ArrayList<Messages.Location>();
 	private Messages.Location homeLocation = null;
-	
+
 	public ArrayList<Messages.Location> getList() {
 		return listLocations;
 	}
@@ -23,9 +23,22 @@ public class WAIData {
 	public int getLocationCount() {
 		return listLocations.size();
 	}
-	
-	public Messages.Location getHomeLocation(){
+
+	public Messages.Location getHomeLocation() {
 		return homeLocation;
+	}
+
+	public boolean delete(Context ctx, int position) {
+		try {
+			listLocations.remove(position);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+
+		saveList(ctx);
+		ActivityMain.listAdapter.notifyDataSetChanged();
+		return true;
 	}
 
 	public synchronized boolean loadHomeLocation(Context ctx) {

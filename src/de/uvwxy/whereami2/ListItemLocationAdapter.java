@@ -3,7 +3,9 @@ package de.uvwxy.whereami2;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,6 +30,27 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 		this.locationList = (ArrayList<Location>) list;
 	}
 
+	private void handleItemMenu(final int position, String s) {
+		if (s.equals("Set as home location")) {
+			ActivityMain.data.saveHomeLocation(ctx, locationList.get(position));
+			Toast.makeText(ActivityMain.dhis, "Saved Home Location", Toast.LENGTH_SHORT).show();
+		} else if (s.equals("Delete")) {
+			AlertDialog.Builder alertDialog = new AlertDialog.Builder(ActivityMain.dhis);
+
+			alertDialog.setPositiveButton("Delete!", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					ActivityMain.data.delete(ctx, position);
+				}
+			});
+
+			alertDialog.setNegativeButton("Cancel", null);
+			alertDialog.setMessage("Do you really want to delete the location \"" + locationList.get(position).getName() + "\"?");
+			alertDialog.setTitle("Delete");
+			alertDialog.show();
+		}
+	}
+
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		View rootView = inflater.inflate(R.layout.list_item_location, parent, false);
@@ -40,14 +63,12 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 
 					@Override
 					public void result(String s) {
-						if (s.equals("Set as home location")) {
-							ActivityMain.data.saveHomeLocation(ctx, locationList.get(position));
-							Toast.makeText(ActivityMain.dhis, "Saved Home Location", Toast.LENGTH_SHORT).show();
-						}
+						handleItemMenu(position, s);
 					}
+
 				};
 				IntentTools.userSelectString(ActivityMain.dhis, "Select Action:", new String[] { "Set as home location", "Send [TODO]", "Show on Map [TODO]",
-						"Audio Navigation [TODO]", "Delete [TODO]" }, selected);
+						"Audio Navigation [TODO]", "Rename [TODO]", "Delete" }, selected);
 			}
 		});
 

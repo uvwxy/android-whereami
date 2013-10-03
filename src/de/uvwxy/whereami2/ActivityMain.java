@@ -53,6 +53,8 @@ public class ActivityMain extends FragmentActivity {
 	private static Context ctx;
 	public static ActivityMain dhis = null;
 
+	public static ListItemLocationAdapter listAdapter = null;
+
 	SectionsPagerAdapter mSectionsPagerAdapter;
 	ViewPager mViewPager;
 	public static Location lastLocation;
@@ -296,7 +298,6 @@ public class ActivityMain extends FragmentActivity {
 	}
 
 	public static class FragmentSavedLocations extends Fragment {
-		private ListItemLocationAdapter listAdapter = null;
 		private TextView tvSavedLocationCount = null;
 		private TextView tvSavedLocationMaxDistance = null;
 		private ListView lvSavedLocations = null;
