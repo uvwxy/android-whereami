@@ -34,6 +34,25 @@
             android:background="@color/card_separator" />
 
         <CheckBox
+            android:id="@+id/cbStartUpdates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start location updates when opening the app" />
+
+        <CheckBox
+            android:id="@+id/cbStopUpdates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stop location updates when app is hidden (updates are always stopped when app is closed)" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/card_separator" />
+
+        <CheckBox
             android:id="@+id/cbUseGPS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,19 +63,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Use Network location provider" />
-
-        <CheckBox
-            android:id="@+id/cbStartUpdates"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Start location updates when opening the app" />
-
-        <CheckBox
-            android:id="@+id/cbStopUpdates"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Stop location updates when app is hidden" />
-
     </LinearLayout>
 
 </RelativeLayout>

@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
@@ -251,10 +252,22 @@ public class ActivityMain extends FragmentActivity {
 	}
 
 	public static class FragmentSettings extends Fragment {
+		private CheckBox cbStartUpdates = null;
+		private CheckBox cbStopUpdates = null;
+		private CheckBox cbUseGPS = null;
+		private CheckBox cbUseNetwork = null;
+
+		private void initGUI(View rootView) {
+			cbStartUpdates = (CheckBox) rootView.findViewById(R.id.cbStartUpdates);
+			cbStopUpdates = (CheckBox) rootView.findViewById(R.id.cbStopUpdates);
+			cbUseGPS = (CheckBox) rootView.findViewById(R.id.cbUseGPS);
+			cbUseNetwork = (CheckBox) rootView.findViewById(R.id.cbUseNetwork);
+		}
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
+			initGUI(rootView);
 
 			return rootView;
 		}
