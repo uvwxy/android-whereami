@@ -1,4 +1,4 @@
-package de.uvwxy.whereami2;
+package de.uvwxy.whereami;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.util.Log;
-import de.uvwxy.whereami2.proto.Messages;
+import de.uvwxy.whereami.proto.Messages;
 
-public class WAIData {
+public class WAIData2 {
 	private static final String LOCATION_LIST = "list.loc";
 	private static final String HOME_LOCATION = "home.loc";
 	ArrayList<Messages.Location> listLocations = new ArrayList<Messages.Location>();
@@ -145,34 +145,5 @@ public class WAIData {
 		return true;
 	}
 
-	public static Messages.Location createLoc(String name, android.location.Location androidLocation) {
-		Messages.Location.Builder b = Messages.Location.newBuilder();
 
-		b.setLatitude(androidLocation.getLatitude());
-		b.setLongitude(androidLocation.getLongitude());
-		b.setAltitude(androidLocation.getAltitude());
-		b.setBearing(androidLocation.getBearing());
-		b.setAccuracy(androidLocation.getAccuracy());
-		b.setTime(androidLocation.getTime());
-		b.setSpeed(androidLocation.getSpeed());
-		b.setProvider(androidLocation.getProvider());
-		b.setName(name);
-
-		return b.build();
-	}
-
-	public static android.location.Location createLoc(Messages.Location protoLocation) {
-		android.location.Location b = new android.location.Location(protoLocation.getProvider());
-
-		b.setLatitude(protoLocation.getLatitude());
-		b.setLongitude(protoLocation.getLongitude());
-		b.setAltitude(protoLocation.getAltitude());
-		b.setBearing((float) protoLocation.getBearing());
-		b.setAccuracy((float) protoLocation.getAccuracy());
-		b.setTime(protoLocation.getTime());
-		b.setSpeed((float) protoLocation.getSpeed());
-		b.setProvider(protoLocation.getProvider());
-
-		return b;
-	}
 }

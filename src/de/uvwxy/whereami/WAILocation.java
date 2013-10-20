@@ -1,6 +1,4 @@
-package de.uvwxy.whereami2;
-
-import com.squareup.otto.Subscribe;
+package de.uvwxy.whereami;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,7 +8,7 @@ import de.uvwxy.sensors.location.GPSWIFIReader;
 import de.uvwxy.sensors.location.LocationReader;
 import de.uvwxy.sensors.location.LocationReader.LocationResultCallback;
 import de.uvwxy.sensors.location.LocationReader.LocationStatusCallback;
-import de.uvwxy.whereami2.proto.Messages;
+import de.uvwxy.whereami.proto.Messages;
 
 public class WAILocation {
 
@@ -48,11 +46,11 @@ public class WAILocation {
 	}
 
 	public static double getDistanceTo(Messages.Location from, android.location.Location dest) {
-		return WAIData.createLoc(from).distanceTo(dest);
+		return Converter.createLoc(from).distanceTo(dest);
 	}
 
 	public static double getBearingTo(Messages.Location from, android.location.Location dest) {
-		return WAIData.createLoc(from).bearingTo(dest);
+		return Converter.createLoc(from).bearingTo(dest);
 	}
 
 	public double getDistanceToHome() {

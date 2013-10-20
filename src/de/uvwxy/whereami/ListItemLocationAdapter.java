@@ -1,4 +1,4 @@
-package de.uvwxy.whereami2;
+package de.uvwxy.whereami;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import de.uvwxy.helper.IntentTools;
 import de.uvwxy.helper.IntentTools.ReturnStringCallback;
-import de.uvwxy.whereami2.proto.Messages;
-import de.uvwxy.whereami2.proto.Messages.Location;
+import de.uvwxy.whereami.proto.Messages;
+import de.uvwxy.whereami.proto.Messages.Location;
 
 public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 	private LayoutInflater inflater;
 	private ArrayList<Messages.Location> locationList;
+
+	@SuppressWarnings("unused")
 	private Context ctx;
 
 	public ListItemLocationAdapter(Context context, List<Messages.Location> list) {
@@ -32,23 +34,31 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 
 	private void handleItemMenu(final int position, String s) {
 		if (s.equals("Set as home location")) {
-			ActivityMain.data.saveHomeLocation(ctx, locationList.get(position));
-			Toast.makeText(ActivityMain.dhis, "Saved Home Location", Toast.LENGTH_SHORT).show();
+			//ActivityMain.data.saveHomeLocation(ctx, locationList.get(position));
+			Toast.makeText(ActivityMain.dhis, "TODO: Saved Home Location", Toast.LENGTH_SHORT).show();
 		} else if (s.equals("Delete")) {
 			AlertDialog.Builder alertDialog = new AlertDialog.Builder(ActivityMain.dhis);
 
 			alertDialog.setPositiveButton("Delete!", new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					ActivityMain.data.delete(ctx, position);
+
+					ActivityMain.data.deleteEntry(locationList.get(position));
+					locationList.remove(position);
+					ActivityMain.listAdapter.notifyDataSetChanged();
 				}
 			});
 
 			alertDialog.setNegativeButton("Cancel", null);
-			alertDialog.setMessage("Do you really want to delete the location \"" + locationList.get(position).getName() + "\"?");
+			alertDialog.setMessage("Do you really want to delete the location \""
+					+ locationList.get(position).getName() + "\"?");
 			alertDialog.setTitle("Delete");
 			alertDialog.show();
 		}
+	}
+
+	public ArrayList<Messages.Location> getList() {
+		return locationList;
 	}
 
 	@Override
@@ -67,8 +77,9 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 					}
 
 				};
-				IntentTools.userSelectString(ActivityMain.dhis, "Select Action:", new String[] { "Set as home location", "Send [TODO]", "Show on Map [TODO]",
-						"Audio Navigation [TODO]", "Rename [TODO]", "Delete" }, selected);
+				IntentTools.userSelectString(ActivityMain.dhis, "Select Action:", new String[] {
+						"Set as home location", "Send [TODO]", "Show on Map [TODO]", "Audio Navigation [TODO]",
+						"Rename [TODO]", "Delete" }, selected);
 			}
 		});
 
