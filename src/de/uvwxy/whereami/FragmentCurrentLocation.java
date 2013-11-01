@@ -100,8 +100,10 @@ public class FragmentCurrentLocation extends Fragment {
 							msg = "Failed to add entry to db";
 						} else {
 							msg = "Added entry to db";
-							ActivityMain.data.getAllEntries(ActivityMain.listAdapter.getList());
-							ActivityMain.listAdapter.notifyDataSetChanged();
+							// TODO: listupdates!
+							ActivityMain.bus.post(new BusUpdateList());
+							//ActivityMain.data.getAllEntries(ActivityMain.listAdapter.getList(), );
+							//ActivityMain.listAdapter.notifyDataSetChanged();
 						}
 						Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
 					}

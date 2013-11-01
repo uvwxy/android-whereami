@@ -3,6 +3,7 @@ package de.uvwxy.whereami;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.location.Location;
+import android.os.Handler;
 import de.uvwxy.helper.IntentTools;
 import de.uvwxy.sensors.location.GPSWIFIReader;
 import de.uvwxy.sensors.location.LocationReader;
@@ -11,13 +12,21 @@ import de.uvwxy.sensors.location.LocationReader.LocationStatusCallback;
 import de.uvwxy.whereami.proto.Messages;
 
 public class WAILocation {
+	private Context ctx = null;
 
 	private LocationReader readerLocation = null;
 	private LocationResultCallback cbResult = new LocationResultCallback() {
 
 		@Override
-		public void result(Location l) {
-			ActivityMain.bus.post(l);
+		public void result(final Location l) {
+			Handler h = new Handler(ctx.getMainLooper());
+			h.post(new Runnable() {
+
+				@Override
+				public void run() {
+					ActivityMain.bus.post(l);
+				}
+			});
 		}
 	};
 	private LocationStatusCallback cbStatus = new LocationStatusCallback() {
@@ -28,6 +37,7 @@ public class WAILocation {
 	};
 
 	public WAILocation(Context ctx) {
+		this.ctx = ctx;
 		SharedPreferences prefs = IntentTools.getSettings(ctx, ActivityMain.SETTINGS);
 
 		boolean useGPS = prefs.getBoolean(ActivityMain.SETTINGS_USE_GPS, true);

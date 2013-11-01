@@ -42,8 +42,6 @@ public class ActivityMain extends FragmentActivity {
 	private static Context ctx;
 	public static ActivityMain dhis = null;
 
-	public static ListItemLocationAdapter listAdapter = null;
-
 	SectionsPagerAdapter mSectionsPagerAdapter;
 	ViewPager mViewPager;
 	public static Location lastLocation;
@@ -89,6 +87,7 @@ public class ActivityMain extends FragmentActivity {
 		if (update_location) {
 			loc.getReader().startReading();
 		}
+		bus.post(new BusUpdateList());
 	}
 
 	@Override
@@ -126,8 +125,14 @@ public class ActivityMain extends FragmentActivity {
 			case 0:
 				return new FragmentCurrentLocation();
 			case 1:
+				FragmentSavedLocations t1 = new FragmentSavedLocations();
+				t1.setFav(false);
 				return new FragmentSavedLocations();
 			case 2:
+				FragmentSavedLocations t2 = new FragmentSavedLocations();
+				t2.setFav(true);
+				return new FragmentSavedLocations();
+			case 3:
 				return new FragmentSettings();
 			}
 
@@ -183,8 +188,4 @@ public class ActivityMain extends FragmentActivity {
 		}
 	}
 
-
-
-
-	
 }

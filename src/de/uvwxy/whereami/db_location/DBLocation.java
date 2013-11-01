@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBLocation extends SQLiteOpenHelper {
 	private static final String DB_NAME = "locations.db";
-	private static final int DB_VERSION = 1;
+	private static final int DB_VERSION = 2;
 
 	//	required double latitude = 1;
 	//  required double longitude = 2;
@@ -40,7 +40,7 @@ public class DBLocation extends SQLiteOpenHelper {
 			+ COL6_BER + " double not null, "//
 			+ COL7_ACC + " double not null, "//
 			+ COL8_SPD + " double not null, "//
-			+ COL9_FAV + " boolean not null);";
+			+ COL9_FAV + " integer not null);";
 
 	public DBLocation(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);

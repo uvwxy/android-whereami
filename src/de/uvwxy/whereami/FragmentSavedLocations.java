@@ -17,12 +17,17 @@ import de.uvwxy.whereami.proto.Messages;
 
 public class FragmentSavedLocations extends Fragment {
 	private TextView tvSavedLocationCount = null;
-	private TextView tvSavedLocationMaxDistance = null;
 	private ListView lvSavedLocations = null;
+	private ArrayList<Messages.Location> list = new ArrayList<Messages.Location>();
+	private ListItemLocationAdapter listAdapter = null;
+	public boolean isFav = false;
+
+	public void setFav(boolean isFav) {
+		this.isFav = isFav;
+	}
 
 	private void initGUI(View rootView) {
 		tvSavedLocationCount = (TextView) rootView.findViewById(R.id.tvSavedLocationCount);
-		tvSavedLocationMaxDistance = (TextView) rootView.findViewById(R.id.tvSavedLocationMaxDistance);
 		lvSavedLocations = (ListView) rootView.findViewById(R.id.lvSavedLocations);
 	}
 
@@ -31,12 +36,11 @@ public class FragmentSavedLocations extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_saved_locations, container, false);
 		initGUI(rootView);
 
-		ArrayList<Messages.Location> list = new ArrayList<Messages.Location>();
-		ActivityMain.data.getAllEntries(list);
-		ActivityMain.listAdapter = new ListItemLocationAdapter(getActivity(), list);
+		ActivityMain.data.getAllEntries(list, !isFav, isFav);
+		listAdapter = new ListItemLocationAdapter(getActivity(), list);
+
 		tvSavedLocationCount.setText("" + list.size());
-		tvSavedLocationMaxDistance.setText("[wating for fix]");
-		lvSavedLocations.setAdapter(ActivityMain.listAdapter);
+		lvSavedLocations.setAdapter(listAdapter);
 		ActivityMain.bus.register(this);
 		return rootView;
 	}
@@ -50,8 +54,13 @@ public class FragmentSavedLocations extends Fragment {
 		//						WAILocation.getDistanceTo(data.getHomeLocation(), ActivityMain.lastLocation));
 		//				tvSavedLocationMaxDistance.setText(s);
 		//			}
-		tvSavedLocationMaxDistance.setText("Dist calc: TODO");
-		ActivityMain.listAdapter.notifyDataSetChanged();
+		listAdapter.notifyDataSetChanged();
+	}
+
+	@Subscribe
+	public void onReceive(BusUpdateList u) {
+		ActivityMain.data.getAllEntries(list, !isFav, isFav);
+		listAdapter.notifyDataSetChanged();
 	}
 
 	@Override

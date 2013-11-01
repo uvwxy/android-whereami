@@ -21,8 +21,8 @@ public class DBLocationConnection {
 			DBLocation.COL5_ALT, //
 			DBLocation.COL6_BER, //
 			DBLocation.COL7_ACC, //
-			DBLocation.COL8_SPD,
-			};
+			DBLocation.COL8_SPD, //
+			DBLocation.COL9_FAV };
 
 	public DBLocationConnection(Context context) {
 		dbOpenWrapper = new DBLocation(context);
@@ -52,8 +52,8 @@ public class DBLocationConnection {
 		values.put(DBLocation.COL6_BER, entry.getBearing());
 		values.put(DBLocation.COL7_ACC, entry.getAccuracy());
 		values.put(DBLocation.COL8_SPD, entry.getSpeed());
-		values.put(DBLocation.COL9_FAV, false);
-		
+		values.put(DBLocation.COL9_FAV, 0);
+
 		long ret = db.insert(DBLocation.DB_TABLE_NAME, null, values);
 		Log.d("DB", "Insertion returned " + ret);
 		return ret;
@@ -65,10 +65,17 @@ public class DBLocationConnection {
 		Log.d("DB", "Deleted " + id);
 	}
 
-	public void getAllEntries(ArrayList<Messages.Location> list) {
+	public void getAllEntries(ArrayList<Messages.Location> list, boolean all, boolean fav) {
 		list.clear();
 
-		Cursor cursor = db.query(DBLocation.DB_TABLE_NAME, dbColumns, null, null, null, null, null);
+		Cursor cursor = null;
+		if (all) {
+			cursor = db.query(DBLocation.DB_TABLE_NAME, dbColumns, null, null, null, null, null);
+		} else {
+			cursor = db.query(DBLocation.DB_TABLE_NAME, dbColumns, DBLocation.COL9_FAV + "=" + (fav ? "1" : "0"), null,
+					null, null, null);
+
+		}
 
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
