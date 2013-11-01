@@ -155,11 +155,11 @@ public class FragmentCurrentLocation extends Fragment {
 		boolean showAlert = true;
 		String locationProviderStateMessage = "Waiting for fix";
 		if ((!provEnabledGPS && setEnabledGPS) && (!provEnabledWiFi && setEnabledWiFi)) {
-			locationProviderStateMessage = "GPS+Network location provider not enabled!";
+			locationProviderStateMessage = "GPS+Network location provider not enabled!\n\nLocation updates will not appear as specified in the settings.";
 		} else if (!provEnabledGPS && setEnabledGPS) {
-			locationProviderStateMessage = "GPS location provider not enabled!";
+			locationProviderStateMessage = "GPS location provider not enabled!\n\nLocation updates will not appear as specified in the settings.";
 		} else if (!provEnabledWiFi && setEnabledWiFi) {
-			locationProviderStateMessage = "Network location provider not enabled!";
+			locationProviderStateMessage = "Network location provider not enabled!\n\nLocation updates will not appear as specified in the settings.";
 		} else {
 			showAlert = false;
 		}
