@@ -45,7 +45,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 
 					ActivityMain.data.deleteEntry(locationList.get(position));
 					locationList.remove(position);
-					ActivityMain.listAdapter.notifyDataSetChanged();
+					ActivityMain.bus.post(new BusUpdateList());
 				}
 			});
 

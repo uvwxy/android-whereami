@@ -37,7 +37,7 @@ public class WAIData2 {
 		}
 
 		saveList(ctx);
-		ActivityMain.listAdapter.notifyDataSetChanged();
+		ActivityMain.bus.post(new BusUpdateList());
 		return true;
 	}
 

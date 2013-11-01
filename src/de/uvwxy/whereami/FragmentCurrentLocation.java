@@ -2,7 +2,9 @@ package de.uvwxy.whereami;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,6 +23,9 @@ import android.widget.ToggleButton;
 
 import com.squareup.otto.Subscribe;
 
+import de.uvwxy.helper.IntentTools;
+import de.uvwxy.sensors.location.LocationReader;
+
 public class FragmentCurrentLocation extends Fragment {
 	private ScrollView scrollView1 = null;
 	private TextView tvLat = null;
@@ -32,7 +37,6 @@ public class FragmentCurrentLocation extends Fragment {
 	private TextView tvProvider = null;
 	public static ToggleButton swUpdates = null;
 	private Button btnSave = null;
-	private Button btnMap = null;
 	private Button btnSend = null;
 
 	private void initGUI(View rootView) {
@@ -46,7 +50,6 @@ public class FragmentCurrentLocation extends Fragment {
 		tvProvider = (TextView) rootView.findViewById(R.id.tvProvider);
 		swUpdates = (ToggleButton) rootView.findViewById(R.id.swUpdates);
 		btnSave = (Button) rootView.findViewById(R.id.btnSave);
-		btnMap = (Button) rootView.findViewById(R.id.btnMap);
 		btnSend = (Button) rootView.findViewById(R.id.btnSend);
 	}
 
@@ -57,6 +60,15 @@ public class FragmentCurrentLocation extends Fragment {
 		initGUI(rootView);
 
 		swUpdates.setChecked(ActivityMain.update_location);
+		initClicks();
+
+		// TODO: handle button clicks: Save,  View on Map, Send
+		onReceive(ActivityMain.lastLocation != null ? ActivityMain.lastLocation : new Location("[waiting]"));
+		ActivityMain.bus.register(this);
+		return rootView;
+	}
+
+	private void initClicks() {
 		swUpdates.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override
@@ -115,11 +127,6 @@ public class FragmentCurrentLocation extends Fragment {
 				alertDialog.show();
 			}
 		});
-
-		// TODO: handle button clicks: Save,  View on Map, Send
-		onReceive(ActivityMain.lastLocation != null ? ActivityMain.lastLocation : new Location("[waiting]"));
-		ActivityMain.bus.register(this);
-		return rootView;
 	}
 
 	@Subscribe
@@ -131,6 +138,39 @@ public class FragmentCurrentLocation extends Fragment {
 		tvProvider.setText(l.getProvider());
 		tvBearing.setText("" + l.getBearing() + " °");
 		tvAcc.setText("" + l.getAccuracy() + " m");
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+
+		boolean provEnabledGPS = LocationReader.isEnabled(getActivity(), LocationManager.GPS_PROVIDER);
+		boolean provEnabledWiFi = LocationReader.isEnabled(getActivity(), LocationManager.NETWORK_PROVIDER);
+
+		SharedPreferences pref = IntentTools.getSettings(getActivity(), ActivityMain.SETTINGS);
+		boolean setEnabledGPS = pref.getBoolean(ActivityMain.SETTINGS_USE_GPS, ActivityMain.SETTINGS_USE_GPS_DEF);
+		boolean setEnabledWiFi = pref.getBoolean(ActivityMain.SETTINGS_USE_WIFI, ActivityMain.SETTINGS_USE_WIFI_DEF);
+		pref = null;
+
+		boolean showAlert = true;
+		String locationProviderStateMessage = "Waiting for fix";
+		if ((!provEnabledGPS && setEnabledGPS) && (!provEnabledWiFi && setEnabledWiFi)) {
+			locationProviderStateMessage = "GPS+Network location provider not enabled!";
+		} else if (!provEnabledGPS && setEnabledGPS) {
+			locationProviderStateMessage = "GPS location provider not enabled!";
+		} else if (!provEnabledWiFi && setEnabledWiFi) {
+			locationProviderStateMessage = "Network location provider not enabled!";
+		} else {
+			showAlert = false;
+		}
+
+		if (showAlert) {
+			AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+			alertDialog.setNegativeButton("OK", null);
+			alertDialog.setMessage(locationProviderStateMessage);
+			alertDialog.setTitle("Enable Provider");
+			alertDialog.show();
+		}
 	}
 
 	@Override
