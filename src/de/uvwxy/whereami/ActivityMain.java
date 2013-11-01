@@ -2,9 +2,11 @@ package de.uvwxy.whereami;
 
 import java.util.Locale;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -20,6 +22,7 @@ import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
 import de.uvwxy.helper.IntentTools;
+import de.uvwxy.sensors.location.LocationReader;
 import de.uvwxy.whereami.db_location.DBLocationConnection;
 
 public class ActivityMain extends FragmentActivity {
@@ -74,6 +77,8 @@ public class ActivityMain extends FragmentActivity {
 		}
 
 		bus.register(this);
+		
+		alertIfProviderIsNotEnabled();
 	}
 
 	@Subscribe
@@ -185,6 +190,36 @@ public class ActivityMain extends FragmentActivity {
 			TextView dummyTextView = (TextView) rootView.findViewById(R.id.section_label);
 			dummyTextView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
 			return rootView;
+		}
+	}
+
+	private void alertIfProviderIsNotEnabled() {
+		boolean provEnabledGPS = LocationReader.isEnabled(this, LocationManager.GPS_PROVIDER);
+		boolean provEnabledWiFi = LocationReader.isEnabled(this, LocationManager.NETWORK_PROVIDER);
+
+		SharedPreferences pref = IntentTools.getSettings(this, SETTINGS);
+		boolean setEnabledGPS = pref.getBoolean(SETTINGS_USE_GPS, SETTINGS_USE_GPS_DEF);
+		boolean setEnabledWiFi = pref.getBoolean(SETTINGS_USE_WIFI, SETTINGS_USE_WIFI_DEF);
+		pref = null;
+
+		boolean showAlert = true;
+		String locationProviderStateMessage = "Waiting for fix";
+		if ((!provEnabledGPS && setEnabledGPS) && (!provEnabledWiFi && setEnabledWiFi)) {
+			locationProviderStateMessage = "GPS+Network location provider is not enabled!\n\nLocation updates will not work as specified in the settings.";
+		} else if (!provEnabledGPS && setEnabledGPS) {
+			locationProviderStateMessage = "GPS location provider is not enabled!\n\nLocation updates will not work as specified in the settings.";
+		} else if (!provEnabledWiFi && setEnabledWiFi) {
+			locationProviderStateMessage = "Network location provider not enabled!\n\nLocation updates will not work as specified in the settings.";
+		} else {
+			showAlert = false;
+		}
+
+		if (showAlert) {
+			AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+			alertDialog.setNegativeButton("OK", null);
+			alertDialog.setMessage(locationProviderStateMessage);
+			alertDialog.setTitle("Enable Provider");
+			alertDialog.show();
 		}
 	}
 

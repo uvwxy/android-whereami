@@ -65,6 +65,7 @@ public class FragmentCurrentLocation extends Fragment {
 		// TODO: handle button clicks: Save,  View on Map, Send
 		onReceive(ActivityMain.lastLocation != null ? ActivityMain.lastLocation : new Location("[waiting]"));
 		ActivityMain.bus.register(this);
+		
 		return rootView;
 	}
 
@@ -143,34 +144,6 @@ public class FragmentCurrentLocation extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-
-		boolean provEnabledGPS = LocationReader.isEnabled(getActivity(), LocationManager.GPS_PROVIDER);
-		boolean provEnabledWiFi = LocationReader.isEnabled(getActivity(), LocationManager.NETWORK_PROVIDER);
-
-		SharedPreferences pref = IntentTools.getSettings(getActivity(), ActivityMain.SETTINGS);
-		boolean setEnabledGPS = pref.getBoolean(ActivityMain.SETTINGS_USE_GPS, ActivityMain.SETTINGS_USE_GPS_DEF);
-		boolean setEnabledWiFi = pref.getBoolean(ActivityMain.SETTINGS_USE_WIFI, ActivityMain.SETTINGS_USE_WIFI_DEF);
-		pref = null;
-
-		boolean showAlert = true;
-		String locationProviderStateMessage = "Waiting for fix";
-		if ((!provEnabledGPS && setEnabledGPS) && (!provEnabledWiFi && setEnabledWiFi)) {
-			locationProviderStateMessage = "GPS+Network location provider not enabled!\n\nLocation updates will not appear as specified in the settings.";
-		} else if (!provEnabledGPS && setEnabledGPS) {
-			locationProviderStateMessage = "GPS location provider not enabled!\n\nLocation updates will not appear as specified in the settings.";
-		} else if (!provEnabledWiFi && setEnabledWiFi) {
-			locationProviderStateMessage = "Network location provider not enabled!\n\nLocation updates will not appear as specified in the settings.";
-		} else {
-			showAlert = false;
-		}
-
-		if (showAlert) {
-			AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
-			alertDialog.setNegativeButton("OK", null);
-			alertDialog.setMessage(locationProviderStateMessage);
-			alertDialog.setTitle("Enable Provider");
-			alertDialog.show();
-		}
 	}
 
 	@Override
