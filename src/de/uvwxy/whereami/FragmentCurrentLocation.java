@@ -24,6 +24,7 @@ import android.widget.ToggleButton;
 import com.squareup.otto.Subscribe;
 
 import de.uvwxy.helper.IntentTools;
+import de.uvwxy.helper.IntentTools.ReturnStringCallback;
 import de.uvwxy.sensors.location.LocationReader;
 
 public class FragmentCurrentLocation extends Fragment {
@@ -62,10 +63,9 @@ public class FragmentCurrentLocation extends Fragment {
 		swUpdates.setChecked(ActivityMain.locationUpdatesEnabled);
 		initClicks();
 
-		// TODO: handle button clicks: Save,  View on Map, Send
-		onReceive(ActivityMain.lastLocation != null ? ActivityMain.lastLocation : new Location("[waiting]"));
+		onReceive(ActivityMain.lastLocation != null ? ActivityMain.lastLocation : new Location("[no fix]"));
 		ActivityMain.bus.register(this);
-		
+
 		return rootView;
 	}
 
@@ -126,6 +126,38 @@ public class FragmentCurrentLocation extends Fragment {
 				alertDialog.setMessage("Please provide a name for this location:");
 				alertDialog.setTitle("Save location");
 				alertDialog.show();
+			}
+		});
+
+		btnSend.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				final Location loc = ActivityMain.lastLocation;
+				if (loc == null) {
+					Toast.makeText(getActivity(), "No location yet", Toast.LENGTH_SHORT).show();
+					return;
+				}
+
+				ReturnStringCallback selected = new ReturnStringCallback() {
+
+					@Override
+					public void result(String s) {
+						int type = IntentTools.TYPE_GMAPS;
+						if ("Google Maps".equals(s)) {
+							type = IntentTools.TYPE_GMAPS;
+						} else if ("OpenStreetMap".equals(s)) {
+							type = IntentTools.TYPE_OSM;
+						}
+
+						IntentTools.shareLocation(getActivity(), loc, type, "Shared Location", "Lat ", "Lon ", "Alt ",
+								"Bearing ", "Accuracy ", "Speed ", "Length of shared message ",
+								"Select application to share via:");
+
+					}
+				};
+				IntentTools.userSelectString(getActivity(), "Select a provider", new String[] { "Google Maps",
+						"OpenStreetMap" }, selected);
 			}
 		});
 	}
