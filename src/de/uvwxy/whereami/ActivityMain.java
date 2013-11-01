@@ -36,7 +36,7 @@ public class ActivityMain extends FragmentActivity {
 	public static final String SETTINGS_USE_WIFI = "SETTINGS_USE_WIFI";
 	public static final boolean SETTINGS_USE_WIFI_DEF = false;
 
-	public static boolean update_location = false;
+	public static boolean locationUpdatesEnabled = false;
 
 	public static DBLocationConnection data = null;
 	public static WAILocation loc = null;
@@ -72,7 +72,7 @@ public class ActivityMain extends FragmentActivity {
 		boolean startup_updates = prefs.getBoolean(SETTINGS_UPDATES_ON_STARTUP, SETTINGS_UPDATES_ON_STARTUP_DEF);
 
 		if (startup_updates) {
-			update_location = true;
+			locationUpdatesEnabled = true;
 			loc.getReader().startReading();
 		}
 
@@ -89,7 +89,7 @@ public class ActivityMain extends FragmentActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		if (update_location) {
+		if (locationUpdatesEnabled) {
 			loc.getReader().startReading();
 		}
 		bus.post(new BusUpdateList());
@@ -102,7 +102,7 @@ public class ActivityMain extends FragmentActivity {
 		if (IntentTools.getSettings(ctx, SETTINGS) //
 				.getBoolean(SETTINGS_STOP_UPDATES_ONPAUSE, SETTINGS_STOP_UPDATES_ONPAUSE_DEF)) {
 			loc.getReader().stopReading();
-			update_location = false;
+			locationUpdatesEnabled = false;
 			FragmentCurrentLocation.swUpdates.setChecked(false);
 		}
 

@@ -47,13 +47,6 @@ public class FragmentSavedLocations extends Fragment {
 
 	@Subscribe
 	public void onReceive(Location l) {
-		//			if (data.getHomeLocation() == null) {
-		//				tvSavedLocationMaxDistance.setText("[Home location not set. Use long press on a location below]");
-		//			} else {
-		//				String s = String.format(" %.2f m to " + data.getHomeLocation().getName(),
-		//						WAILocation.getDistanceTo(data.getHomeLocation(), ActivityMain.lastLocation));
-		//				tvSavedLocationMaxDistance.setText(s);
-		//			}
 		listAdapter.notifyDataSetChanged();
 	}
 

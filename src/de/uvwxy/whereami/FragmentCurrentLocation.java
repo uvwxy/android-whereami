@@ -59,7 +59,7 @@ public class FragmentCurrentLocation extends Fragment {
 
 		initGUI(rootView);
 
-		swUpdates.setChecked(ActivityMain.update_location);
+		swUpdates.setChecked(ActivityMain.locationUpdatesEnabled);
 		initClicks();
 
 		// TODO: handle button clicks: Save,  View on Map, Send
@@ -74,8 +74,8 @@ public class FragmentCurrentLocation extends Fragment {
 
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				ActivityMain.update_location = isChecked;
-				if (ActivityMain.update_location) {
+				ActivityMain.locationUpdatesEnabled = isChecked;
+				if (ActivityMain.locationUpdatesEnabled) {
 					ActivityMain.loc.getReader().startReading();
 				} else {
 					ActivityMain.loc.getReader().stopReading();
