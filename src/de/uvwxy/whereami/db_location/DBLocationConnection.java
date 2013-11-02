@@ -95,8 +95,14 @@ public class DBLocationConnection {
 		ContentValues args = new ContentValues();
 		args.put(DBLocation.COL9_FAV, isFav == 0 ? 1 : 0);
 		db.update(DBLocation.DB_TABLE_NAME, args, DBLocation.COL0_TIMESTAMP + "=" + loc.getTime(), null);
-		
 	}
+	
+	public void rename(Location loc, String newName) {
+		ContentValues args = new ContentValues();
+		args.put(DBLocation.COL2_NAME, newName);
+		db.update(DBLocation.DB_TABLE_NAME, args, DBLocation.COL0_TIMESTAMP + "=" + loc.getTime(), null);
+	}
+
 
 	private Messages.Location cursorToDBEntry(Cursor c) {
 		Messages.Location.Builder temp = Messages.Location.newBuilder();

@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 import de.uvwxy.helper.IntentTools;
 import de.uvwxy.helper.IntentTools.ReturnStringCallback;
 import de.uvwxy.whereami.proto.Messages;
@@ -35,6 +35,11 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 		if (s == null) {
 			return;
 		}
+		final Location loc = locationList.get(position);
+
+		if (loc == null) {
+			return;
+		}
 
 		if (s.equals(ctx.getString(R.string.MENU_FAVORITE))) {
 			ActivityMain.data.toggleFavorite(locationList.get(position));
@@ -42,9 +47,28 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 
 		} else if (s.equals(ctx.getString(R.string.MENU_SHARE))) {
 
-			ActionShare.share(ActivityMain.dhis.getParent(), locationList.get(position));
+			ActionShare.share(ActivityMain.dhis.getParent(), loc);
+
+		} else if (s.equals(ctx.getString(R.string.MENU_RENAME))) {
+
+			AlertDialog.Builder alertDialog = new AlertDialog.Builder(ActivityMain.dhis);
+			final EditText et = new EditText(ctx);
+			et.setText(loc.getName());
+			alertDialog.setPositiveButton("Rename", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					ActivityMain.data.rename(loc, et.getText().toString());
+					ActivityMain.bus.post(new BusUpdateList());
+				}
+			});
+			alertDialog.setNegativeButton("Cancel", null);
+			alertDialog.setMessage("Modify the name below:");
+			alertDialog.setView(et);
+			alertDialog.setTitle("Rename Location");
+			alertDialog.show();
 
 		} else if (s.equals("Delete")) {
+
 			AlertDialog.Builder alertDialog = new AlertDialog.Builder(ActivityMain.dhis);
 
 			alertDialog.setPositiveButton("Delete!", new DialogInterface.OnClickListener() {
@@ -90,7 +114,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 								ctx.getString(R.string.MENU_SHARE), //
 								"Show on Map [TODO]", //
 								"Audio Navigation [TODO]", //
-								"Rename [TODO]", "Delete" }, selected);
+								ctx.getString(R.string.MENU_RENAME), "Delete" }, selected);
 			}
 		});
 

@@ -12,6 +12,7 @@
     <string name="title_section7">Licences</string>
     <string name="MENU_FAVORITE">Toggle Favorite</string>
     <string name="MENU_SHARE">Share</string>
+    <string name="MENU_RENAME">Rename</string>
     <string name="BTN_SHARE">Share</string>
     <string name="BTN_SAVE">Save</string>
     <string name="LBL_LATITUDE">Latitude: </string>
