@@ -18,12 +18,13 @@ public class UnitDisplay {
 		}
 
 		Measure<Double, Length> measureInUnits = DecimalMeasure.valueOf(value, SI.METRE);
-		measureInUnits = measureInUnits.to(unit);
+		measureInUnits = SetPrecision.setDoubleTo(measureInUnits, 2, unit);
 		return measureInUnits.toString();
 	}
 
 	public static String showVelocity(double value, Unit<Velocity> unit) {
 		Measure<Double, Velocity> measureInUnits = DecimalMeasure.valueOf(value, unit);
+		measureInUnits = SetPrecision.setDoubleTo(measureInUnits, 2, unit);
 		return measureInUnits.toString();
 	}
 
@@ -32,6 +33,7 @@ public class UnitDisplay {
 		Measure.valueOf(valueDegreeAngle, NonSI.DEGREE_ANGLE);
 
 		measureInUnits.to(unit);
+		measureInUnits = SetPrecision.setDoubleTo(measureInUnits, 2, unit);
 		return measureInUnits.toString();
 	}
 }

@@ -74,16 +74,16 @@ public class FragmentSettings extends Fragment {
 				ActivityMain.SETTINGS_MILES);
 
 		IntentTools.switchSettings(getActivity(), rbMetresPerSecond, ActivityMain.SETTINGS,
-				ActivityMain.SETTINGS_LENGHT_TYPE, ActivityMain.SETTINGS_METRES_PER_SECOND);
-		IntentTools.switchSettings(getActivity(), rbKMH, ActivityMain.SETTINGS, ActivityMain.SETTINGS_LENGHT_TYPE,
+				ActivityMain.SETTINGS_VELOCTIY_TYPE, ActivityMain.SETTINGS_METRES_PER_SECOND);
+		IntentTools.switchSettings(getActivity(), rbKMH, ActivityMain.SETTINGS, ActivityMain.SETTINGS_VELOCTIY_TYPE,
 				ActivityMain.SETTINGS_KMH);
-		IntentTools.switchSettings(getActivity(), rbMPH, ActivityMain.SETTINGS, ActivityMain.SETTINGS_LENGHT_TYPE,
+		IntentTools.switchSettings(getActivity(), rbMPH, ActivityMain.SETTINGS, ActivityMain.SETTINGS_VELOCTIY_TYPE,
 				ActivityMain.SETTINGS_MPH);
 
 		IntentTools.switchSettings(getActivity(), rbAngleDegrees, ActivityMain.SETTINGS,
-				ActivityMain.SETTINGS_LENGHT_TYPE, ActivityMain.SETTINGS_ANGLE_DEGREES);
+				ActivityMain.SETTINGS_ANGLE_TYPE, ActivityMain.SETTINGS_ANGLE_DEGREES);
 		IntentTools.switchSettings(getActivity(), rbAngleDegreesMinutesSeconds, ActivityMain.SETTINGS,
-				ActivityMain.SETTINGS_LENGHT_TYPE, ActivityMain.SETTINGS_ANGLE_MINUTES_SECONDS);
+				ActivityMain.SETTINGS_ANGLE_TYPE, ActivityMain.SETTINGS_ANGLE_MINUTES_SECONDS);
 
 		return rootView;
 	}
