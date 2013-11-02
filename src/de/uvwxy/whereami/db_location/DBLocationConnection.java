@@ -74,7 +74,6 @@ public class DBLocationConnection {
 		} else {
 			cursor = db.query(DBLocation.DB_TABLE_NAME, dbColumns, DBLocation.COL9_FAV + "=" + (fav ? "1" : "0"), null,
 					null, null, null);
-
 		}
 
 		cursor.moveToFirst();

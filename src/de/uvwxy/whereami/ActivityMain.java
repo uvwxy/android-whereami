@@ -134,11 +134,11 @@ public class ActivityMain extends FragmentActivity {
 			case 1:
 				FragmentSavedLocations t1 = new FragmentSavedLocations();
 				t1.setFav(false);
-				return new FragmentSavedLocations();
+				return t1;
 			case 2:
 				FragmentSavedLocations t2 = new FragmentSavedLocations();
 				t2.setFav(true);
-				return new FragmentSavedLocations();
+				return t2;
 			case 3:
 				return new FragmentSettings();
 			}
