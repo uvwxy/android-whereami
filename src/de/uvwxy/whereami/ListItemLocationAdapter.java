@@ -47,10 +47,10 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 			ActivityMain.bus.post(new BusUpdateList());
 
 		} else if (s.equals(ctx.getString(R.string.MENU_SHARE))) {
-
-			ActionShare.share(ActivityMain.dhis.getParent(), loc);
+			ActionShare.share(ActivityMain.act, loc);
 
 		} else if (s.equals(ctx.getString(R.string.MENU_SHOW_ON_MAP))) {
+			// TODO: implement this!
 		} else if (s.equals(ctx.getString(R.string.MENU_AUDIO_NAV))) {
 			SoundFinder.findNode(ActivityMain.dhis, loc.getLatitude(), //
 					loc.getLongitude(), loc.getAltitude(), 25, 25, //

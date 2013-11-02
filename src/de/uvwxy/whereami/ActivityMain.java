@@ -9,6 +9,7 @@ import javax.measure.unit.NonSI;
 import javax.measure.unit.SI;
 import javax.measure.unit.Unit;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -79,6 +80,7 @@ public class ActivityMain extends FragmentActivity {
 	public static Bus bus = new Bus();
 	private static Context ctx;
 	public static ActivityMain dhis = null;
+	public static Activity act = null;
 
 	SectionsPagerAdapter mSectionsPagerAdapter;
 	ViewPager mViewPager;
@@ -89,6 +91,8 @@ public class ActivityMain extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		dhis = this;
+		act = this;
+
 		ctx = getApplicationContext();
 
 		// Create the adapter that will return a fragment for each of the three

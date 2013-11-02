@@ -33,7 +33,7 @@ public class UnitDisplay {
 		Measure.valueOf(valueDegreeAngle, NonSI.DEGREE_ANGLE);
 
 		measureInUnits.to(unit);
-		measureInUnits = SetPrecision.setDoubleTo(measureInUnits, 2, unit);
+		measureInUnits = SetPrecision.setDoubleTo(measureInUnits, 6, unit);
 		return measureInUnits.toString();
 	}
 }
