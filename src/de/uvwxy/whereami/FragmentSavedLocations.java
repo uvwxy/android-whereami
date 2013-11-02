@@ -53,6 +53,7 @@ public class FragmentSavedLocations extends Fragment {
 	@Subscribe
 	public void onReceive(BusUpdateList u) {
 		ActivityMain.data.getAllEntries(list, !isFav, isFav);
+		tvSavedLocationCount.setText("" + list.size());
 		listAdapter.notifyDataSetChanged();
 	}
 

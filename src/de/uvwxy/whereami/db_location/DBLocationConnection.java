@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import de.uvwxy.whereami.proto.Messages;
+import de.uvwxy.whereami.proto.Messages.Location;
 
 public class DBLocationConnection {
 	private SQLiteDatabase db;
@@ -83,6 +84,18 @@ public class DBLocationConnection {
 			cursor.moveToNext();
 		}
 		cursor.close();
+	}
+
+	public void toggleFavorite(Location loc) {
+		Cursor cursor = db.query(DBLocation.DB_TABLE_NAME, //
+				dbColumns, DBLocation.COL0_TIMESTAMP + "=" + loc.getTime(), null, null, null, null);
+		cursor.moveToFirst();
+		int isFav = cursor.getInt(cursor.getColumnIndex(DBLocation.COL9_FAV));
+		cursor.close();
+		ContentValues args = new ContentValues();
+		args.put(DBLocation.COL9_FAV, isFav == 0 ? 1 : 0);
+		db.update(DBLocation.DB_TABLE_NAME, args, DBLocation.COL0_TIMESTAMP + "=" + loc.getTime(), null);
+		
 	}
 
 	private Messages.Location cursorToDBEntry(Cursor c) {

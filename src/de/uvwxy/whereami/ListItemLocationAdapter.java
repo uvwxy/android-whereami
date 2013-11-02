@@ -37,8 +37,9 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 		}
 
 		if (s.equals(ctx.getString(R.string.MENU_FAVORITE))) {
-			//ActivityMain.data.saveHomeLocation(ctx, locationList.get(position));
-			Toast.makeText(ActivityMain.dhis, "TODO: Saved Home Location", Toast.LENGTH_SHORT).show();
+			ActivityMain.data.toggleFavorite(locationList.get(position));
+			ActivityMain.bus.post(new BusUpdateList());
+
 		} else if (s.equals(ctx.getString(R.string.MENU_SHARE))) {
 
 			ActionShare.share(ActivityMain.dhis.getParent(), locationList.get(position));
