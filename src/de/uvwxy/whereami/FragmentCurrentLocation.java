@@ -135,25 +135,7 @@ public class FragmentCurrentLocation extends Fragment {
 					return;
 				}
 
-				ReturnStringCallback selected = new ReturnStringCallback() {
-
-					@Override
-					public void result(String s) {
-						int type = IntentTools.TYPE_GMAPS;
-						if ("Google Maps".equals(s)) {
-							type = IntentTools.TYPE_GMAPS;
-						} else if ("OpenStreetMap".equals(s)) {
-							type = IntentTools.TYPE_OSM;
-						}
-
-						IntentTools.shareLocation(getActivity(), loc, type, "Shared Location", "Lat ", "Lon ", "Alt ",
-								"Bearing ", "Accuracy ", "Speed ", "Length of shared message ",
-								"Select application to share via:");
-
-					}
-				};
-				IntentTools.userSelectString(getActivity(), "Select a provider", new String[] { "Google Maps",
-						"OpenStreetMap" }, selected);
+				ActionShare.share(getActivity(), loc);
 			}
 		});
 	}

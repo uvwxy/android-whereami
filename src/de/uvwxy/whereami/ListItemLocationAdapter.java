@@ -22,7 +22,6 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 	private LayoutInflater inflater;
 	private ArrayList<Messages.Location> locationList;
 
-	@SuppressWarnings("unused")
 	private Context ctx;
 
 	public ListItemLocationAdapter(Context context, List<Messages.Location> list) {
@@ -32,10 +31,18 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 		this.locationList = (ArrayList<Location>) list;
 	}
 
-	private void handleItemMenu(final int position, String s) {
-		if (s.equals("Set as home location")) {
+	private void handleMenuItem(final int position, String s) {
+		if (s == null) {
+			return;
+		}
+
+		if (s.equals(ctx.getString(R.string.MENU_FAVORITE))) {
 			//ActivityMain.data.saveHomeLocation(ctx, locationList.get(position));
 			Toast.makeText(ActivityMain.dhis, "TODO: Saved Home Location", Toast.LENGTH_SHORT).show();
+		} else if (s.equals(ctx.getString(R.string.MENU_SHARE))) {
+
+			ActionShare.share(ActivityMain.dhis.getParent(), locationList.get(position));
+
 		} else if (s.equals("Delete")) {
 			AlertDialog.Builder alertDialog = new AlertDialog.Builder(ActivityMain.dhis);
 
@@ -73,13 +80,16 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 
 					@Override
 					public void result(String s) {
-						handleItemMenu(position, s);
+						handleMenuItem(position, s);
 					}
 
 				};
-				IntentTools.userSelectString(ActivityMain.dhis, "Select Action:", new String[] {
-						"Set as home location", "Send [TODO]", "Show on Map [TODO]", "Audio Navigation [TODO]",
-						"Rename [TODO]", "Delete" }, selected);
+				IntentTools.userSelectString(ActivityMain.dhis, "Select Action:",
+						new String[] { ctx.getString(R.string.MENU_FAVORITE), //
+								ctx.getString(R.string.MENU_SHARE), //
+								"Show on Map [TODO]", //
+								"Audio Navigation [TODO]", //
+								"Rename [TODO]", "Delete" }, selected);
 			}
 		});
 
@@ -89,7 +99,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 		Messages.Location item = locationList.get(position);
 		tvItemTitle.setText("" + item.getName());
 		if (ActivityMain.lastLocation != null) {
-			String s = String.format(" %.2f m", WAILocation.getDistanceTo(item, ActivityMain.lastLocation));
+			String s = String.format(" %.2f m", LocationManager.getDistanceTo(item, ActivityMain.lastLocation));
 			tvItemDistanceValue.setText(s);
 		} else {
 			tvItemDistanceValue.setText("[no location fix yet]");

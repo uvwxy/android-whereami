@@ -10,5 +10,19 @@
     <string name="title_section5">Settings</string>
     <string name="title_section6">About</string>
     <string name="title_section7">Licences</string>
-
+    <string name="MENU_FAVORITE">Toggle Favorite</string>
+    <string name="MENU_SHARE">Share</string>
+    <string name="BTN_SHARE">Share</string>
+    <string name="BTN_SAVE">Save</string>
+    <string name="LBL_LATITUDE">Latitude: </string>
+    <string name="LBL_LONGITUDE">Longitude: </string>
+    <string name="LBL_ALTITUDE">Altitude: </string>
+    <string name="LBL_BEARING">Bearing: </string>
+    <string name="LBL_SPEED">Speed: </string>
+    <string name="LBL_ACCURACY">Accuracy: </string>
+    <string name="LBL_PROVIDER">Provider: </string>
+    <string name="LBL_UPDATES">Updates: </string>
+	<string name="length_of_shared_message">Length of shared message </string>
+	<string name="select_share_app">Select app to share with: </string>
+	<string name="select_a_provider">Select a provider</string>
 </resources>

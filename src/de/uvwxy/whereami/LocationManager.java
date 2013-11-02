@@ -11,7 +11,7 @@ import de.uvwxy.sensors.location.LocationReader.LocationResultCallback;
 import de.uvwxy.sensors.location.LocationReader.LocationStatusCallback;
 import de.uvwxy.whereami.proto.Messages;
 
-public class WAILocation {
+public class LocationManager {
 	private Context ctx = null;
 
 	private LocationReader readerLocation = null;
@@ -36,7 +36,7 @@ public class WAILocation {
 		}
 	};
 
-	public WAILocation(Context ctx) {
+	public LocationManager(Context ctx) {
 		this.ctx = ctx;
 		SharedPreferences prefs = IntentTools.getSettings(ctx, ActivityMain.SETTINGS);
 

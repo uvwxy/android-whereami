@@ -39,7 +39,7 @@ public class ActivityMain extends FragmentActivity {
 	public static boolean locationUpdatesEnabled = false;
 
 	public static DBLocationConnection data = null;
-	public static WAILocation loc = null;
+	public static de.uvwxy.whereami.LocationManager loc = null;
 
 	public static Bus bus = new Bus();
 	private static Context ctx;
@@ -66,7 +66,7 @@ public class ActivityMain extends FragmentActivity {
 
 		data = new DBLocationConnection(this);
 		data.openWrite();
-		loc = new WAILocation(getApplicationContext());
+		loc = new de.uvwxy.whereami.LocationManager(getApplicationContext());
 
 		SharedPreferences prefs = IntentTools.getSettings(getApplicationContext(), SETTINGS);
 		boolean startup_updates = prefs.getBoolean(SETTINGS_UPDATES_ON_STARTUP, SETTINGS_UPDATES_ON_STARTUP_DEF);
@@ -77,7 +77,7 @@ public class ActivityMain extends FragmentActivity {
 		}
 
 		bus.register(this);
-		
+
 		alertIfProviderIsNotEnabled();
 	}
 
@@ -103,7 +103,9 @@ public class ActivityMain extends FragmentActivity {
 				.getBoolean(SETTINGS_STOP_UPDATES_ONPAUSE, SETTINGS_STOP_UPDATES_ONPAUSE_DEF)) {
 			loc.getReader().stopReading();
 			locationUpdatesEnabled = false;
-			FragmentCurrentLocation.swUpdates.setChecked(false);
+			if (FragmentCurrentLocation.swUpdates != null){
+				FragmentCurrentLocation.swUpdates.setChecked(false);
+			}
 		}
 
 	}
