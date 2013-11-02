@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.util.Log;
 import de.uvwxy.whereami.proto.Messages;
 
 public class WAIData2 {
