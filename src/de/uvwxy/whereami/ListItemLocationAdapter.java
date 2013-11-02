@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,7 +36,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 		if (s == null) {
 			return;
 		}
-
+		Log.d("WAI", "s = " + s);
 		if (s.equals(ctx.getString(R.string.MENU_FAVORITE))) {
 			//ActivityMain.data.saveHomeLocation(ctx, locationList.get(position));
 			Toast.makeText(ActivityMain.dhis, "TODO: Saved Home Location", Toast.LENGTH_SHORT).show();

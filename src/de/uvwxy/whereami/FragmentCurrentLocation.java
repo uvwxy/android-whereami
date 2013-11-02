@@ -20,9 +20,6 @@ import android.widget.ToggleButton;
 
 import com.squareup.otto.Subscribe;
 
-import de.uvwxy.helper.IntentTools;
-import de.uvwxy.helper.IntentTools.ReturnStringCallback;
-
 public class FragmentCurrentLocation extends Fragment {
 	private ScrollView scrollView1 = null;
 	private TextView tvLat = null;
