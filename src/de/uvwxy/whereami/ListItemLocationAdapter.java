@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import de.uvwxy.helper.IntentTools;
 import de.uvwxy.helper.IntentTools.ReturnStringCallback;
+import de.uvwxy.soundfinder.SoundFinder;
 import de.uvwxy.whereami.proto.Messages;
 import de.uvwxy.whereami.proto.Messages.Location;
 
@@ -49,6 +50,11 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 
 			ActionShare.share(ActivityMain.dhis.getParent(), loc);
 
+		} else if (s.equals(ctx.getString(R.string.MENU_SHOW_ON_MAP))) {
+		} else if (s.equals(ctx.getString(R.string.MENU_AUDIO_NAV))) {
+			SoundFinder.findNode(ActivityMain.dhis, loc.getLatitude(), //
+					loc.getLongitude(), loc.getAltitude(), 25, 25, //
+					Converter.createLoc(loc).distanceTo(ActivityMain.lastLocation));
 		} else if (s.equals(ctx.getString(R.string.MENU_RENAME))) {
 
 			AlertDialog.Builder alertDialog = new AlertDialog.Builder(ActivityMain.dhis);
@@ -61,17 +67,17 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 					ActivityMain.bus.post(new BusUpdateList());
 				}
 			});
-			alertDialog.setNegativeButton("Cancel", null);
+			alertDialog.setNegativeButton(ctx.getString(R.string.MENU_CANCEL), null);
 			alertDialog.setMessage("Modify the name below:");
 			alertDialog.setView(et);
 			alertDialog.setTitle("Rename Location");
 			alertDialog.show();
 
-		} else if (s.equals("Delete")) {
+		} else if (s.equals(ctx.getString(R.string.MENU_DELETE))) {
 
 			AlertDialog.Builder alertDialog = new AlertDialog.Builder(ActivityMain.dhis);
 
-			alertDialog.setPositiveButton("Delete!", new DialogInterface.OnClickListener() {
+			alertDialog.setPositiveButton(ctx.getString(R.string.MENU_DELETE), new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 
@@ -81,7 +87,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 				}
 			});
 
-			alertDialog.setNegativeButton("Cancel", null);
+			alertDialog.setNegativeButton(ctx.getString(R.string.MENU_CANCEL), null);
 			alertDialog.setMessage("Do you really want to delete the location \""
 					+ locationList.get(position).getName() + "\"?");
 			alertDialog.setTitle("Delete");
@@ -112,9 +118,11 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 				IntentTools.userSelectString(ActivityMain.dhis, "Select Action:",
 						new String[] { ctx.getString(R.string.MENU_FAVORITE), //
 								ctx.getString(R.string.MENU_SHARE), //
-								"Show on Map [TODO]", //
-								"Audio Navigation [TODO]", //
-								ctx.getString(R.string.MENU_RENAME), "Delete" }, selected);
+								ctx.getString(R.string.MENU_RENAME), //
+								ctx.getString(R.string.MENU_DELETE), //
+								ctx.getString(R.string.MENU_SHOW_ON_MAP), //
+								ctx.getString(R.string.MENU_AUDIO_NAV), //
+								ctx.getString(R.string.MENU_CANCEL) }, selected);
 			}
 		});
 
