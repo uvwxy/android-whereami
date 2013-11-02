@@ -2,6 +2,13 @@ package de.uvwxy.whereami;
 
 import java.util.Locale;
 
+import javax.measure.quantity.Angle;
+import javax.measure.quantity.Length;
+import javax.measure.quantity.Velocity;
+import javax.measure.unit.NonSI;
+import javax.measure.unit.SI;
+import javax.measure.unit.Unit;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -27,16 +34,44 @@ import de.uvwxy.whereami.db_location.DBLocationConnection;
 
 public class ActivityMain extends FragmentActivity {
 	public static final String SETTINGS = "WAI_SETTINGS";
+
 	public static final String SETTINGS_UPDATES_ON_STARTUP = "WAI_UPDATES_ON_STARTUP";
 	public static final boolean SETTINGS_UPDATES_ON_STARTUP_DEF = true;
+
 	public static final String SETTINGS_STOP_UPDATES_ONPAUSE = "SETTINGS_STOP_UPDATES_ONPAUSE";
 	public static final boolean SETTINGS_STOP_UPDATES_ONPAUSE_DEF = false;
+
 	public static final String SETTINGS_USE_GPS = "SETTINGS_USE_GPS";
 	public static final boolean SETTINGS_USE_GPS_DEF = true;
+
 	public static final String SETTINGS_USE_WIFI = "SETTINGS_USE_WIFI";
 	public static final boolean SETTINGS_USE_WIFI_DEF = false;
 
+	public static final String SETTINGS_LENGHT_TYPE = "SETTINGS_LENGTH_TYPE";
+	public static final int SETTINGS_METRES = 0;
+	public static final int SETTINGS_KILOMETRES = 1;
+	public static final int SETTINGS_FOOT = 2;
+	public static final int SETTINGS_MILES = 3;
+	public static final int SETTINGS_LENGHT_TYPE_DEF = SETTINGS_METRES;
+
+	public static final String SETTINGS_VELOCTIY_TYPE = "SETTINGS_VELOCITY_TYPE";
+	public static final int SETTINGS_METRES_PER_SECOND = 0;
+	public static final int SETTINGS_KMH = 1;
+	public static final int SETTINGS_MPH = 2;
+	public static final int SETTINGS_VELOCITY_TYPE_DEF = SETTINGS_METRES_PER_SECOND;
+
+	public static final String SETTINGS_ANGLE_TYPE = "SETTINGS_ANGLE_TYPE";
+	public static final int SETTINGS_ANGLE_DEGREES = 0;
+	public static final int SETTINGS_ANGLE_MINUTES_SECONDS = 1;
+
+	public static final int SETTINGS_ANGLE_TYPE_DEF = SETTINGS_ANGLE_DEGREES;
+
 	public static boolean locationUpdatesEnabled = false;
+
+	public static Unit<Velocity> unitV = null;
+	public static Unit<Length> unitL = null;
+	public static Unit<Angle> unitA = null;
+	public static int unitLBreak = 1500;
 
 	public static DBLocationConnection data = null;
 	public static de.uvwxy.whereami.LocationManager loc = null;
@@ -76,6 +111,50 @@ public class ActivityMain extends FragmentActivity {
 			loc.getReader().startReading();
 		}
 
+		int t = prefs.getInt(SETTINGS_LENGHT_TYPE, SETTINGS_LENGHT_TYPE_DEF);
+		switch (t) {
+		case SETTINGS_METRES:
+			unitL = SI.METRE;
+			break;
+		case SETTINGS_KILOMETRES:
+			unitL = SI.KILOMETRE;
+			break;
+		case SETTINGS_FOOT:
+			unitL = NonSI.FOOT;
+			break;
+		case SETTINGS_MILES:
+			unitL = NonSI.MILE;
+			break;
+		default:
+			unitL = SI.METRE;
+		}
+		t = prefs.getInt(SETTINGS_VELOCTIY_TYPE, SETTINGS_VELOCITY_TYPE_DEF);
+		switch (t) {
+		case SETTINGS_METRES_PER_SECOND:
+			unitV = SI.METERS_PER_SECOND;
+			break;
+		case SETTINGS_KMH:
+			unitV = NonSI.KILOMETRES_PER_HOUR;
+			break;
+		case SETTINGS_MPH:
+			unitV = NonSI.MILES_PER_HOUR;
+			break;
+		default:
+			unitV = SI.METERS_PER_SECOND;
+		}
+
+		t = prefs.getInt(SETTINGS_ANGLE_TYPE, SETTINGS_ANGLE_TYPE_DEF);
+		switch (t) {
+		case SETTINGS_ANGLE_DEGREES:
+			unitA = NonSI.DEGREE_ANGLE;
+			break;
+		case SETTINGS_ANGLE_MINUTES_SECONDS:
+			unitA = NonSI.DEGREE_ANGLE.compound(NonSI.MINUTE_ANGLE).compound(NonSI.SECOND_ANGLE);
+			break;
+		default:
+			unitA = NonSI.DEGREE_ANGLE;
+		}
+
 		bus.register(this);
 
 		alertIfProviderIsNotEnabled();
@@ -103,7 +182,7 @@ public class ActivityMain extends FragmentActivity {
 				.getBoolean(SETTINGS_STOP_UPDATES_ONPAUSE, SETTINGS_STOP_UPDATES_ONPAUSE_DEF)) {
 			loc.getReader().stopReading();
 			locationUpdatesEnabled = false;
-			if (FragmentCurrentLocation.swUpdates != null){
+			if (FragmentCurrentLocation.swUpdates != null) {
 				FragmentCurrentLocation.swUpdates.setChecked(false);
 			}
 		}

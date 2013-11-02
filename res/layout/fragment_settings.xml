@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -70,6 +70,95 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Use Network location provider" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/card_separator" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select display units below. (Requires app restart)"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <RadioGroup
+            android:id="@+id/rbgLengths"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/rbMetres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Metres" />
+
+            <RadioButton
+                android:id="@+id/rbKilometres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kilometres" />
+
+            <RadioButton
+                android:id="@+id/rbFoot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Foot" />
+
+            <RadioButton
+                android:id="@+id/rbMiles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Miles" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/rbgVelocities"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/rbMetresPerSecond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="m/s" />
+
+            <RadioButton
+                android:id="@+id/rbKMH"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kmh" />
+
+            <RadioButton
+                android:id="@+id/rbMPH"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mph" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/rbgAngles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/rbAngleDegrees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="0.0000 °" />
+
+            <RadioButton
+                android:id="@+id/rbAngleDegreesMinutesSeconds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00 ° 00&apos; 00 &apos;&apos;" />
+        </RadioGroup>
     </LinearLayout>
 
-</RelativeLayout>
+</ScrollView>

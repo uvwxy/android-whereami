@@ -1,5 +1,8 @@
 package de.uvwxy.whereami;
 
+import javax.measure.unit.NonSI;
+import javax.measure.unit.SI;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.location.Location;
@@ -19,9 +22,6 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.squareup.otto.Subscribe;
-
-import de.uvwxy.helper.IntentTools;
-import de.uvwxy.helper.IntentTools.ReturnStringCallback;
 
 public class FragmentCurrentLocation extends Fragment {
 	private ScrollView scrollView1 = null;
@@ -142,13 +142,13 @@ public class FragmentCurrentLocation extends Fragment {
 
 	@Subscribe
 	public void onReceive(Location l) {
-		tvLat.setText("" + l.getLatitude() + " °");
-		tvLon.setText("" + l.getLongitude() + " °");
-		tvAlt.setText("" + l.getAltitude() + " m");
-		tvSpeed.setText("" + l.getSpeed() + " m/s");
+		tvLat.setText(UnitDisplay.showCoord(l.getLatitude(), ActivityMain.unitA));
+		tvLon.setText(UnitDisplay.showCoord(l.getLongitude(), ActivityMain.unitA));
+		tvAlt.setText(UnitDisplay.showDistance(l.getAltitude(), ActivityMain.unitL, ActivityMain.unitLBreak));
+		tvSpeed.setText(UnitDisplay.showVelocity(l.getSpeed(), ActivityMain.unitV));
 		tvProvider.setText(l.getProvider());
-		tvBearing.setText("" + l.getBearing() + " °");
-		tvAcc.setText("" + l.getAccuracy() + " m");
+		tvBearing.setText(UnitDisplay.showCoord(l.getBearing(), ActivityMain.unitA));
+		tvAcc.setText(UnitDisplay.showDistance(l.getAccuracy(), ActivityMain.unitL, ActivityMain.unitLBreak));
 	}
 
 	@Override
