@@ -89,7 +89,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select display units below. (Requires app restart)"
+            android:text="Select display units below."
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <View
@@ -135,6 +135,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Miles" />
+            
+            <RadioButton
+                android:id="@+id/rbYards"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yards" />
         </RadioGroup>
 
         <TextView

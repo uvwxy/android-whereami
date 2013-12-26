@@ -2,13 +2,6 @@ package de.uvwxy.whereami;
 
 import java.util.Locale;
 
-import javax.measure.quantity.Angle;
-import javax.measure.quantity.Length;
-import javax.measure.quantity.Velocity;
-import javax.measure.unit.NonSI;
-import javax.measure.unit.SI;
-import javax.measure.unit.Unit;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -21,16 +14,14 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
 import de.uvwxy.helper.IntentTools;
 import de.uvwxy.sensors.location.LocationReader;
+import de.uvwxy.units.Unit;
+import de.uvwxy.units.UnitPrefix;
 import de.uvwxy.whereami.db_location.DBLocationConnection;
 
 public class ActivityMain extends FragmentActivity {
@@ -53,6 +44,7 @@ public class ActivityMain extends FragmentActivity {
 	public static final int SETTINGS_KILOMETRES = 1;
 	public static final int SETTINGS_FOOT = 2;
 	public static final int SETTINGS_MILES = 3;
+	public static final int SETTINGS_YARDS = 4;
 	public static final int SETTINGS_LENGHT_TYPE_DEF = SETTINGS_METRES;
 
 	public static final String SETTINGS_VELOCTIY_TYPE = "SETTINGS_VELOCITY_TYPE";
@@ -69,9 +61,9 @@ public class ActivityMain extends FragmentActivity {
 
 	public static boolean locationUpdatesEnabled = false;
 
-	public static Unit<Velocity> unitV = null;
-	public static Unit<Length> unitL = null;
-	public static Unit<Angle> unitA = null;
+	public static Unit unitV = null;
+	public static Unit unitL = null;
+	public static Unit unitA = null;
 	public static int unitLBreak = 1500;
 
 	public static DBLocationConnection data = null;
@@ -115,49 +107,7 @@ public class ActivityMain extends FragmentActivity {
 			loc.getReader().startReading();
 		}
 
-		int t = prefs.getInt(SETTINGS_LENGHT_TYPE, SETTINGS_LENGHT_TYPE_DEF);
-		switch (t) {
-		case SETTINGS_METRES:
-			unitL = SI.METRE;
-			break;
-		case SETTINGS_KILOMETRES:
-			unitL = SI.KILOMETRE;
-			break;
-		case SETTINGS_FOOT:
-			unitL = NonSI.FOOT;
-			break;
-		case SETTINGS_MILES:
-			unitL = NonSI.MILE;
-			break;
-		default:
-			unitL = SI.METRE;
-		}
-		t = prefs.getInt(SETTINGS_VELOCTIY_TYPE, SETTINGS_VELOCITY_TYPE_DEF);
-		switch (t) {
-		case SETTINGS_METRES_PER_SECOND:
-			unitV = SI.METERS_PER_SECOND;
-			break;
-		case SETTINGS_KMH:
-			unitV = NonSI.KILOMETRES_PER_HOUR;
-			break;
-		case SETTINGS_MPH:
-			unitV = NonSI.MILES_PER_HOUR;
-			break;
-		default:
-			unitV = SI.METERS_PER_SECOND;
-		}
-
-		t = prefs.getInt(SETTINGS_ANGLE_TYPE, SETTINGS_ANGLE_TYPE_DEF);
-		switch (t) {
-		case SETTINGS_ANGLE_DEGREES:
-			unitA = NonSI.DEGREE_ANGLE;
-			break;
-		case SETTINGS_ANGLE_MINUTES_SECONDS:
-			unitA = NonSI.DEGREE_ANGLE.compound(NonSI.MINUTE_ANGLE).compound(NonSI.SECOND_ANGLE);
-			break;
-		default:
-			unitA = NonSI.DEGREE_ANGLE;
-		}
+		setUnits(prefs);
 
 		bus.register(this);
 
@@ -176,6 +126,7 @@ public class ActivityMain extends FragmentActivity {
 			loc.getReader().startReading();
 		}
 		bus.post(new BusUpdateList());
+		setUnits();
 	}
 
 	@Override
@@ -226,10 +177,7 @@ public class ActivityMain extends FragmentActivity {
 				return new FragmentSettings();
 			}
 
-			Fragment fragment = new DummySectionFragment();
-			Bundle args = new Bundle();
-			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
-			fragment.setArguments(args);
+			Fragment fragment = new FragmentSettings();
 			return fragment;
 		}
 
@@ -252,29 +200,6 @@ public class ActivityMain extends FragmentActivity {
 				return getString(R.string.title_section4).toUpperCase(l);
 			}
 			return null;
-		}
-	}
-
-	/**
-	 * A dummy fragment representing a section of the app, but that simply
-	 * displays dummy text.
-	 */
-	public static class DummySectionFragment extends Fragment {
-		/**
-		 * The fragment argument representing the section number for this
-		 * fragment.
-		 */
-		public static final String ARG_SECTION_NUMBER = "section_number";
-
-		public DummySectionFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_activity_main_dummy, container, false);
-			TextView dummyTextView = (TextView) rootView.findViewById(R.id.section_label);
-			dummyTextView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
-			return rootView;
 		}
 	}
 
@@ -305,6 +230,68 @@ public class ActivityMain extends FragmentActivity {
 			alertDialog.setMessage(locationProviderStateMessage);
 			alertDialog.setTitle("Enable Provider");
 			alertDialog.show();
+		}
+	}
+
+	public void setUnits() {
+		setUnits(IntentTools.getSettings(getApplicationContext(), SETTINGS));
+	}
+
+	private void setUnits(SharedPreferences prefs) {
+		readLength(prefs);
+		readSpeed(prefs);
+		readAngle(prefs);
+
+	}
+
+	private void readLength(SharedPreferences prefs) {
+		int t = prefs.getInt(SETTINGS_LENGHT_TYPE, SETTINGS_LENGHT_TYPE_DEF);
+		switch (t) {
+		case SETTINGS_METRES:
+			unitL = Unit.METRE;
+			break;
+		case SETTINGS_KILOMETRES:
+			unitL = Unit.METRE.setPrefix(UnitPrefix.KILO);
+			break;
+		case SETTINGS_FOOT:
+			unitL = Unit.FOOT;
+			break;
+		case SETTINGS_MILES:
+			unitL = Unit.MILE;
+			break;
+		default:
+			unitL = Unit.METRE;
+		}
+	}
+
+	private void readSpeed(SharedPreferences prefs) {
+		int t = prefs.getInt(SETTINGS_VELOCTIY_TYPE, SETTINGS_VELOCITY_TYPE_DEF);
+		switch (t) {
+		case SETTINGS_METRES_PER_SECOND:
+			unitV = Unit.METRES_PER_SECOND;
+			break;
+		case SETTINGS_KMH:
+			unitV = Unit.KILOMETRES_PER_HOUR;
+			break;
+		case SETTINGS_MPH:
+			unitV = Unit.MILES_PER_HOUR;
+			break;
+		default:
+			unitV = Unit.METRES_PER_SECOND;
+		}
+	}
+
+	private void readAngle(SharedPreferences prefs) {
+		int t = prefs.getInt(SETTINGS_ANGLE_TYPE, SETTINGS_ANGLE_TYPE_DEF);
+		switch (t) {
+		case SETTINGS_ANGLE_DEGREES:
+			unitA = Unit.DEGREES.setPrecision(6);
+			break;
+		case SETTINGS_ANGLE_MINUTES_SECONDS:
+			unitA = Unit.DEGREES_MINUTES_SECONDS;
+			break;
+		default:
+			unitA = Unit.DEGREES.setPrecision(6);
 		}
 	}
 
