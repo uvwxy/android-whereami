@@ -261,6 +261,7 @@ public class ActivityMain extends FragmentActivity {
 			break;
 		case SETTINGS_YARDS:
 			unitL = Unit.YARD;
+			break;
 		default:
 			unitL = Unit.METRE.setPrefix(UnitPrefix.NONE);
 		}
