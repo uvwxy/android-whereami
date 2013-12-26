@@ -22,7 +22,6 @@ import com.squareup.otto.Subscribe;
 
 import de.uvwxy.units.Unit;
 
-
 public class FragmentCurrentLocation extends Fragment {
 	private ScrollView scrollView1 = null;
 	private TextView tvLat = null;
@@ -143,9 +142,9 @@ public class FragmentCurrentLocation extends Fragment {
 	@Subscribe
 	public void onReceive(Location l) {
 
-		tvLat.setText(Unit.DEGREES.setValue(l.getLatitude()).to(ActivityMain.unitA).toString());
-		tvLon.setText(Unit.DEGREES.setValue(l.getLongitude()).to(ActivityMain.unitA).toString());
-		tvBearing.setText(Unit.DEGREES.setPrecision(1).setValue(l.getBearing()).to(ActivityMain.unitA).toString());
+		tvLat.setText(Unit.DEGREES.setPrecision(6).setValue(l.getLatitude()).to(ActivityMain.unitA).toString());
+		tvLon.setText(Unit.DEGREES.setPrecision(6).setValue(l.getLongitude()).to(ActivityMain.unitA).toString());
+		tvBearing.setText(Unit.DEGREES.setPrecision(1).setValue(l.getBearing()).toString());
 
 		tvAlt.setText(Unit.METRE.setValue(l.getAltitude()).to(ActivityMain.unitL).toString());
 		tvAcc.setText(Unit.METRE.setValue(l.getAccuracy()).to(ActivityMain.unitL).toString());
