@@ -248,7 +248,7 @@ public class ActivityMain extends FragmentActivity {
 		int t = prefs.getInt(SETTINGS_LENGHT_TYPE, SETTINGS_LENGHT_TYPE_DEF);
 		switch (t) {
 		case SETTINGS_METRES:
-			unitL = Unit.METRE;
+			unitL = Unit.METRE.setPrefix(UnitPrefix.NONE);
 			break;
 		case SETTINGS_KILOMETRES:
 			unitL = Unit.METRE.setPrefix(UnitPrefix.KILO);
@@ -259,8 +259,10 @@ public class ActivityMain extends FragmentActivity {
 		case SETTINGS_MILES:
 			unitL = Unit.MILE;
 			break;
+		case SETTINGS_YARDS:
+			unitL = Unit.YARD;
 		default:
-			unitL = Unit.METRE;
+			unitL = Unit.METRE.setPrefix(UnitPrefix.NONE);
 		}
 	}
 

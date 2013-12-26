@@ -17,6 +17,7 @@ import android.widget.TextView;
 import de.uvwxy.helper.IntentTools;
 import de.uvwxy.helper.IntentTools.ReturnStringCallback;
 import de.uvwxy.soundfinder.SoundFinder;
+import de.uvwxy.units.Unit;
 import de.uvwxy.whereami.proto.Messages;
 import de.uvwxy.whereami.proto.Messages.Location;
 
@@ -134,7 +135,9 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 		Messages.Location item = locationList.get(position);
 		tvItemTitle.setText("" + item.getName());
 		if (ActivityMain.lastLocation != null) {
-			String s = String.format(" %.2f m", LocationManager.getDistanceTo(item, ActivityMain.lastLocation));
+			Unit u = Unit.METRE.setValue(LocationManager.getDistanceTo(item, ActivityMain.lastLocation));
+			u = u.to(ActivityMain.unitL);
+			String s = String.format("%s", u);
 			tvItemDistanceValue.setText(s);
 		} else {
 			tvItemDistanceValue.setText("[no location fix yet]");
