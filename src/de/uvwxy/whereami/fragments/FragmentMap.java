@@ -1,4 +1,4 @@
-package de.uvwxy.whereami;
+package de.uvwxy.whereami.fragments;
 
 import java.util.ArrayList;
 
@@ -25,6 +25,11 @@ import android.view.ViewGroup;
 import de.uvwxy.helper.IntentTools;
 import de.uvwxy.osmdroid.ExtractedOverlay;
 import de.uvwxy.soundfinder.SoundFinder;
+import de.uvwxy.whereami.ActivityMain;
+import de.uvwxy.whereami.LocationOverlayExtractor;
+import de.uvwxy.whereami.R;
+import de.uvwxy.whereami.R.id;
+import de.uvwxy.whereami.R.layout;
 import de.uvwxy.whereami.proto.Messages;
 
 public class FragmentMap extends Fragment {

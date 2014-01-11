@@ -1,4 +1,4 @@
-package de.uvwxy.whereami;
+package de.uvwxy.whereami.fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -21,6 +21,13 @@ import android.widget.ToggleButton;
 import com.squareup.otto.Subscribe;
 
 import de.uvwxy.units.Unit;
+import de.uvwxy.whereami.ActionShare;
+import de.uvwxy.whereami.ActivityMain;
+import de.uvwxy.whereami.BusUpdateList;
+import de.uvwxy.whereami.Converter;
+import de.uvwxy.whereami.R;
+import de.uvwxy.whereami.R.id;
+import de.uvwxy.whereami.R.layout;
 
 @SuppressWarnings("unused")
 public class FragmentCurrentLocation extends Fragment {

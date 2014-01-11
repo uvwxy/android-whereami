@@ -54,4 +54,7 @@
   <string name="distance_value">Distance Value</string>
   <string name="location_count">Location Count:</string>
   <string name="empty_count">0</string>
+  <string name="shared_location">Shared Location</string>
+  <string name="googlemaps">Google Maps</string>
+  <string name="openstreetmap">OpenStreetMap</string>
 </resources>

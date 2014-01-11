@@ -1,4 +1,4 @@
-package de.uvwxy.whereami;
+package de.uvwxy.whereami.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,6 +11,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import de.uvwxy.helper.IntentTools;
+import de.uvwxy.whereami.ActivityMain;
+import de.uvwxy.whereami.R;
+import de.uvwxy.whereami.R.id;
+import de.uvwxy.whereami.R.layout;
 
 @SuppressWarnings("unused")
 public class FragmentSettings extends Fragment {

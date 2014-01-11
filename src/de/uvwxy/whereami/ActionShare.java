@@ -16,13 +16,13 @@ public class ActionShare {
 			@Override
 			public void result(String s) {
 				int type = IntentTools.TYPE_GMAPS;
-				if ("Google Maps".equals(s)) {
+				if (act.getString(R.string.googlemaps).equals(s)) {
 					type = IntentTools.TYPE_GMAPS;
-				} else if ("OpenStreetMap".equals(s)) {
+				} else if (act.getString(R.string.openstreetmap).equals(s)) {
 					type = IntentTools.TYPE_OSM;
 				}
 
-				IntentTools.shareLocation(act, loc, type, "Shared Location", //
+				IntentTools.shareLocation(act, loc, type, act.getString(R.string.shared_location), //
 						act.getString(R.string.LBL_LATITUDE), //
 						act.getString(R.string.LBL_LONGITUDE), //
 						act.getString(R.string.LBL_ALTITUDE), //
@@ -35,7 +35,7 @@ public class ActionShare {
 			}
 		};
 		IntentTools.userSelectString(act, act.getString(R.string.select_a_provider), //
-				new String[] { "Google Maps", "OpenStreetMap" }, selected);
+				new String[] { act.getString(R.string.googlemaps), act.getString(R.string.openstreetmap) }, selected);
 	}
 
 	public static void share(Activity parent, de.uvwxy.whereami.proto.Messages.Location location) {

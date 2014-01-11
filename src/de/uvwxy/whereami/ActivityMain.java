@@ -23,6 +23,10 @@ import de.uvwxy.sensors.location.LocationReader;
 import de.uvwxy.units.Unit;
 import de.uvwxy.units.UnitPrefix;
 import de.uvwxy.whereami.db_location.DBLocationConnection;
+import de.uvwxy.whereami.fragments.FragmentCurrentLocation;
+import de.uvwxy.whereami.fragments.FragmentMap;
+import de.uvwxy.whereami.fragments.FragmentSavedLocations;
+import de.uvwxy.whereami.fragments.FragmentSettings;
 
 public class ActivityMain extends FragmentActivity {
 	public static final String SETTINGS = "WAI_SETTINGS";
