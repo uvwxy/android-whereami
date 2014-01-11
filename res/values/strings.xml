@@ -30,5 +30,25 @@
     <string name="length_of_shared_message">Length of shared message </string>
     <string name="select_share_app">Select app to share with: </string>
     <string name="select_a_provider">Select a provider</string>
+    <string name="settings_location">Location Settings:</string>
+    <string name="onstartupdates">Start location updates when starting the application</string>
+    <string name="backgroundupdates">Stop location updates when app is hidden (updates are always stopped when app is closed)</string>
+    <string name="settingsapprestart">The following settings require an application restart.</string>
+    <string name="settingusegps">Use GPS location provider</string>
+    <string name="settingusenetwork">Use Network location provider</string>
+    <string name="selectunitbelow">Unit Settings</string>
+    <string name="distances">Distances</string>
+    <string name="unit_metres">Metres</string>
+    <string name="unit_km">Kilometres</string>
+    <string name="unit_foot">Foot</string>
+    <string name="unit_miles">Miles</string>
+    <string name="unit_yards">Yards</string>
+    <string name="velocities">Velocities</string>
+    <string name="uni_mpers">m/s</string>
+    <string name="unit_kmh">kmh</string>
+    <string name="unit_mph">mph</string>
+    <string name="angles">Angles</string>
+    <string name="example_degree">0.0000 °</string>
+    <string name="example_dms">00 ° 00\' 00\'\'</string>
 
 </resources>

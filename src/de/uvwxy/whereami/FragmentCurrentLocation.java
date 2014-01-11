@@ -22,6 +22,7 @@ import com.squareup.otto.Subscribe;
 
 import de.uvwxy.units.Unit;
 
+@SuppressWarnings("unused")
 public class FragmentCurrentLocation extends Fragment {
 	private ScrollView scrollView1 = null;
 	private TextView tvLat = null;

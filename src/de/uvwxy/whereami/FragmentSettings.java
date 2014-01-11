@@ -12,6 +12,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import de.uvwxy.helper.IntentTools;
 
+@SuppressWarnings("unused")
 public class FragmentSettings extends Fragment {
 	private CheckBox cbStartUpdates = null;
 	private CheckBox cbStopUpdates = null;

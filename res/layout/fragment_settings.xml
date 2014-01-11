@@ -1,205 +1,113 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_marginBottom="@dimen/activity_vertical_margin"
-    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-    android:layout_marginRight="@dimen/activity_horizontal_margin"
-    android:layout_marginTop="@dimen/activity_vertical_margin" >
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:background="@drawable/card"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/activity_horizontal_margin"
-        android:paddingLeft="@dimen/activity_vertical_margin"
-        android:paddingRight="@dimen/activity_vertical_margin"
-        android:paddingTop="@dimen/activity_vertical_margin" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Settings:"
-            android:textAppearance="@style/CardTitle" />
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/card_separator" />
-
-        <CheckBox
-            android:id="@+id/cbStartUpdates"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Start location updates when starting the application" />
-
-        <CheckBox
-            android:id="@+id/cbStopUpdates"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Stop location updates when app is hidden (updates are always stopped when app is closed)" />
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/card_separator" />
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="The following settings require an application restart."
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/card_separator" />
-
-        <CheckBox
-            android:id="@+id/cbUseGPS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Use GPS location provider" />
-
-        <CheckBox
-            android:id="@+id/cbUseNetwork"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Use Network location provider" />
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/card_separator" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select display units below."
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/card_separator" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Distances"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <RadioGroup
-            android:id="@+id/rbgLengths"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <RadioButton
-                android:id="@+id/rbMetres"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Metres" />
-
-            <RadioButton
-                android:id="@+id/rbKilometres"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kilometres" />
-
-            <RadioButton
-                android:id="@+id/rbFoot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Foot" />
-
-            <RadioButton
-                android:id="@+id/rbMiles"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Miles" />
-            
-            <RadioButton
-                android:id="@+id/rbYards"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yards" />
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Velocities"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <RadioGroup
-            android:id="@+id/rbgVelocities"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <RadioButton
-                android:id="@+id/rbMetresPerSecond"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="m/s" />
-
-            <RadioButton
-                android:id="@+id/rbKMH"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="kmh" />
-
-            <RadioButton
-                android:id="@+id/rbMPH"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="mph" />
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Angles"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <RadioGroup
-            android:id="@+id/rbgAngles"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <RadioButton
-                android:id="@+id/rbAngleDegrees"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="0.0000 °" />
-
-            <RadioButton
-                android:id="@+id/rbAngleDegreesMinutesSeconds"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="00 ° 00&apos; 00 &apos;&apos;" />
-        </RadioGroup>
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/CardRootSV">
+  <LinearLayout style="@style/CardRootLL">
+    <LinearLayout style="@style/CardBodyLL">
+      <TextView
+        style="@style/CardTitle"
+        android:text="@string/settings_location"/>
+      <View style="@style/CardHR"/>
+      <CheckBox
+        android:id="@+id/cbStartUpdates"
+        style="@style/CardTextNormal"
+        android:text="@string/onstartupdates"/>
+      <CheckBox
+        android:id="@+id/cbStopUpdates"
+        style="@style/CardTextNormal"
+        android:text="@string/backgroundupdates"/>
+      <View style="@style/CardHR"/>
+      <TextView
+        android:id="@+id/textView1"
+        style="@style/CardText"
+        android:text="@string/settingsapprestart"/>
+      <CheckBox
+        android:id="@+id/cbUseGPS"
+        style="@style/CardTextNormal"
+        android:text="@string/settingusegps"/>
+      <CheckBox
+        android:id="@+id/cbUseNetwork"
+        style="@style/CardTextNormal"
+        android:text="@string/settingusenetwork"/>
     </LinearLayout>
-
+    <LinearLayout style="@style/CardBodyLL">
+      <TextView
+        android:id="@+id/textView2"
+        style="@style/CardTitle"
+        android:text="@string/selectunitbelow"/>
+      <View style="@style/CardHR"/>
+      <TextView
+        android:id="@+id/textView3"
+        style="@style/CardText"
+        android:text="@string/distances"/>
+      <RadioGroup
+        android:id="@+id/rbgLengths"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RadioButton
+          android:id="@+id/rbMetres"
+          style="@style/CardTextNormal"
+          android:checked="true"
+          android:text="@string/unit_metres"/>
+        <RadioButton
+          android:id="@+id/rbKilometres"
+          style="@style/CardTextNormal"
+          android:text="@string/unit_km"/>
+        <RadioButton
+          android:id="@+id/rbFoot"
+          style="@style/CardTextNormal"
+          android:text="@string/unit_foot"/>
+        <RadioButton
+          android:id="@+id/rbMiles"
+          style="@style/CardTextNormal"
+          android:text="@string/unit_miles"/>
+        <RadioButton
+          android:id="@+id/rbYards"
+          style="@style/CardTextNormal"
+          android:text="@string/unit_yards"/>
+      </RadioGroup>
+      <View style="@style/CardHR"/>
+      <TextView
+        android:id="@+id/textView4"
+        style="@style/CardText"
+        android:text="@string/velocities"/>
+      <RadioGroup
+        android:id="@+id/rbgVelocities"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RadioButton
+          android:id="@+id/rbMetresPerSecond"
+          style="@style/CardTextNormal"
+          android:checked="true"
+          android:text="@string/uni_mpers"/>
+        <RadioButton
+          android:id="@+id/rbKMH"
+          style="@style/CardTextNormal"
+          android:text="@string/unit_kmh"/>
+        <RadioButton
+          android:id="@+id/rbMPH"
+          style="@style/CardTextNormal"
+          android:text="@string/unit_mph"/>
+      </RadioGroup>
+      <View style="@style/CardHR"/>
+      <TextView
+        android:id="@+id/textView5"
+        style="@style/CardText"
+        android:text="@string/angles"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+      <RadioGroup
+        android:id="@+id/rbgAngles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RadioButton
+          android:id="@+id/rbAngleDegrees"
+          style="@style/CardTextNormal"
+          android:checked="true"
+          android:text="@string/example_degree"/>
+        <RadioButton
+          android:id="@+id/rbAngleDegreesMinutesSeconds"
+          style="@style/CardTextNormal"
+          android:text="@string/example_dms"/>
+      </RadioGroup>
+    </LinearLayout>
+  </LinearLayout>
 </ScrollView>

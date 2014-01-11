@@ -78,6 +78,12 @@ public class ActivityMain extends FragmentActivity {
 	ViewPager mViewPager;
 	public static Location lastLocation;
 
+	public static String mapConfig = "Mapnik";
+
+	public static int geo6lat = 0;
+	public static int geo6lon = 0;
+	public static int zoomLevel = 8;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -174,6 +180,8 @@ public class ActivityMain extends FragmentActivity {
 				t2.setFav(true);
 				return t2;
 			case 3:
+				return new FragmentMap();
+			case 4:
 				return new FragmentSettings();
 			}
 
@@ -183,7 +191,7 @@ public class ActivityMain extends FragmentActivity {
 
 		@Override
 		public int getCount() {
-			return 4;
+			return 5;
 		}
 
 		@Override
