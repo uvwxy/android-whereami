@@ -4,7 +4,7 @@
   style="@style/CardBodyLL">
   <TextView
     android:id="@+id/tvItemTitle"
-    android:text="Large Text"
+    android:text="@string/title"
     style="@style/CardTitle"
     android:textColor="#000000"/>
   <LinearLayout
@@ -12,11 +12,11 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
     <TextView
-      android:text="Distance:"
+      android:text="@string/distance"
       style="@style/CardTitle"/>
     <TextView
       android:id="@+id/tvItemDistanceValue"
-      android:text="TextView"
+      android:text="@string/distance_value"
       style="@style/CardTitle"
       android:textColor="#000000"/>
   </LinearLayout>
