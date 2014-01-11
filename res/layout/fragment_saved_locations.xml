@@ -24,11 +24,11 @@
     <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Location Count:"
+      android:text="@string/location_count"
       android:textAppearance="@style/CardTitle"/>
     <TextView
       android:id="@+id/tvSavedLocationCount"
-      android:text="Large Text"
+      android:text="@string/empty_count"
       style="@style/CardTextLargeRight"/>
   </LinearLayout>
   <ListView

@@ -52,4 +52,6 @@
   <string name="title">Title</string>
   <string name="distance">Distance:</string>
   <string name="distance_value">Distance Value</string>
+  <string name="location_count">Location Count:</string>
+  <string name="empty_count">0</string>
 </resources>
