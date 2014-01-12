@@ -8,90 +8,90 @@
         android:text="@string/settings_location"/>
       <View style="@style/CardHR"/>
       <CheckBox
-        android:id="@+id/cbStartUpdates"
         style="@style/CardTextNormal"
+        android:id="@+id/cbStartUpdates"
         android:text="@string/onstartupdates"/>
       <CheckBox
-        android:id="@+id/cbStopUpdates"
         style="@style/CardTextNormal"
+        android:id="@+id/cbStopUpdates"
         android:text="@string/backgroundupdates"/>
       <View style="@style/CardHR"/>
       <TextView
-        android:id="@+id/textView1"
         style="@style/CardText"
+        android:id="@+id/textView1"
         android:text="@string/settingsapprestart"/>
       <CheckBox
-        android:id="@+id/cbUseGPS"
         style="@style/CardTextNormal"
+        android:id="@+id/cbUseGPS"
         android:text="@string/settingusegps"/>
       <CheckBox
-        android:id="@+id/cbUseNetwork"
         style="@style/CardTextNormal"
+        android:id="@+id/cbUseNetwork"
         android:text="@string/settingusenetwork"/>
     </LinearLayout>
     <LinearLayout style="@style/CardBodyLL">
       <TextView
-        android:id="@+id/textView2"
         style="@style/CardTitle"
+        android:id="@+id/textView2"
         android:text="@string/selectunitbelow"/>
       <View style="@style/CardHR"/>
       <TextView
-        android:id="@+id/textView3"
         style="@style/CardText"
+        android:id="@+id/textView3"
         android:text="@string/distances"/>
       <RadioGroup
         android:id="@+id/rbgLengths"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <RadioButton
-          android:id="@+id/rbMetres"
           style="@style/CardTextNormal"
+          android:id="@+id/rbMetres"
           android:checked="true"
           android:text="@string/unit_metres"/>
         <RadioButton
-          android:id="@+id/rbKilometres"
           style="@style/CardTextNormal"
+          android:id="@+id/rbKilometres"
           android:text="@string/unit_km"/>
         <RadioButton
-          android:id="@+id/rbFoot"
           style="@style/CardTextNormal"
+          android:id="@+id/rbFoot"
           android:text="@string/unit_foot"/>
         <RadioButton
-          android:id="@+id/rbMiles"
           style="@style/CardTextNormal"
+          android:id="@+id/rbMiles"
           android:text="@string/unit_miles"/>
         <RadioButton
-          android:id="@+id/rbYards"
           style="@style/CardTextNormal"
+          android:id="@+id/rbYards"
           android:text="@string/unit_yards"/>
       </RadioGroup>
       <View style="@style/CardHR"/>
       <TextView
-        android:id="@+id/textView4"
         style="@style/CardText"
+        android:id="@+id/textView4"
         android:text="@string/velocities"/>
       <RadioGroup
         android:id="@+id/rbgVelocities"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <RadioButton
-          android:id="@+id/rbMetresPerSecond"
           style="@style/CardTextNormal"
+          android:id="@+id/rbMetresPerSecond"
           android:checked="true"
           android:text="@string/uni_mpers"/>
         <RadioButton
-          android:id="@+id/rbKMH"
           style="@style/CardTextNormal"
+          android:id="@+id/rbKMH"
           android:text="@string/unit_kmh"/>
         <RadioButton
-          android:id="@+id/rbMPH"
           style="@style/CardTextNormal"
+          android:id="@+id/rbMPH"
           android:text="@string/unit_mph"/>
       </RadioGroup>
       <View style="@style/CardHR"/>
       <TextView
-        android:id="@+id/textView5"
         style="@style/CardText"
+        android:id="@+id/textView5"
         android:text="@string/angles"
         android:textAppearance="?android:attr/textAppearanceMedium"/>
       <RadioGroup
@@ -99,13 +99,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <RadioButton
-          android:id="@+id/rbAngleDegrees"
           style="@style/CardTextNormal"
+          android:id="@+id/rbAngleDegrees"
           android:checked="true"
           android:text="@string/example_degree"/>
         <RadioButton
-          android:id="@+id/rbAngleDegreesMinutesSeconds"
           style="@style/CardTextNormal"
+          android:id="@+id/rbAngleDegreesMinutesSeconds"
           android:text="@string/example_dms"/>
       </RadioGroup>
     </LinearLayout>
