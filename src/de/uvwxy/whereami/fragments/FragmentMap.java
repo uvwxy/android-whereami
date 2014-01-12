@@ -8,6 +8,7 @@ import org.osmdroid.bonuspack.overlays.MapEventsReceiver;
 import org.osmdroid.tileprovider.MapTileProviderBasic;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.MinimapOverlay;
 import org.osmdroid.views.overlay.TilesOverlay;
 
@@ -23,30 +24,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import de.uvwxy.helper.IntentTools;
-import de.uvwxy.osmdroid.ExtractedOverlay;
+import de.uvwxy.osmdroid.CardOverlay;
 import de.uvwxy.soundfinder.SoundFinder;
 import de.uvwxy.whereami.ActivityMain;
-import de.uvwxy.whereami.LocationOverlayExtractor;
-import de.uvwxy.whereami.R;
+import de.uvwxy.whereami.CardOverlayLocationConverter;
 import de.uvwxy.whereami.proto.Messages;
 
 public class FragmentMap extends Fragment {
 	private org.osmdroid.views.MapView osmMap;
 	private TilesOverlay baseOverlay;
-	private LocationOverlayExtractor locExtractor = new LocationOverlayExtractor();
-	private ExtractedOverlay<Messages.Location> locOverlay;
+	private CardOverlay<Messages.Location> locOverlay;
+	private ArrayList<Messages.Location> locationList = new ArrayList<Messages.Location>();
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_map, container, false);
-		osmMap = (org.osmdroid.views.MapView) rootView.findViewById(R.id.osmMap);
+		//View rootView = inflater.inflate(R.layout.fragment_map, container, false);
+//		osmMap = (org.osmdroid.views.MapView) rootView.findViewById(R.id.osmMap);
+		osmMap = new MapView(getActivity(), 256);
 		osmMap.setBuiltInZoomControls(false);
 		osmMap.setMultiTouchControls(true);
 		osmMap.setUseSafeCanvas(false);
 		osmMap.setMaxZoomLevel(18);
 
 		baseOverlay = getOnlineMapOverlay(ActivityMain.act, ActivityMain.mapConfig);
-		locOverlay = new ExtractedOverlay<Messages.Location>(locExtractor, getActivity(), osmMap, getActivity());
+		locOverlay = new CardOverlay<Messages.Location>(CardOverlayLocationConverter.class, getActivity(), osmMap, getActivity());
+		ActivityMain.data.getAllEntries(locationList, true, false);
+		locOverlay.replaceObjects(ActivityMain.act.getApplicationContext(), locationList);
 
 		osmMap.getOverlays().clear();
 		osmMap.getOverlays().add(baseOverlay);
@@ -60,7 +63,7 @@ public class FragmentMap extends Fragment {
 		addMiniMapOverlay(getActivity());
 		loadPoint();
 		osmMap.invalidate();
-		return rootView;
+		return osmMap;
 	}
 
 	@Override
@@ -121,7 +124,7 @@ public class FragmentMap extends Fragment {
 		}
 
 	}
-	
+
 	@SuppressWarnings("unused")
 	// TODO: remove?
 	private MapEventsReceiver mMapEventReceiver = new MapEventsReceiver() {

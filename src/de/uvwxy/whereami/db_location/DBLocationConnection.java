@@ -66,6 +66,12 @@ public class DBLocationConnection {
 		Log.d("DB", "Deleted " + id);
 	}
 
+	/**
+	 * Obtain all entries from the DB. The input list can not be null.
+	 * @param list
+	 * @param all
+	 * @param fav
+	 */
 	public void getAllEntries(ArrayList<Messages.Location> list, boolean all, boolean fav) {
 		list.clear();
 
