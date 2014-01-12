@@ -28,8 +28,6 @@ import de.uvwxy.soundfinder.SoundFinder;
 import de.uvwxy.whereami.ActivityMain;
 import de.uvwxy.whereami.LocationOverlayExtractor;
 import de.uvwxy.whereami.R;
-import de.uvwxy.whereami.R.id;
-import de.uvwxy.whereami.R.layout;
 import de.uvwxy.whereami.proto.Messages;
 
 public class FragmentMap extends Fragment {
@@ -123,7 +121,7 @@ public class FragmentMap extends Fragment {
 		}
 
 	}
-
+	
 	@SuppressWarnings("unused")
 	// TODO: remove?
 	private MapEventsReceiver mMapEventReceiver = new MapEventsReceiver() {

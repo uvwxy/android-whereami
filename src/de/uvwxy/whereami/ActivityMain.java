@@ -10,14 +10,11 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
+import de.uvwxy.cardpager.ActivityCardPager;
 import de.uvwxy.helper.IntentTools;
 import de.uvwxy.sensors.location.LocationReader;
 import de.uvwxy.units.Unit;
@@ -28,7 +25,7 @@ import de.uvwxy.whereami.fragments.FragmentMap;
 import de.uvwxy.whereami.fragments.FragmentSavedLocations;
 import de.uvwxy.whereami.fragments.FragmentSettings;
 
-public class ActivityMain extends FragmentActivity {
+public class ActivityMain extends ActivityCardPager {
 	public static final String SETTINGS = "WAI_SETTINGS";
 
 	public static final String SETTINGS_UPDATES_ON_STARTUP = "WAI_UPDATES_ON_STARTUP";
@@ -78,8 +75,6 @@ public class ActivityMain extends FragmentActivity {
 	public static ActivityMain dhis = null;
 	public static Activity act = null;
 
-	SectionsPagerAdapter mSectionsPagerAdapter;
-	ViewPager mViewPager;
 	public static Location lastLocation;
 
 	public static String mapConfig = "Mapnik";
@@ -89,21 +84,57 @@ public class ActivityMain extends FragmentActivity {
 	public static int zoomLevel = 8;
 
 	@Override
+	public Fragment getFragment(int position) {
+		switch (position) {
+
+		case 0:
+			return new FragmentCurrentLocation();
+		case 1:
+			FragmentSavedLocations t1 = new FragmentSavedLocations();
+			t1.setFav(false);
+			return t1;
+		case 2:
+			FragmentSavedLocations t2 = new FragmentSavedLocations();
+			t2.setFav(true);
+			return t2;
+		case 3:
+			return new FragmentMap();
+		case 4:
+			return new FragmentSettings();
+		}
+
+		Fragment fragment = new FragmentSettings();
+		return fragment;
+	}
+
+	@Override
+	public CharSequence getFragmentTitle(int position) {
+		Locale l = Locale.getDefault();
+		switch (position) {
+		case 0:
+			return getString(R.string.title_section1).toUpperCase(l);
+		case 1:
+			return getString(R.string.title_section2).toUpperCase(l);
+		case 2:
+			return getString(R.string.title_section3).toUpperCase(l);
+		case 3:
+			return getString(R.string.title_section4).toUpperCase(l);
+		}
+		return null;
+	}
+
+	@Override
+	public int getFragmentCount() {
+		return 5;
+	}
+
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
 		dhis = this;
 		act = this;
 
 		ctx = getApplicationContext();
-
-		// Create the adapter that will return a fragment for each of the three
-		// primary sections of the app.
-		mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
-		// Set up the ViewPager with the sections adapter.
-		mViewPager = (ViewPager) findViewById(R.id.pager);
-		mViewPager.setAdapter(mSectionsPagerAdapter);
 
 		data = new DBLocationConnection(this);
 		data.openWrite();
@@ -160,59 +191,6 @@ public class ActivityMain extends FragmentActivity {
 		loc.getReader().stopReading();
 		loc.destroy();
 		data.close();
-	}
-
-	public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-		public SectionsPagerAdapter(FragmentManager fm) {
-			super(fm);
-		}
-
-		@Override
-		public Fragment getItem(int position) {
-
-			switch (position) {
-
-			case 0:
-				return new FragmentCurrentLocation();
-			case 1:
-				FragmentSavedLocations t1 = new FragmentSavedLocations();
-				t1.setFav(false);
-				return t1;
-			case 2:
-				FragmentSavedLocations t2 = new FragmentSavedLocations();
-				t2.setFav(true);
-				return t2;
-			case 3:
-				return new FragmentMap();
-			case 4:
-				return new FragmentSettings();
-			}
-
-			Fragment fragment = new FragmentSettings();
-			return fragment;
-		}
-
-		@Override
-		public int getCount() {
-			return 5;
-		}
-
-		@Override
-		public CharSequence getPageTitle(int position) {
-			Locale l = Locale.getDefault();
-			switch (position) {
-			case 0:
-				return getString(R.string.title_section1).toUpperCase(l);
-			case 1:
-				return getString(R.string.title_section2).toUpperCase(l);
-			case 2:
-				return getString(R.string.title_section3).toUpperCase(l);
-			case 3:
-				return getString(R.string.title_section4).toUpperCase(l);
-			}
-			return null;
-		}
 	}
 
 	private void alertIfProviderIsNotEnabled() {

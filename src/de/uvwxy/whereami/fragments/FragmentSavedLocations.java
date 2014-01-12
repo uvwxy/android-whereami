@@ -17,8 +17,6 @@ import de.uvwxy.whereami.ActivityMain;
 import de.uvwxy.whereami.BusUpdateList;
 import de.uvwxy.whereami.ListItemLocationAdapter;
 import de.uvwxy.whereami.R;
-import de.uvwxy.whereami.R.id;
-import de.uvwxy.whereami.R.layout;
 import de.uvwxy.whereami.proto.Messages;
 
 public class FragmentSavedLocations extends Fragment {
