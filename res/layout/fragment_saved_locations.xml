@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  style="@style/CardRootLL">
-  <LinearLayout
-    android:id="@+id/llSavedLocationsHeader"
-    style="@style/CardBodyLL">
-    <TextView
-      style="@style/CardTitle"
-      android:text="@string/location_count"/>
-    <TextView
-      android:id="@+id/tvSavedLocationCount"
-      android:text="@string/empty_count"
-      style="@style/CardTextLargeRight"/>
-  </LinearLayout>
-  <ListView
-    android:id="@+id/lvSavedLocations"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/llSavedLocationsHeader"
-    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-    android:layout_marginRight="@dimen/activity_horizontal_margin">
-  </ListView>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CardRootLL" >
+
+    <LinearLayout
+        android:id="@+id/llSavedLocationsHeader"
+        style="@style/CardBodyLL" >
+
+        <TextView
+            android:text="@string/location_count"
+            style="@style/CardTitle" />
+
+        <TextView
+            android:id="@+id/tvSavedLocationCount"
+            android:text="@string/empty_count"
+            style="@style/CardTextLargeRight" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvSavedLocations"
+        android:layout_below="@+id/llSavedLocationsHeader"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent" >
+    </ListView>
+
 </RelativeLayout>

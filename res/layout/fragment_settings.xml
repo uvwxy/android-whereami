@@ -1,113 +1,144 @@
-<ScrollView
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  style="@style/CardRootSV">
-  <LinearLayout style="@style/CardRootLL">
-    <LinearLayout style="@style/CardBodyLL">
-      <TextView
-        style="@style/CardTitle"
-        android:text="@string/settings_location"/>
-      <View style="@style/CardHR"/>
-      <CheckBox
-        style="@style/CardTextNormal"
-        android:id="@+id/cbStartUpdates"
-        android:text="@string/onstartupdates"/>
-      <CheckBox
-        style="@style/CardTextNormal"
-        android:id="@+id/cbStopUpdates"
-        android:text="@string/backgroundupdates"/>
-      <View style="@style/CardHR"/>
-      <TextView
-        style="@style/CardText"
-        android:id="@+id/textView1"
-        android:text="@string/settingsapprestart"/>
-      <CheckBox
-        style="@style/CardTextNormal"
-        android:id="@+id/cbUseGPS"
-        android:text="@string/settingusegps"/>
-      <CheckBox
-        style="@style/CardTextNormal"
-        android:id="@+id/cbUseNetwork"
-        android:text="@string/settingusenetwork"/>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CardRootSV" >
+
+    <LinearLayout style="@style/CardRootLL" >
+
+        <LinearLayout style="@style/CardBodyLL" >
+
+            <TextView
+                android:text="@string/settings_location"
+                style="@style/CardTitle" />
+
+            <View style="@style/CardHR" />
+
+            <CheckBox
+                android:id="@+id/cbStartUpdates"
+                android:text="@string/onstartupdates"
+                style="@style/CardTextNormal" />
+
+            <CheckBox
+                android:id="@+id/cbStopUpdates"
+                android:text="@string/backgroundupdates"
+                style="@style/CardTextNormal" />
+
+            <View style="@style/CardHR" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:text="@string/settingsapprestart"
+                style="@style/CardText" />
+
+            <CheckBox
+                android:id="@+id/cbUseGPS"
+                android:text="@string/settingusegps"
+                style="@style/CardTextNormal" />
+
+            <CheckBox
+                android:id="@+id/cbUseNetwork"
+                android:text="@string/settingusenetwork"
+                style="@style/CardTextNormal" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/CardBodyLL" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:text="@string/selectunitbelow"
+                style="@style/CardTitle" />
+
+            <View style="@style/CardHR" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:text="@string/distances"
+                style="@style/CardText" />
+
+            <RadioGroup
+                android:id="@+id/rbgLengths"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" >
+
+                <RadioButton
+                    android:checked="true"
+                    android:id="@+id/rbMetres"
+                    android:text="@string/unit_metres"
+                    style="@style/CardTextNormal" />
+
+                <RadioButton
+                    android:id="@+id/rbKilometres"
+                    android:text="@string/unit_km"
+                    style="@style/CardTextNormal" />
+
+                <RadioButton
+                    android:id="@+id/rbFoot"
+                    android:text="@string/unit_foot"
+                    style="@style/CardTextNormal" />
+
+                <RadioButton
+                    android:id="@+id/rbMiles"
+                    android:text="@string/unit_miles"
+                    style="@style/CardTextNormal" />
+
+                <RadioButton
+                    android:id="@+id/rbYards"
+                    android:text="@string/unit_yards"
+                    style="@style/CardTextNormal" />
+            </RadioGroup>
+
+            <View style="@style/CardHR" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:text="@string/velocities"
+                style="@style/CardText" />
+
+            <RadioGroup
+                android:id="@+id/rbgVelocities"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" >
+
+                <RadioButton
+                    android:checked="true"
+                    android:id="@+id/rbMetresPerSecond"
+                    android:text="@string/uni_mpers"
+                    style="@style/CardTextNormal" />
+
+                <RadioButton
+                    android:id="@+id/rbKMH"
+                    android:text="@string/unit_kmh"
+                    style="@style/CardTextNormal" />
+
+                <RadioButton
+                    android:id="@+id/rbMPH"
+                    android:text="@string/unit_mph"
+                    style="@style/CardTextNormal" />
+            </RadioGroup>
+
+            <View style="@style/CardHR" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:text="@string/angles"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/CardText" />
+
+            <RadioGroup
+                android:id="@+id/rbgAngles"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" >
+
+                <RadioButton
+                    android:checked="true"
+                    android:id="@+id/rbAngleDegrees"
+                    android:text="@string/example_degree"
+                    style="@style/CardTextNormal" />
+
+                <RadioButton
+                    android:id="@+id/rbAngleDegreesMinutesSeconds"
+                    android:text="@string/example_dms"
+                    style="@style/CardTextNormal" />
+            </RadioGroup>
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout style="@style/CardBodyLL">
-      <TextView
-        style="@style/CardTitle"
-        android:id="@+id/textView2"
-        android:text="@string/selectunitbelow"/>
-      <View style="@style/CardHR"/>
-      <TextView
-        style="@style/CardText"
-        android:id="@+id/textView3"
-        android:text="@string/distances"/>
-      <RadioGroup
-        android:id="@+id/rbgLengths"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <RadioButton
-          style="@style/CardTextNormal"
-          android:id="@+id/rbMetres"
-          android:checked="true"
-          android:text="@string/unit_metres"/>
-        <RadioButton
-          style="@style/CardTextNormal"
-          android:id="@+id/rbKilometres"
-          android:text="@string/unit_km"/>
-        <RadioButton
-          style="@style/CardTextNormal"
-          android:id="@+id/rbFoot"
-          android:text="@string/unit_foot"/>
-        <RadioButton
-          style="@style/CardTextNormal"
-          android:id="@+id/rbMiles"
-          android:text="@string/unit_miles"/>
-        <RadioButton
-          style="@style/CardTextNormal"
-          android:id="@+id/rbYards"
-          android:text="@string/unit_yards"/>
-      </RadioGroup>
-      <View style="@style/CardHR"/>
-      <TextView
-        style="@style/CardText"
-        android:id="@+id/textView4"
-        android:text="@string/velocities"/>
-      <RadioGroup
-        android:id="@+id/rbgVelocities"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <RadioButton
-          style="@style/CardTextNormal"
-          android:id="@+id/rbMetresPerSecond"
-          android:checked="true"
-          android:text="@string/uni_mpers"/>
-        <RadioButton
-          style="@style/CardTextNormal"
-          android:id="@+id/rbKMH"
-          android:text="@string/unit_kmh"/>
-        <RadioButton
-          style="@style/CardTextNormal"
-          android:id="@+id/rbMPH"
-          android:text="@string/unit_mph"/>
-      </RadioGroup>
-      <View style="@style/CardHR"/>
-      <TextView
-        style="@style/CardText"
-        android:id="@+id/textView5"
-        android:text="@string/angles"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
-      <RadioGroup
-        android:id="@+id/rbgAngles"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <RadioButton
-          style="@style/CardTextNormal"
-          android:id="@+id/rbAngleDegrees"
-          android:checked="true"
-          android:text="@string/example_degree"/>
-        <RadioButton
-          style="@style/CardTextNormal"
-          android:id="@+id/rbAngleDegreesMinutesSeconds"
-          android:text="@string/example_dms"/>
-      </RadioGroup>
-    </LinearLayout>
-  </LinearLayout>
+
 </ScrollView>

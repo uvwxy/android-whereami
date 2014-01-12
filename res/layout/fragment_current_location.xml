@@ -1,88 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:id="@+id/scrollView1"
-  style="@style/CardRootSV">
- <LinearLayout style="@style/CardRootLL">
-    <LinearLayout style="@style/CardBodyLL">
-      <TextView
-        style="@style/CardTitle"
-        android:text="@string/LBL_LATITUDE"/>
-      <TextView
-        android:id="@+id/tvLat"
-        style="@style/CardTextLargeRight"/>
-      <TextView
-        style="@style/CardTitle"
-        android:text="@string/LBL_LONGITUDE"/>
-      <TextView
-        android:id="@+id/tvLon"
-        style="@style/CardTextLargeRight"/>
-      <TextView
-        android:text="@string/LBL_ALTITUDE"
-        style="@style/CardTitle"/>
-      <TextView
-        android:id="@+id/tvAlt"
-        style="@style/CardTextLargeRight"/>
-      <TextView
-        android:text="@string/LBL_BEARING"
-        style="@style/CardTitle"/>
-      <TextView
-        android:id="@+id/tvBearing"
-        style="@style/CardTextLargeRight"/>
-      <TextView
-        android:text="@string/LBL_SPEED"
-        style="@style/CardTitle"/>
-      <TextView
-        android:id="@+id/tvSpeed"
-        style="@style/CardTextLargeRight"/>
-      <TextView
-        android:text="@string/LBL_ACCURACY"
-        style="@style/CardTitle"/>
-      <TextView
-        android:id="@+id/tvAcc"
-        style="@style/CardTextLargeRight"/>
-      <TextView
-        android:text="@string/LBL_PROVIDER"
-        style="@style/CardTitle"/>
-      <TextView
-        android:id="@+id/tvProvider"
-        style="@style/CardTextLargeRight"/>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    style="@style/CardRootSV" >
+
+    <LinearLayout style="@style/CardRootLL" >
+
+        <LinearLayout style="@style/CardBodyLL" >
+
+            <TextView
+                android:text="@string/LBL_LATITUDE"
+                style="@style/CardTitle" />
+
+            <TextView
+                android:id="@+id/tvLat"
+                style="@style/CardTextLargeRight" />
+
+            <TextView
+                android:text="@string/LBL_LONGITUDE"
+                style="@style/CardTitle" />
+
+            <TextView
+                android:id="@+id/tvLon"
+                style="@style/CardTextLargeRight" />
+
+            <TextView
+                android:text="@string/LBL_ALTITUDE"
+                style="@style/CardTitle" />
+
+            <TextView
+                android:id="@+id/tvAlt"
+                style="@style/CardTextLargeRight" />
+
+            <TextView
+                android:text="@string/LBL_BEARING"
+                style="@style/CardTitle" />
+
+            <TextView
+                android:id="@+id/tvBearing"
+                style="@style/CardTextLargeRight" />
+
+            <TextView
+                android:text="@string/LBL_SPEED"
+                style="@style/CardTitle" />
+
+            <TextView
+                android:id="@+id/tvSpeed"
+                style="@style/CardTextLargeRight" />
+
+            <TextView
+                android:text="@string/LBL_ACCURACY"
+                style="@style/CardTitle" />
+
+            <TextView
+                android:id="@+id/tvAcc"
+                style="@style/CardTextLargeRight" />
+
+            <TextView
+                android:text="@string/LBL_PROVIDER"
+                style="@style/CardTitle" />
+
+            <TextView
+                android:id="@+id/tvProvider"
+                style="@style/CardTextLargeRight" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            style="@style/CardBodyLL" >
+
+            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" >
+
+                <TextView
+                    android:layout_alignParentLeft="true"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/LBL_UPDATES"
+                    android:textAppearance="@style/CardTitle" />
+
+                <ToggleButton
+                    android:id="@+id/swUpdates"
+                    android:layout_alignParentRight="true"
+                    android:text=""
+                    style="@style/CardText" />
+            </RelativeLayout>
+
+            <View style="@style/CardHR" />
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btnSave"
+                    android:layout_weight="1"
+                    android:text="@string/BTN_SAVE"
+                    style="@style/CardTitle" />
+
+                <Button
+                    android:id="@+id/btnSend"
+                    android:layout_weight="1"
+                    android:text="@string/BTN_SHARE"
+                    style="@style/CardTitle" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-      style="@style/CardBodyLL"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content">
-      <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:text="@string/LBL_UPDATES"
-          android:textAppearance="@style/CardTitle"/>
-        <ToggleButton
-          android:id="@+id/swUpdates"
-          android:layout_alignParentRight="true"
-          android:text=""
-          style="@style/CardText"/>
-      </RelativeLayout>
-      <View style="@style/CardHR"/>
-      <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-          android:id="@+id/btnSave"
-          android:layout_weight="1"
-          android:text="@string/BTN_SAVE"
-          style="@style/CardTitle"/>
-        <Button
-          android:id="@+id/btnSend"
-          android:layout_weight="1"
-          android:text="@string/BTN_SHARE"
-          style="@style/CardTitle"/>
-      </LinearLayout>
-    </LinearLayout>
-  </LinearLayout>
+
 </ScrollView>
