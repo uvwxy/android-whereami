@@ -69,12 +69,6 @@ public class CardOverlayLocationConverter extends CardOverlayObjectConverter<Mes
 		p.setColor(Color.GRAY);
 		p.setAntiAlias(true);
 
-		Log.d(this.getClass().getName(), "----------");
-		Log.d(this.getClass().getName(), "Lat " + tempLoc.getLatitude());
-		Log.d(this.getClass().getName(), "Lon " + tempLoc.getLongitude());
-		Log.d(this.getClass().getName(), "x " + mCurScreenCoords.x);
-		Log.d(this.getClass().getName(), "y " + mCurScreenCoords.y);
-
 		canvas.drawCircle(mCurScreenCoords.x, mCurScreenCoords.y, 6, p);
 		p.setStrokeWidth(1);
 		p.setColor(Color.RED);

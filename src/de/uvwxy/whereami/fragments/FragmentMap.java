@@ -6,11 +6,13 @@ import org.osmdroid.api.IGeoPoint;
 import org.osmdroid.api.IMapController;
 import org.osmdroid.bonuspack.overlays.MapEventsReceiver;
 import org.osmdroid.tileprovider.MapTileProviderBasic;
+import org.osmdroid.tileprovider.tilesource.ITileSource;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.MinimapOverlay;
 import org.osmdroid.views.overlay.TilesOverlay;
+import org.osmdroid.views.overlay.compass.CompassOverlay;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -32,36 +34,30 @@ import de.uvwxy.whereami.proto.Messages;
 
 public class FragmentMap extends Fragment {
 	private org.osmdroid.views.MapView osmMap;
-	private TilesOverlay baseOverlay;
 	private CardOverlay<Messages.Location> locOverlay;
 	private ArrayList<Messages.Location> locationList = new ArrayList<Messages.Location>();
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		//View rootView = inflater.inflate(R.layout.fragment_map, container, false);
-//		osmMap = (org.osmdroid.views.MapView) rootView.findViewById(R.id.osmMap);
+		//		osmMap = (org.osmdroid.views.MapView) rootView.findViewById(R.id.osmMap);
 		osmMap = new MapView(getActivity(), 256);
 		osmMap.setBuiltInZoomControls(false);
 		osmMap.setMultiTouchControls(true);
 		osmMap.setUseSafeCanvas(false);
 		osmMap.setMaxZoomLevel(18);
+		osmMap.setTileSource(TileSourceFactory.getTileSource(0));
+		osmMap.getOverlays().clear();
 
-		baseOverlay = getOnlineMapOverlay(ActivityMain.act, ActivityMain.mapConfig);
-		locOverlay = new CardOverlay<Messages.Location>(CardOverlayLocationConverter.class, getActivity(), osmMap, getActivity());
+		locOverlay = new CardOverlay<Messages.Location>(CardOverlayLocationConverter.class, getActivity(), osmMap,
+				getActivity());
 		ActivityMain.data.getAllEntries(locationList, true, false);
 		locOverlay.replaceObjects(ActivityMain.act.getApplicationContext(), locationList);
-
-		osmMap.getOverlays().clear();
-		osmMap.getOverlays().add(baseOverlay);
 		osmMap.getOverlays().add(locOverlay.getOverlay());
-		//		osmMap.getOverlays().add(new )
-
-		ArrayList<Messages.Location> list = new ArrayList<Messages.Location>();
-		ActivityMain.data.getAllEntries(list, true, true);
-		locOverlay.replaceObjects(getActivity(), list);
-
 		addMiniMapOverlay(getActivity());
-		loadPoint();
+		
+		// set map to saved location
+		loadMapLocation();
 		osmMap.invalidate();
 		return osmMap;
 	}
@@ -69,19 +65,18 @@ public class FragmentMap extends Fragment {
 	@Override
 	public void onDestroyView() {
 		super.onDestroyView();
-		savePoint();
+		saveMapLocation();
 	}
 
-	public void loadPoint() {
+	public void loadMapLocation() {
 		SharedPreferences prefs = IntentTools.getSettings(getActivity(), ActivityMain.SETTINGS);
-
-		GeoPoint mapCenter = new GeoPoint(prefs.getInt("E6LAT", 0), prefs.getInt("E6LON", 0));
 		IMapController osmMapController = osmMap.getController();
+		GeoPoint mapCenter = new GeoPoint(prefs.getInt("E6LAT", 0), prefs.getInt("E6LON", 0));
 		osmMapController.setCenter(mapCenter);
 		osmMapController.setZoom(prefs.getInt("ZOOM", 4));
 	}
 
-	public void savePoint() {
+	public void saveMapLocation() {
 		IGeoPoint p = osmMap.getMapCenter();
 		Editor e = IntentTools.getSettingsEditor(getActivity(), ActivityMain.SETTINGS);
 		e.putInt("E6LAT", p.getLatitudeE6());
@@ -90,39 +85,30 @@ public class FragmentMap extends Fragment {
 		IntentTools.saveEditor(e);
 	};
 
-	private TilesOverlay getOnlineMapOverlay(Context ctx, String name) {
-		MapTileProviderBasic baseProvider = new MapTileProviderBasic(ctx, TileSourceFactory.getTileSource(name));
-		TilesOverlay baseOverlay = new TilesOverlay(baseProvider, ctx);
-		baseOverlay.setLoadingBackgroundColor(Color.TRANSPARENT);
-		return baseOverlay;
-	}
-
 	public void navigateTo(Location l) {
 		GeoPoint mapCenter = new GeoPoint(l.getLatitude() * 1000000, l.getLongitude() * 1000000);
 		IMapController osmMapController = osmMap.getController();
 		osmMapController.setCenter(mapCenter);
 	}
 
-	public void addMiniMapOverlay(Context ctx) {
+	private void addMiniMapOverlay(Context ctx) {
 		final MinimapOverlay miniMapOverlay = new MinimapOverlay(ctx, osmMap.getTileRequestCompleteHandler());
 		osmMap.getOverlays().add(miniMapOverlay);
 	}
 
 	@SuppressWarnings("unused")
 	// TODO: remove?
-	private void switchOnlineMapOverlay(Context ctx, String name) {
-		Log.i("MAP", "Switching to " + name);
-		baseOverlay = getOnlineMapOverlay(ctx, name);
+	private void switchOnlineMapOverlay(String name) {
+		Log.d("MAP", "Switching to " + name);
 
-		if (baseOverlay != null) {
-			osmMap.getOverlays().add(0, baseOverlay);
-			Log.i("MAP", "Switched to " + name);
-			ActivityMain.mapConfig = name;
-		} else {
-			Log.i("MAP", "" + name + " + not found..");
-
+		ITileSource ts = TileSourceFactory.getTileSource(name);
+		if (ts == null) {
+			Log.d("MAP", "" + name + " + not found..");
+			return;
 		}
 
+		osmMap.setTileSource(ts);
+		Log.d("MAP", "Switched to " + name);
 	}
 
 	@SuppressWarnings("unused")
