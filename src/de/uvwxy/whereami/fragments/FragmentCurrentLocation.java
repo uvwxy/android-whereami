@@ -63,10 +63,10 @@ public class FragmentCurrentLocation extends Fragment {
 
 		initGUI(rootView);
 
-		swUpdates.setChecked(ActivityMain.locationUpdatesEnabled);
+		swUpdates.setChecked(ActivityMain.mLocationUpdatesEnabled);
 		initClicks();
 
-		onReceive(ActivityMain.lastLocation != null ? ActivityMain.lastLocation : new Location("[no fix]"));
+		onReceive(ActivityMain.mLastLocation != null ? ActivityMain.mLastLocation : new Location("[no fix]"));
 		ActivityMain.bus.register(this);
 
 		return rootView;
@@ -77,11 +77,11 @@ public class FragmentCurrentLocation extends Fragment {
 
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				ActivityMain.locationUpdatesEnabled = isChecked;
-				if (ActivityMain.locationUpdatesEnabled) {
-					ActivityMain.loc.getReader().startReading();
+				ActivityMain.mLocationUpdatesEnabled = isChecked;
+				if (ActivityMain.mLocationUpdatesEnabled) {
+					ActivityMain.mLoc.getReader().startReading();
 				} else {
-					ActivityMain.loc.getReader().stopReading();
+					ActivityMain.mLoc.getReader().stopReading();
 				}
 			}
 		});
@@ -90,7 +90,7 @@ public class FragmentCurrentLocation extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-				final Location loc = ActivityMain.lastLocation;
+				final Location loc = ActivityMain.mLastLocation;
 				if (loc == null) {
 					Toast.makeText(getActivity(), "No location yet", Toast.LENGTH_SHORT).show();
 					return;
@@ -110,7 +110,7 @@ public class FragmentCurrentLocation extends Fragment {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						String msg = null;
-						long ret = ActivityMain.data.addEntry(Converter.createLoc(etName.getText().toString(), loc));
+						long ret = ActivityMain.mData.addEntry(Converter.createLoc(etName.getText().toString(), loc));
 
 						if (ret == -1) {
 							msg = "Failed to add entry to db";
@@ -136,7 +136,7 @@ public class FragmentCurrentLocation extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-				final Location loc = ActivityMain.lastLocation;
+				final Location loc = ActivityMain.mLastLocation;
 				if (loc == null) {
 					Toast.makeText(getActivity(), "No location yet", Toast.LENGTH_SHORT).show();
 					return;
@@ -150,14 +150,14 @@ public class FragmentCurrentLocation extends Fragment {
 	@Subscribe
 	public void onReceive(Location l) {
 
-		tvLat.setText(Unit.DEGREES.setPrecision(6).setValue(l.getLatitude()).to(ActivityMain.unitA).toString());
-		tvLon.setText(Unit.DEGREES.setPrecision(6).setValue(l.getLongitude()).to(ActivityMain.unitA).toString());
+		tvLat.setText(Unit.DEGREES.setPrecision(6).setValue(l.getLatitude()).to(ActivityMain.mUnitA).toString());
+		tvLon.setText(Unit.DEGREES.setPrecision(6).setValue(l.getLongitude()).to(ActivityMain.mUnitA).toString());
 		tvBearing.setText(Unit.DEGREES.setPrecision(1).setValue(l.getBearing()).toString());
 
-		tvAlt.setText(Unit.METRE.setValue(l.getAltitude()).to(ActivityMain.unitL).toString());
-		tvAcc.setText(Unit.METRE.setValue(l.getAccuracy()).to(ActivityMain.unitL).toString());
+		tvAlt.setText(Unit.METRE.setValue(l.getAltitude()).to(ActivityMain.mUnitL).toString());
+		tvAcc.setText(Unit.METRE.setValue(l.getAccuracy()).to(ActivityMain.mUnitL).toString());
 
-		tvSpeed.setText(Unit.METRES_PER_SECOND.setValue(l.getSpeed()).to(ActivityMain.unitV).toString());
+		tvSpeed.setText(Unit.METRES_PER_SECOND.setValue(l.getSpeed()).to(ActivityMain.mUnitV).toString());
 
 		tvProvider.setText(l.getProvider());
 	}

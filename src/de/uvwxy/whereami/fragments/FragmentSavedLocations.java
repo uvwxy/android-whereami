@@ -40,7 +40,7 @@ public class FragmentSavedLocations extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_saved_locations, container, false);
 		initGUI(rootView);
 
-		ActivityMain.data.getAllEntries(list, !isFav, isFav);
+		ActivityMain.mData.getAllEntries(list, !isFav, isFav);
 		listAdapter = new ListItemLocationAdapter(getActivity(), list);
 
 		tvSavedLocationCount.setText("" + list.size());
@@ -56,7 +56,7 @@ public class FragmentSavedLocations extends Fragment {
 
 	@Subscribe
 	public void onReceive(BusUpdateList u) {
-		ActivityMain.data.getAllEntries(list, !isFav, isFav);
+		ActivityMain.mData.getAllEntries(list, !isFav, isFav);
 		tvSavedLocationCount.setText("" + list.size());
 		listAdapter.notifyDataSetChanged();
 	}

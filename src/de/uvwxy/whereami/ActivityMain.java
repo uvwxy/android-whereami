@@ -11,6 +11,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import com.google.android.gms.maps.SupportMapFragment;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
@@ -21,9 +22,9 @@ import de.uvwxy.units.Unit;
 import de.uvwxy.units.UnitPrefix;
 import de.uvwxy.whereami.db_location.DBLocationConnection;
 import de.uvwxy.whereami.fragments.FragmentCurrentLocation;
-import de.uvwxy.whereami.fragments.FragmentMap;
 import de.uvwxy.whereami.fragments.FragmentSavedLocations;
 import de.uvwxy.whereami.fragments.FragmentSettings;
+import de.uvwxy.whereami.fragments.TriggeredSupportMapFragment;
 
 public class ActivityMain extends ActivityCardPager {
 	public static final String SETTINGS = "WAI_SETTINGS";
@@ -60,28 +61,24 @@ public class ActivityMain extends ActivityCardPager {
 
 	public static final int SETTINGS_ANGLE_TYPE_DEF = SETTINGS_ANGLE_DEGREES;
 
-	public static boolean locationUpdatesEnabled = false;
+	public static boolean mLocationUpdatesEnabled = false;
 
-	public static Unit unitV = null;
-	public static Unit unitL = null;
-	public static Unit unitA = null;
-	public static int unitLBreak = 1500;
+	public static Unit mUnitV = null;
+	public static Unit mUnitL = null;
+	public static Unit mUnitA = null;
+	public static int mUnitLBreak = 1500;
 
-	public static DBLocationConnection data = null;
-	public static de.uvwxy.whereami.LocationManager loc = null;
+	public static DBLocationConnection mData = null;
+	public static de.uvwxy.whereami.LocationManager mLoc = null;
 
 	public static Bus bus = new Bus();
 	private static Context ctx;
 	public static ActivityMain dhis = null;
 	public static Activity act = null;
 
-	public static Location lastLocation;
+	public static Location mLastLocation;
 
-	public static String mapConfig = "Mapnik";
-
-	public static int geo6lat = 0;
-	public static int geo6lon = 0;
-	public static int zoomLevel = 8;
+	private SupportMapFragment mMapFragment = null;
 
 	@Override
 	public Fragment getFragment(int position) {
@@ -98,7 +95,8 @@ public class ActivityMain extends ActivityCardPager {
 			t2.setFav(true);
 			return t2;
 		case 3:
-			return new FragmentMap();
+			mMapFragment = new TriggeredSupportMapFragment();
+			return mMapFragment;
 		case 4:
 			return new FragmentSettings();
 		}
@@ -119,6 +117,8 @@ public class ActivityMain extends ActivityCardPager {
 			return getString(R.string.title_section3).toUpperCase(l);
 		case 3:
 			return getString(R.string.title_section4).toUpperCase(l);
+		case 4:
+			return getString(R.string.title_section5).toUpperCase(l);
 		}
 		return null;
 	}
@@ -136,16 +136,16 @@ public class ActivityMain extends ActivityCardPager {
 
 		ctx = getApplicationContext();
 
-		data = new DBLocationConnection(this);
-		data.openWrite();
-		loc = new de.uvwxy.whereami.LocationManager(getApplicationContext());
+		mData = new DBLocationConnection(this);
+		mData.openWrite();
+		mLoc = new de.uvwxy.whereami.LocationManager(getApplicationContext());
 
 		SharedPreferences prefs = IntentTools.getSettings(getApplicationContext(), SETTINGS);
 		boolean startup_updates = prefs.getBoolean(SETTINGS_UPDATES_ON_STARTUP, SETTINGS_UPDATES_ON_STARTUP_DEF);
 
 		if (startup_updates) {
-			locationUpdatesEnabled = true;
-			loc.getReader().startReading();
+			mLocationUpdatesEnabled = true;
+			mLoc.getReader().startReading();
 		}
 
 		setUnits(prefs);
@@ -157,14 +157,14 @@ public class ActivityMain extends ActivityCardPager {
 
 	@Subscribe
 	public void onReceive(Location l) {
-		lastLocation = l;
+		mLastLocation = l;
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		if (locationUpdatesEnabled) {
-			loc.getReader().startReading();
+		if (mLocationUpdatesEnabled) {
+			mLoc.getReader().startReading();
 		}
 		bus.post(new BusUpdateList());
 		setUnits();
@@ -176,8 +176,8 @@ public class ActivityMain extends ActivityCardPager {
 
 		if (IntentTools.getSettings(ctx, SETTINGS) //
 				.getBoolean(SETTINGS_STOP_UPDATES_ONPAUSE, SETTINGS_STOP_UPDATES_ONPAUSE_DEF)) {
-			loc.getReader().stopReading();
-			locationUpdatesEnabled = false;
+			mLoc.getReader().stopReading();
+			mLocationUpdatesEnabled = false;
 			if (FragmentCurrentLocation.swUpdates != null) {
 				FragmentCurrentLocation.swUpdates.setChecked(false);
 			}
@@ -188,9 +188,9 @@ public class ActivityMain extends ActivityCardPager {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		loc.getReader().stopReading();
-		loc.destroy();
-		data.close();
+		mLoc.getReader().stopReading();
+		mLoc.destroy();
+		mData.close();
 	}
 
 	private void alertIfProviderIsNotEnabled() {
@@ -238,22 +238,22 @@ public class ActivityMain extends ActivityCardPager {
 		int t = prefs.getInt(SETTINGS_LENGHT_TYPE, SETTINGS_LENGHT_TYPE_DEF);
 		switch (t) {
 		case SETTINGS_METRES:
-			unitL = Unit.METRE.setPrefix(UnitPrefix.NONE);
+			mUnitL = Unit.METRE.setPrefix(UnitPrefix.NONE);
 			break;
 		case SETTINGS_KILOMETRES:
-			unitL = Unit.METRE.setPrefix(UnitPrefix.KILO);
+			mUnitL = Unit.METRE.setPrefix(UnitPrefix.KILO);
 			break;
 		case SETTINGS_FOOT:
-			unitL = Unit.FOOT;
+			mUnitL = Unit.FOOT;
 			break;
 		case SETTINGS_MILES:
-			unitL = Unit.MILE;
+			mUnitL = Unit.MILE;
 			break;
 		case SETTINGS_YARDS:
-			unitL = Unit.YARD;
+			mUnitL = Unit.YARD;
 			break;
 		default:
-			unitL = Unit.METRE.setPrefix(UnitPrefix.NONE);
+			mUnitL = Unit.METRE.setPrefix(UnitPrefix.NONE);
 		}
 	}
 
@@ -261,16 +261,16 @@ public class ActivityMain extends ActivityCardPager {
 		int t = prefs.getInt(SETTINGS_VELOCTIY_TYPE, SETTINGS_VELOCITY_TYPE_DEF);
 		switch (t) {
 		case SETTINGS_METRES_PER_SECOND:
-			unitV = Unit.METRES_PER_SECOND;
+			mUnitV = Unit.METRES_PER_SECOND;
 			break;
 		case SETTINGS_KMH:
-			unitV = Unit.KILOMETRES_PER_HOUR;
+			mUnitV = Unit.KILOMETRES_PER_HOUR;
 			break;
 		case SETTINGS_MPH:
-			unitV = Unit.MILES_PER_HOUR;
+			mUnitV = Unit.MILES_PER_HOUR;
 			break;
 		default:
-			unitV = Unit.METRES_PER_SECOND;
+			mUnitV = Unit.METRES_PER_SECOND;
 		}
 	}
 
@@ -278,13 +278,13 @@ public class ActivityMain extends ActivityCardPager {
 		int t = prefs.getInt(SETTINGS_ANGLE_TYPE, SETTINGS_ANGLE_TYPE_DEF);
 		switch (t) {
 		case SETTINGS_ANGLE_DEGREES:
-			unitA = Unit.DEGREES.setPrecision(6);
+			mUnitA = Unit.DEGREES.setPrecision(6);
 			break;
 		case SETTINGS_ANGLE_MINUTES_SECONDS:
-			unitA = Unit.DEGREES_MINUTES_SECONDS;
+			mUnitA = Unit.DEGREES_MINUTES_SECONDS;
 			break;
 		default:
-			unitA = Unit.DEGREES.setPrecision(6);
+			mUnitA = Unit.DEGREES.setPrecision(6);
 		}
 	}
 

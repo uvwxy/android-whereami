@@ -45,7 +45,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 		}
 
 		if (s.equals(ctx.getString(R.string.MENU_FAVORITE))) {
-			ActivityMain.data.toggleFavorite(locationList.get(position));
+			ActivityMain.mData.toggleFavorite(locationList.get(position));
 			ActivityMain.bus.post(new BusUpdateList());
 
 		} else if (s.equals(ctx.getString(R.string.MENU_SHARE))) {
@@ -56,7 +56,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 		} else if (s.equals(ctx.getString(R.string.MENU_AUDIO_NAV))) {
 			SoundFinder.findNode(ActivityMain.dhis, loc.getLatitude(), //
 					loc.getLongitude(), loc.getAltitude(), 25, 25, //
-					Converter.createLoc(loc).distanceTo(ActivityMain.lastLocation));
+					Converter.createLoc(loc).distanceTo(ActivityMain.mLastLocation));
 		} else if (s.equals(ctx.getString(R.string.MENU_RENAME))) {
 
 			AlertDialog.Builder alertDialog = new AlertDialog.Builder(ActivityMain.dhis);
@@ -65,7 +65,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 			alertDialog.setPositiveButton("Rename", new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					ActivityMain.data.rename(loc, et.getText().toString());
+					ActivityMain.mData.rename(loc, et.getText().toString());
 					ActivityMain.bus.post(new BusUpdateList());
 				}
 			});
@@ -83,7 +83,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 
-					ActivityMain.data.deleteEntry(locationList.get(position));
+					ActivityMain.mData.deleteEntry(locationList.get(position));
 					locationList.remove(position);
 					ActivityMain.bus.post(new BusUpdateList());
 				}
@@ -133,9 +133,9 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 
 		Messages.Location item = locationList.get(position);
 		tvItemTitle.setText("" + item.getName());
-		if (ActivityMain.lastLocation != null) {
-			Unit u = Unit.METRE.setValue(LocationManager.getDistanceTo(item, ActivityMain.lastLocation));
-			u = u.to(ActivityMain.unitL);
+		if (ActivityMain.mLastLocation != null) {
+			Unit u = Unit.METRE.setValue(LocationManager.getDistanceTo(item, ActivityMain.mLastLocation));
+			u = u.to(ActivityMain.mUnitL);
 			String s = String.format("%s", u);
 			tvItemDistanceValue.setText(s);
 		} else {
