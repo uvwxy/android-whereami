@@ -16,6 +16,7 @@ import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
 import de.uvwxy.cardpager.ActivityCardPager;
+import de.uvwxy.cardpager.FragmentAbout;
 import de.uvwxy.helper.IntentTools;
 import de.uvwxy.sensors.location.LocationReader;
 import de.uvwxy.units.Unit;
@@ -24,7 +25,7 @@ import de.uvwxy.whereami.db_location.DBLocationConnection;
 import de.uvwxy.whereami.fragments.FragmentCurrentLocation;
 import de.uvwxy.whereami.fragments.FragmentSavedLocations;
 import de.uvwxy.whereami.fragments.FragmentSettings;
-import de.uvwxy.whereami.fragments.TriggeredSupportMapFragment;
+import de.uvwxy.whereami.fragments.FragmentOverlaySupportMap;
 
 public class ActivityMain extends ActivityCardPager {
 	public static final String SETTINGS = "WAI_SETTINGS";
@@ -95,10 +96,17 @@ public class ActivityMain extends ActivityCardPager {
 			t2.setFav(true);
 			return t2;
 		case 3:
-			mMapFragment = new TriggeredSupportMapFragment();
+			mMapFragment = new FragmentOverlaySupportMap();
 			return mMapFragment;
 		case 4:
 			return new FragmentSettings();
+		case 5:
+			FragmentAbout x = new FragmentAbout();
+			x.setTitle(getApplication().getText(R.string.app_name).toString());
+			x.setPackageName("de.uvwxy.whereami");
+			x.setMarketUrl("market://search?q=de.uvwxy.whereami&c=apps");
+			x.setAboutApp("This app is a simple helper tool to create and manage private points of interest (POI).");
+			return x;
 		}
 
 		Fragment fragment = new FragmentSettings();
@@ -119,13 +127,15 @@ public class ActivityMain extends ActivityCardPager {
 			return getString(R.string.title_section4).toUpperCase(l);
 		case 4:
 			return getString(R.string.title_section5).toUpperCase(l);
+		case 5:
+			return getString(R.string.title_section6).toUpperCase(l);
 		}
 		return null;
 	}
 
 	@Override
 	public int getFragmentCount() {
-		return 5;
+		return 6;
 	}
 
 	@Override
