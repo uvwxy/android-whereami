@@ -106,6 +106,7 @@ public class ActivityMain extends ActivityCardPager {
 			x.setPackageName("de.uvwxy.whereami");
 			x.setMarketUrl("market://search?q=de.uvwxy.whereami&c=apps");
 			x.setAboutApp("This app is a simple helper tool to create and manage private points of interest (POI).");
+			x.setLicenses(new String[] { "square_otto", "protobuf", "guava" });
 			return x;
 		}
 

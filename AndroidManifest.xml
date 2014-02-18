@@ -45,6 +45,8 @@
         </activity>
         <activity android:name="de.uvwxy.soundfinder.SoundFinder" >
         </activity>
+        <activity android:name="de.uvwxy.cardpager.ActivityLicenseDisplay" >
+        </activity>
     </application>
 
 </manifest>
