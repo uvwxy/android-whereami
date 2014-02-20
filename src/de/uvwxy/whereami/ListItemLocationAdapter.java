@@ -3,9 +3,13 @@ package de.uvwxy.whereami;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.LatLng;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,10 +17,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import de.uvwxy.helper.IntentTools;
 import de.uvwxy.helper.IntentTools.ReturnStringCallback;
 import de.uvwxy.soundfinder.SoundFinder;
 import de.uvwxy.units.Unit;
+import de.uvwxy.whereami.fragments.FragmentOverlaySupportMap;
 import de.uvwxy.whereami.proto.Messages;
 import de.uvwxy.whereami.proto.Messages.Location;
 
@@ -52,11 +58,17 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 			ActionShare.share(ActivityMain.act, loc);
 
 		} else if (s.equals(ctx.getString(R.string.MENU_SHOW_ON_MAP))) {
-			// TODO: implement this!
+			ActivityMain.dhis.moveToTab(3);
+			backgroundLocationReload(loc);
 		} else if (s.equals(ctx.getString(R.string.MENU_AUDIO_NAV))) {
-			SoundFinder.findNode(ActivityMain.dhis, loc.getLatitude(), //
-					loc.getLongitude(), loc.getAltitude(), 25, 25, //
-					Converter.createLoc(loc).distanceTo(ActivityMain.mLastLocation));
+			android.location.Location l = ActivityMain.mLastLocation;
+			if (l != null) {
+				SoundFinder.findNode(ActivityMain.dhis, loc.getLatitude(), //
+						loc.getLongitude(), loc.getAltitude(), 25, 25, //
+						Converter.createLoc(loc).distanceTo(l));
+			} else {
+				Toast.makeText(ctx, R.string.no_location_yet, Toast.LENGTH_SHORT).show();
+			}
 		} else if (s.equals(ctx.getString(R.string.MENU_RENAME))) {
 
 			AlertDialog.Builder alertDialog = new AlertDialog.Builder(ActivityMain.dhis);
@@ -90,7 +102,8 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 			});
 
 			alertDialog.setNegativeButton(ctx.getString(R.string.MENU_CANCEL), null);
-			alertDialog.setMessage(String.format(getContext().getString(R.string.do_you_really_want_to_delete_the_location_s_),
+			alertDialog.setMessage(String.format(
+					getContext().getString(R.string.do_you_really_want_to_delete_the_location_s_),
 					locationList.get(position).getName()));
 			alertDialog.setTitle("Delete");
 			alertDialog.show();
@@ -143,5 +156,31 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 		}
 
 		return rootView;
+	}
+
+	private void backgroundLocationReload(final Location loc) {
+		Handler h = new Handler(ctx.getMainLooper());
+
+		h.post(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					Thread.sleep(2500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
+				if (ActivityMain.mMapFragment != null && ActivityMain.mMapFragment instanceof FragmentOverlaySupportMap) {
+					FragmentOverlaySupportMap m = (FragmentOverlaySupportMap) ActivityMain.mMapFragment;
+					if (m.mMapView != null) {
+
+						m.mMapView.moveCamera(CameraUpdateFactory.newLatLngZoom(
+								new LatLng(loc.getLatitude(), loc.getLongitude()), 10f));
+					}
+				}
+			}
+		});
+
 	}
 }

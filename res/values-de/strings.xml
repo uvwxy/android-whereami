@@ -54,7 +54,7 @@
     <string name="distance_value">Distanz Wert</string>
     <string name="location_count">Anzahl der Standorte:</string>
     <string name="empty_count">0</string>
-    <string name="shared_location">Standort teilen</string>
+    <string name="shared_location">Mein Standort</string>
     <string name="googlemaps">Google Maps</string>
     <string name="openstreetmap">OpenStreetMap</string>
     <string name="app_description">Diese App dient dem Managen von Points Of Interest (POI).</string>

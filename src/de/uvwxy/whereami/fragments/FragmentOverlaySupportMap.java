@@ -18,7 +18,7 @@ import de.uvwxy.whereami.ActivityMain;
 import de.uvwxy.whereami.proto.Messages;
 
 public class FragmentOverlaySupportMap extends SupportMapFragment {
-	private GoogleMap mMapView = null;
+	public GoogleMap mMapView = null;
 	private OnMarkerClickListener mMarkerClick = new OnMarkerClickListener() {
 
 		@Override

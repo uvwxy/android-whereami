@@ -79,7 +79,7 @@ public class ActivityMain extends ActivityCardPager {
 
 	public static Location mLastLocation;
 
-	private SupportMapFragment mMapFragment = null;
+	static SupportMapFragment mMapFragment = null;
 
 	@Override
 	public Fragment getFragment(int position) {
