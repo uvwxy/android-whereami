@@ -31,8 +31,9 @@ public class FragmentOverlaySupportMap extends SupportMapFragment {
 		super.onViewCreated(view, savedInstanceState);
 		mMapView = getMap();
 		mMapView.setOnMarkerClickListener(mMarkerClick);
+		
 		mMapView.setOnMapLongClickListener(new OnMapLongClickListener() {
-
+			
 			@Override
 			public void onMapLongClick(LatLng point) {
 				float dist = 0;
@@ -46,6 +47,8 @@ public class FragmentOverlaySupportMap extends SupportMapFragment {
 				SoundFinder.findNode(getActivity(), point.latitude, point.longitude, 0, 20, 30, dist);
 			}
 		});
+		mMapView.getUiSettings().setMyLocationButtonEnabled(true);
+		mMapView.getUiSettings().setCompassEnabled(true);
 		loadMarkers(mMapView);
 	};
 
