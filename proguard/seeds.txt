@@ -1,0 +1,818 @@
+android.support.v4.app.BackStackState
+android.support.v4.app.BackStackState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.Fragment: Fragment()
+android.support.v4.app.Fragment$SavedState
+android.support.v4.app.Fragment$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentActivity: FragmentActivity()
+android.support.v4.app.FragmentManagerState
+android.support.v4.app.FragmentManagerState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentState
+android.support.v4.app.FragmentState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentTabHost: void setOnTabChangedListener(android.widget.TabHost$OnTabChangeListener)
+android.support.v4.app.FragmentTabHost$SavedState
+android.support.v4.app.FragmentTabHost$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status[] values()
+android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status valueOf(java.lang.String)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColor(int)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColorResource(int)
+android.support.v4.view.PagerTabStrip: int getTabIndicatorColor()
+android.support.v4.view.PagerTabStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.PagerTabStrip: void setBackgroundColor(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundResource(int)
+android.support.v4.view.PagerTabStrip: void setDrawFullUnderline(boolean)
+android.support.v4.view.PagerTabStrip: boolean getDrawFullUnderline()
+android.support.v4.view.PagerTabStrip: int getMinHeight()
+android.support.v4.view.PagerTitleStrip
+android.support.v4.view.PagerTitleStrip: void setSingleLineAllCaps(android.widget.TextView)
+android.support.v4.view.PagerTitleStrip: PagerTitleStrip(android.content.Context)
+android.support.v4.view.PagerTitleStrip: PagerTitleStrip(android.content.Context,android.util.AttributeSet)
+android.support.v4.view.PagerTitleStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTitleStrip: int getTextSpacing()
+android.support.v4.view.PagerTitleStrip: void setNonPrimaryAlpha(float)
+android.support.v4.view.PagerTitleStrip: void setTextColor(int)
+android.support.v4.view.PagerTitleStrip: void setGravity(int)
+android.support.v4.view.PagerTitleStrip: int getMinHeight()
+android.support.v4.view.ViewPager
+android.support.v4.view.ViewPager: ViewPager(android.content.Context)
+android.support.v4.view.ViewPager: ViewPager(android.content.Context,android.util.AttributeSet)
+android.support.v4.view.ViewPager: void setScrollState(int)
+android.support.v4.view.ViewPager: void setAdapter(android.support.v4.view.PagerAdapter)
+android.support.v4.view.ViewPager: android.support.v4.view.PagerAdapter getAdapter()
+android.support.v4.view.ViewPager: void setOnAdapterChangeListener(android.support.v4.view.ViewPager$OnAdapterChangeListener)
+android.support.v4.view.ViewPager: int getClientWidth()
+android.support.v4.view.ViewPager: void setCurrentItem(int)
+android.support.v4.view.ViewPager: int getCurrentItem()
+android.support.v4.view.ViewPager: void setOnPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener)
+android.support.v4.view.ViewPager: void setChildrenDrawingOrderEnabledCompat(boolean)
+android.support.v4.view.ViewPager: int getOffscreenPageLimit()
+android.support.v4.view.ViewPager: void setOffscreenPageLimit(int)
+android.support.v4.view.ViewPager: void setPageMargin(int)
+android.support.v4.view.ViewPager: int getPageMargin()
+android.support.v4.view.ViewPager: void setPageMarginDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.ViewPager: void setPageMarginDrawable(int)
+android.support.v4.view.ViewPager: void setScrollingCacheEnabled(boolean)
+android.support.v4.view.ViewPager$SavedState
+android.support.v4.view.ViewPager$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.widget.DrawerLayout: void setScrimColor(int)
+android.support.v4.widget.DrawerLayout: void setDrawerListener(android.support.v4.widget.DrawerLayout$DrawerListener)
+android.support.v4.widget.DrawerLayout: void setDrawerLockMode(int)
+android.support.v4.widget.DrawerLayout$SavedState
+android.support.v4.widget.DrawerLayout$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.widget.SlidingPaneLayout: void setParallaxDistance(int)
+android.support.v4.widget.SlidingPaneLayout: int getParallaxDistance()
+android.support.v4.widget.SlidingPaneLayout: void setSliderFadeColor(int)
+android.support.v4.widget.SlidingPaneLayout: int getSliderFadeColor()
+android.support.v4.widget.SlidingPaneLayout: void setCoveredFadeColor(int)
+android.support.v4.widget.SlidingPaneLayout: int getCoveredFadeColor()
+android.support.v4.widget.SlidingPaneLayout: void setPanelSlideListener(android.support.v4.widget.SlidingPaneLayout$PanelSlideListener)
+android.support.v4.widget.SlidingPaneLayout: void setShadowDrawable(android.graphics.drawable.Drawable)
+android.support.v4.widget.SlidingPaneLayout: void setShadowResource(int)
+android.support.v4.widget.SlidingPaneLayout$SavedState
+android.support.v4.widget.SlidingPaneLayout$SavedState: android.os.Parcelable$Creator CREATOR
+com.google.ads.AdRequest$ErrorCode: com.google.ads.AdRequest$ErrorCode[] values()
+com.google.ads.AdRequest$ErrorCode: com.google.ads.AdRequest$ErrorCode valueOf(java.lang.String)
+com.google.ads.AdRequest$Gender: com.google.ads.AdRequest$Gender[] values()
+com.google.ads.AdRequest$Gender: com.google.ads.AdRequest$Gender valueOf(java.lang.String)
+com.google.android.gms.R$attr: int adSize
+com.google.android.gms.R$attr: int adSizes
+com.google.android.gms.R$attr: int adUnitId
+com.google.android.gms.R$attr: int cameraBearing
+com.google.android.gms.R$attr: int cameraTargetLat
+com.google.android.gms.R$attr: int cameraTargetLng
+com.google.android.gms.R$attr: int cameraTilt
+com.google.android.gms.R$attr: int cameraZoom
+com.google.android.gms.R$attr: int mapType
+com.google.android.gms.R$attr: int uiCompass
+com.google.android.gms.R$attr: int uiRotateGestures
+com.google.android.gms.R$attr: int uiScrollGestures
+com.google.android.gms.R$attr: int uiTiltGestures
+com.google.android.gms.R$attr: int uiZoomControls
+com.google.android.gms.R$attr: int uiZoomGestures
+com.google.android.gms.R$attr: int useViewLifecycle
+com.google.android.gms.R$attr: int zOrderOnTop
+com.google.android.gms.R$color: int common_action_bar_splitter
+com.google.android.gms.R$color: int common_signin_btn_dark_text_default
+com.google.android.gms.R$color: int common_signin_btn_dark_text_disabled
+com.google.android.gms.R$color: int common_signin_btn_dark_text_focused
+com.google.android.gms.R$color: int common_signin_btn_dark_text_pressed
+com.google.android.gms.R$color: int common_signin_btn_default_background
+com.google.android.gms.R$color: int common_signin_btn_light_text_default
+com.google.android.gms.R$color: int common_signin_btn_light_text_disabled
+com.google.android.gms.R$color: int common_signin_btn_light_text_focused
+com.google.android.gms.R$color: int common_signin_btn_light_text_pressed
+com.google.android.gms.R$color: int common_signin_btn_text_dark
+com.google.android.gms.R$color: int common_signin_btn_text_light
+com.google.android.gms.R$drawable: int common_signin_btn_icon_dark
+com.google.android.gms.R$drawable: int common_signin_btn_icon_disabled_dark
+com.google.android.gms.R$drawable: int common_signin_btn_icon_disabled_focus_dark
+com.google.android.gms.R$drawable: int common_signin_btn_icon_disabled_focus_light
+com.google.android.gms.R$drawable: int common_signin_btn_icon_disabled_light
+com.google.android.gms.R$drawable: int common_signin_btn_icon_focus_dark
+com.google.android.gms.R$drawable: int common_signin_btn_icon_focus_light
+com.google.android.gms.R$drawable: int common_signin_btn_icon_light
+com.google.android.gms.R$drawable: int common_signin_btn_icon_normal_dark
+com.google.android.gms.R$drawable: int common_signin_btn_icon_normal_light
+com.google.android.gms.R$drawable: int common_signin_btn_icon_pressed_dark
+com.google.android.gms.R$drawable: int common_signin_btn_icon_pressed_light
+com.google.android.gms.R$drawable: int common_signin_btn_text_dark
+com.google.android.gms.R$drawable: int common_signin_btn_text_disabled_dark
+com.google.android.gms.R$drawable: int common_signin_btn_text_disabled_focus_dark
+com.google.android.gms.R$drawable: int common_signin_btn_text_disabled_focus_light
+com.google.android.gms.R$drawable: int common_signin_btn_text_disabled_light
+com.google.android.gms.R$drawable: int common_signin_btn_text_focus_dark
+com.google.android.gms.R$drawable: int common_signin_btn_text_focus_light
+com.google.android.gms.R$drawable: int common_signin_btn_text_light
+com.google.android.gms.R$drawable: int common_signin_btn_text_normal_dark
+com.google.android.gms.R$drawable: int common_signin_btn_text_normal_light
+com.google.android.gms.R$drawable: int common_signin_btn_text_pressed_dark
+com.google.android.gms.R$drawable: int common_signin_btn_text_pressed_light
+com.google.android.gms.R$drawable: int ic_plusone_medium_off_client
+com.google.android.gms.R$drawable: int ic_plusone_small_off_client
+com.google.android.gms.R$drawable: int ic_plusone_standard_off_client
+com.google.android.gms.R$drawable: int ic_plusone_tall_off_client
+com.google.android.gms.R$id: int hybrid
+com.google.android.gms.R$id: int none
+com.google.android.gms.R$id: int normal
+com.google.android.gms.R$id: int satellite
+com.google.android.gms.R$id: int terrain
+com.google.android.gms.R$integer: int google_play_services_version
+com.google.android.gms.R$string: int auth_client_needs_enabling_title
+com.google.android.gms.R$string: int auth_client_needs_installation_title
+com.google.android.gms.R$string: int auth_client_needs_update_title
+com.google.android.gms.R$string: int auth_client_play_services_err_notification_msg
+com.google.android.gms.R$string: int auth_client_requested_by_msg
+com.google.android.gms.R$string: int auth_client_using_bad_version_title
+com.google.android.gms.R$string: int common_google_play_services_enable_button
+com.google.android.gms.R$string: int common_google_play_services_enable_text
+com.google.android.gms.R$string: int common_google_play_services_enable_title
+com.google.android.gms.R$string: int common_google_play_services_install_button
+com.google.android.gms.R$string: int common_google_play_services_install_text_phone
+com.google.android.gms.R$string: int common_google_play_services_install_text_tablet
+com.google.android.gms.R$string: int common_google_play_services_install_title
+com.google.android.gms.R$string: int common_google_play_services_invalid_account_text
+com.google.android.gms.R$string: int common_google_play_services_invalid_account_title
+com.google.android.gms.R$string: int common_google_play_services_network_error_text
+com.google.android.gms.R$string: int common_google_play_services_network_error_title
+com.google.android.gms.R$string: int common_google_play_services_unknown_issue
+com.google.android.gms.R$string: int common_google_play_services_unsupported_date_text
+com.google.android.gms.R$string: int common_google_play_services_unsupported_text
+com.google.android.gms.R$string: int common_google_play_services_unsupported_title
+com.google.android.gms.R$string: int common_google_play_services_update_button
+com.google.android.gms.R$string: int common_google_play_services_update_text
+com.google.android.gms.R$string: int common_google_play_services_update_title
+com.google.android.gms.R$string: int common_signin_button_text
+com.google.android.gms.R$string: int common_signin_button_text_long
+com.google.android.gms.R$styleable: int[] AdsAttrs
+com.google.android.gms.R$styleable: int AdsAttrs_adSize
+com.google.android.gms.R$styleable: int AdsAttrs_adSizes
+com.google.android.gms.R$styleable: int AdsAttrs_adUnitId
+com.google.android.gms.R$styleable: int[] MapAttrs
+com.google.android.gms.R$styleable: int MapAttrs_cameraBearing
+com.google.android.gms.R$styleable: int MapAttrs_cameraTargetLat
+com.google.android.gms.R$styleable: int MapAttrs_cameraTargetLng
+com.google.android.gms.R$styleable: int MapAttrs_cameraTilt
+com.google.android.gms.R$styleable: int MapAttrs_cameraZoom
+com.google.android.gms.R$styleable: int MapAttrs_mapType
+com.google.android.gms.R$styleable: int MapAttrs_uiCompass
+com.google.android.gms.R$styleable: int MapAttrs_uiRotateGestures
+com.google.android.gms.R$styleable: int MapAttrs_uiScrollGestures
+com.google.android.gms.R$styleable: int MapAttrs_uiTiltGestures
+com.google.android.gms.R$styleable: int MapAttrs_uiZoomControls
+com.google.android.gms.R$styleable: int MapAttrs_uiZoomGestures
+com.google.android.gms.R$styleable: int MapAttrs_useViewLifecycle
+com.google.android.gms.R$styleable: int MapAttrs_zOrderOnTop
+com.google.android.gms.ads.AdView: com.google.android.gms.ads.AdListener getAdListener()
+com.google.android.gms.ads.AdView: com.google.android.gms.ads.AdSize getAdSize()
+com.google.android.gms.ads.AdView: java.lang.String getAdUnitId()
+com.google.android.gms.ads.AdView: void setAdListener(com.google.android.gms.ads.AdListener)
+com.google.android.gms.ads.AdView: void setAdSize(com.google.android.gms.ads.AdSize)
+com.google.android.gms.ads.AdView: void setAdUnitId(java.lang.String)
+com.google.android.gms.ads.doubleclick.PublisherAdView: com.google.android.gms.ads.AdListener getAdListener()
+com.google.android.gms.ads.doubleclick.PublisherAdView: com.google.android.gms.ads.AdSize getAdSize()
+com.google.android.gms.ads.doubleclick.PublisherAdView: com.google.android.gms.ads.AdSize[] getAdSizes()
+com.google.android.gms.ads.doubleclick.PublisherAdView: java.lang.String getAdUnitId()
+com.google.android.gms.ads.doubleclick.PublisherAdView: com.google.android.gms.ads.doubleclick.AppEventListener getAppEventListener()
+com.google.android.gms.ads.doubleclick.PublisherAdView: void setAdListener(com.google.android.gms.ads.AdListener)
+com.google.android.gms.ads.doubleclick.PublisherAdView: void setAdSizes(com.google.android.gms.ads.AdSize[])
+com.google.android.gms.ads.doubleclick.PublisherAdView: void setAdUnitId(java.lang.String)
+com.google.android.gms.ads.doubleclick.PublisherAdView: void setAppEventListener(com.google.android.gms.ads.doubleclick.AppEventListener)
+com.google.android.gms.ads.search.SearchAdView: com.google.android.gms.ads.AdListener getAdListener()
+com.google.android.gms.ads.search.SearchAdView: com.google.android.gms.ads.AdSize getAdSize()
+com.google.android.gms.ads.search.SearchAdView: java.lang.String getAdUnitId()
+com.google.android.gms.ads.search.SearchAdView: void setAdListener(com.google.android.gms.ads.AdListener)
+com.google.android.gms.ads.search.SearchAdView: void setAdSize(com.google.android.gms.ads.AdSize)
+com.google.android.gms.ads.search.SearchAdView: void setAdUnitId(java.lang.String)
+com.google.android.gms.common.SignInButton: void setSize(int)
+com.google.android.gms.common.SignInButton: void setColorScheme(int)
+com.google.android.gms.common.SignInButton: void setOnClickListener(android.view.View$OnClickListener)
+com.google.android.gms.common.SignInButton: void setEnabled(boolean)
+com.google.android.gms.common.api.Status
+com.google.android.gms.common.data.DataHolder
+com.google.android.gms.common.images.ImageManager$ImageReceiver
+com.google.android.gms.common.internal.safeparcel.SafeParcelable
+com.google.android.gms.drive.Contents
+com.google.android.gms.drive.Contents: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.DriveId
+com.google.android.gms.drive.DriveId: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.internal.CloseContentsRequest
+com.google.android.gms.drive.internal.CloseContentsRequest: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.internal.CreateContentsRequest
+com.google.android.gms.drive.internal.CreateContentsRequest: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.internal.CreateFileIntentSenderRequest
+com.google.android.gms.drive.internal.CreateFileIntentSenderRequest: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.internal.CreateFileRequest
+com.google.android.gms.drive.internal.CreateFileRequest: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.internal.CreateFolderRequest
+com.google.android.gms.drive.internal.CreateFolderRequest: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.internal.GetMetadataRequest
+com.google.android.gms.drive.internal.GetMetadataRequest: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.internal.OnContentsResponse
+com.google.android.gms.drive.internal.OnContentsResponse: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.internal.OnDownloadProgressResponse
+com.google.android.gms.drive.internal.OnDownloadProgressResponse: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.internal.OnDriveIdResponse
+com.google.android.gms.drive.internal.OnDriveIdResponse: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.internal.OnListEntriesResponse
+com.google.android.gms.drive.internal.OnListEntriesResponse: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.internal.OnMetadataResponse
+com.google.android.gms.drive.internal.OnMetadataResponse: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.internal.OpenContentsRequest
+com.google.android.gms.drive.internal.OpenContentsRequest: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.internal.OpenFileIntentSenderRequest
+com.google.android.gms.drive.internal.OpenFileIntentSenderRequest: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.internal.QueryRequest
+com.google.android.gms.drive.internal.QueryRequest: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.internal.UpdateMetadataRequest
+com.google.android.gms.drive.internal.UpdateMetadataRequest: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.metadata.internal.MetadataBundle
+com.google.android.gms.drive.metadata.internal.MetadataBundle: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.query.Query
+com.google.android.gms.drive.query.Query: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.query.internal.ComparisonFilter
+com.google.android.gms.drive.query.internal.FieldOnlyFilter
+com.google.android.gms.drive.query.internal.FieldOnlyFilter: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.query.internal.FilterHolder
+com.google.android.gms.drive.query.internal.FilterHolder: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.query.internal.InFilter
+com.google.android.gms.drive.query.internal.LogicalFilter
+com.google.android.gms.drive.query.internal.LogicalFilter: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.query.internal.NotFilter
+com.google.android.gms.drive.query.internal.NotFilter: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.drive.query.internal.Operator
+com.google.android.gms.drive.query.internal.Operator: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.games.Game
+com.google.android.gms.games.GameEntity
+com.google.android.gms.games.GameEntity: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.games.Player
+com.google.android.gms.games.PlayerEntity
+com.google.android.gms.games.PlayerEntity: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.games.b
+com.google.android.gms.games.e
+com.google.android.gms.games.multiplayer.Invitation
+com.google.android.gms.games.multiplayer.InvitationEntity
+com.google.android.gms.games.multiplayer.InvitationEntity: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.games.multiplayer.Participant
+com.google.android.gms.games.multiplayer.ParticipantEntity
+com.google.android.gms.games.multiplayer.ParticipantEntity: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.games.multiplayer.ParticipantResult
+com.google.android.gms.games.multiplayer.b
+com.google.android.gms.games.multiplayer.e
+com.google.android.gms.games.multiplayer.realtime.RealTimeMessage
+com.google.android.gms.games.multiplayer.realtime.RealTimeMessage: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.games.multiplayer.realtime.Room
+com.google.android.gms.games.multiplayer.realtime.RoomEntity
+com.google.android.gms.games.multiplayer.realtime.RoomEntity: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.games.multiplayer.realtime.d
+com.google.android.gms.games.multiplayer.turnbased.TurnBasedMatch
+com.google.android.gms.games.multiplayer.turnbased.TurnBasedMatchEntity
+com.google.android.gms.games.multiplayer.turnbased.a
+com.google.android.gms.internal.ai
+com.google.android.gms.internal.bj
+com.google.android.gms.internal.bm
+com.google.android.gms.internal.bz
+com.google.android.gms.internal.cb
+com.google.android.gms.internal.ct
+com.google.android.gms.internal.cv: void setContext(android.content.Context)
+com.google.android.gms.internal.dh$a
+com.google.android.gms.internal.dj
+com.google.android.gms.internal.dz
+com.google.android.gms.internal.eb
+com.google.android.gms.internal.eb$a
+com.google.android.gms.internal.ee$a
+com.google.android.gms.internal.eh
+com.google.android.gms.internal.eh$a
+com.google.android.gms.internal.eh$b
+com.google.android.gms.internal.ek
+com.google.android.gms.internal.ey
+com.google.android.gms.internal.fn
+com.google.android.gms.internal.fs
+com.google.android.gms.internal.fu
+com.google.android.gms.internal.fw
+com.google.android.gms.internal.fz
+com.google.android.gms.internal.gb
+com.google.android.gms.internal.gd
+com.google.android.gms.internal.gg
+com.google.android.gms.internal.gs
+com.google.android.gms.internal.gv
+com.google.android.gms.internal.gx
+com.google.android.gms.internal.ha
+com.google.android.gms.internal.ha$a
+com.google.android.gms.internal.ha$b
+com.google.android.gms.internal.ha$b$a
+com.google.android.gms.internal.ha$b$b
+com.google.android.gms.internal.ha$c
+com.google.android.gms.internal.ha$d
+com.google.android.gms.internal.ha$f
+com.google.android.gms.internal.ha$g
+com.google.android.gms.internal.ha$h
+com.google.android.gms.internal.v
+com.google.android.gms.internal.x
+com.google.android.gms.location.ActivityRecognitionResult
+com.google.android.gms.location.DetectedActivity
+com.google.android.gms.location.LocationRequest
+com.google.android.gms.maps.GoogleMapOptions
+com.google.android.gms.maps.MapView: com.google.android.gms.maps.GoogleMap getMap()
+com.google.android.gms.maps.SupportMapFragment
+com.google.android.gms.maps.SupportMapFragment: SupportMapFragment()
+com.google.android.gms.maps.model.CameraPosition
+com.google.android.gms.maps.model.CircleOptions
+com.google.android.gms.maps.model.GroundOverlayOptions
+com.google.android.gms.maps.model.LatLng
+com.google.android.gms.maps.model.LatLngBounds
+com.google.android.gms.maps.model.MarkerOptions
+com.google.android.gms.maps.model.PolygonOptions
+com.google.android.gms.maps.model.PolylineOptions
+com.google.android.gms.maps.model.Tile
+com.google.android.gms.maps.model.TileOverlayOptions
+com.google.android.gms.maps.model.VisibleRegion
+com.google.android.gms.plus.PlusOneButton: void setOnPlusOneClickListener(com.google.android.gms.plus.PlusOneButton$OnPlusOneClickListener)
+com.google.android.gms.plus.PlusOneButton: void setAnnotation(int)
+com.google.android.gms.plus.PlusOneButton: void setSize(int)
+com.google.android.gms.plus.PlusOneButtonWithPopup: void setOnClickListener(android.view.View$OnClickListener)
+com.google.android.gms.plus.PlusOneButtonWithPopup: void setAnnotation(int)
+com.google.android.gms.plus.PlusOneButtonWithPopup: void setSize(int)
+com.google.android.gms.plus.PlusOneButtonWithPopup: android.app.PendingIntent getResolution()
+com.google.android.gms.wallet.Address
+com.google.android.gms.wallet.Address: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.wallet.Cart
+com.google.android.gms.wallet.Cart: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.wallet.CountrySpecification
+com.google.android.gms.wallet.CountrySpecification: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.wallet.FullWallet
+com.google.android.gms.wallet.FullWallet: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.wallet.FullWalletRequest
+com.google.android.gms.wallet.FullWalletRequest: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.wallet.LineItem
+com.google.android.gms.wallet.LineItem: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.wallet.LoyaltyWalletObject
+com.google.android.gms.wallet.LoyaltyWalletObject: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.wallet.MaskedWallet
+com.google.android.gms.wallet.MaskedWallet: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.wallet.MaskedWalletRequest
+com.google.android.gms.wallet.MaskedWalletRequest: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.wallet.NotifyTransactionStatusRequest
+com.google.android.gms.wallet.NotifyTransactionStatusRequest: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.wallet.OfferWalletObject
+com.google.android.gms.wallet.OfferWalletObject: android.os.Parcelable$Creator CREATOR
+com.google.android.gms.wallet.ProxyCard
+com.google.android.gms.wallet.ProxyCard: android.os.Parcelable$Creator CREATOR
+com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Label: com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Label[] values()
+com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Label: com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Label valueOf(java.lang.String)
+com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Type: com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Type[] values()
+com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Type: com.google.protobuf.DescriptorProtos$FieldDescriptorProto$Type valueOf(java.lang.String)
+com.google.protobuf.DescriptorProtos$FieldOptions$CType: com.google.protobuf.DescriptorProtos$FieldOptions$CType[] values()
+com.google.protobuf.DescriptorProtos$FieldOptions$CType: com.google.protobuf.DescriptorProtos$FieldOptions$CType valueOf(java.lang.String)
+com.google.protobuf.DescriptorProtos$FileOptions$OptimizeMode: com.google.protobuf.DescriptorProtos$FileOptions$OptimizeMode[] values()
+com.google.protobuf.DescriptorProtos$FileOptions$OptimizeMode: com.google.protobuf.DescriptorProtos$FileOptions$OptimizeMode valueOf(java.lang.String)
+com.google.protobuf.Descriptors$DescriptorPool$SearchFilter: com.google.protobuf.Descriptors$DescriptorPool$SearchFilter[] values()
+com.google.protobuf.Descriptors$DescriptorPool$SearchFilter: com.google.protobuf.Descriptors$DescriptorPool$SearchFilter valueOf(java.lang.String)
+com.google.protobuf.Descriptors$FieldDescriptor$JavaType: com.google.protobuf.Descriptors$FieldDescriptor$JavaType[] values()
+com.google.protobuf.Descriptors$FieldDescriptor$JavaType: com.google.protobuf.Descriptors$FieldDescriptor$JavaType valueOf(java.lang.String)
+com.google.protobuf.Descriptors$FieldDescriptor$Type: com.google.protobuf.Descriptors$FieldDescriptor$Type[] values()
+com.google.protobuf.Descriptors$FieldDescriptor$Type: com.google.protobuf.Descriptors$FieldDescriptor$Type valueOf(java.lang.String)
+com.google.protobuf.WireFormat$FieldType: com.google.protobuf.WireFormat$FieldType[] values()
+com.google.protobuf.WireFormat$FieldType: com.google.protobuf.WireFormat$FieldType valueOf(java.lang.String)
+com.google.protobuf.WireFormat$JavaType: com.google.protobuf.WireFormat$JavaType[] values()
+com.google.protobuf.WireFormat$JavaType: com.google.protobuf.WireFormat$JavaType valueOf(java.lang.String)
+de.uvwxy.R$drawable: int card_no_shadow
+de.uvwxy.cardpager.ActivityCardPager: ActivityCardPager()
+de.uvwxy.cardpager.ActivityLicenseDisplay
+de.uvwxy.cardpager.ActivityLicenseDisplay: ActivityLicenseDisplay()
+de.uvwxy.cardstyle.R$color: int card_border
+de.uvwxy.cardstyle.R$color: int card_grid_text
+de.uvwxy.cardstyle.R$color: int card_light_text
+de.uvwxy.cardstyle.R$color: int card_separator
+de.uvwxy.cardstyle.R$color: int card_text
+de.uvwxy.cardstyle.R$color: int card_title_text
+de.uvwxy.cardstyle.R$color: int stroke
+de.uvwxy.cardstyle.R$color: int text_light
+de.uvwxy.cardstyle.R$dimen: int activity_horizontal_margin
+de.uvwxy.cardstyle.R$dimen: int activity_vertical_margin
+de.uvwxy.cardstyle.R$dimen: int card_large_text
+de.uvwxy.cardstyle.R$dimen: int card_small_text
+de.uvwxy.cardstyle.R$drawable: int card
+de.uvwxy.cardstyle.R$drawable: int card_no_shadow
+de.uvwxy.cardstyle.R$drawable: int ic_mail
+de.uvwxy.cardstyle.R$drawable: int ic_www
+de.uvwxy.cardstyle.R$drawable: int logo_uvwxy
+de.uvwxy.cardstyle.R$id: int ivAppIcon
+de.uvwxy.cardstyle.R$id: int ivLogo
+de.uvwxy.cardstyle.R$id: int ivMailLink
+de.uvwxy.cardstyle.R$id: int ivWwwLink
+de.uvwxy.cardstyle.R$id: int llLicenses
+de.uvwxy.cardstyle.R$id: int pager
+de.uvwxy.cardstyle.R$id: int pager_title_strip
+de.uvwxy.cardstyle.R$id: int tvAboutApp
+de.uvwxy.cardstyle.R$id: int tvLicenseExplanation
+de.uvwxy.cardstyle.R$id: int tvLicenses
+de.uvwxy.cardstyle.R$id: int tvMailLink
+de.uvwxy.cardstyle.R$id: int tvMarketLink
+de.uvwxy.cardstyle.R$id: int tvTitle
+de.uvwxy.cardstyle.R$layout: int cardpager
+de.uvwxy.cardstyle.R$layout: int fragment_about
+de.uvwxy.cardstyle.R$string: int about_me
+de.uvwxy.cardstyle.R$string: int about_this_app
+de.uvwxy.cardstyle.R$string: int about_uvwxy
+de.uvwxy.cardstyle.R$string: int app_name
+de.uvwxy.cardstyle.R$string: int contact_
+de.uvwxy.cardstyle.R$string: int license_explanation
+de.uvwxy.cardstyle.R$string: int lorem
+de.uvwxy.cardstyle.R$string: int open_source_licenses
+de.uvwxy.cardstyle.R$string: int please_rate_this_app_if_you_like_it_
+de.uvwxy.cardstyle.R$style: int AppBaseTheme
+de.uvwxy.cardstyle.R$style: int AppTheme
+de.uvwxy.cardstyle.R$style: int CardBodyLL
+de.uvwxy.cardstyle.R$style: int CardHR
+de.uvwxy.cardstyle.R$style: int CardRootLL
+de.uvwxy.cardstyle.R$style: int CardRootSV
+de.uvwxy.cardstyle.R$style: int CardText
+de.uvwxy.cardstyle.R$style: int CardTextLarge
+de.uvwxy.cardstyle.R$style: int CardTextLargeRight
+de.uvwxy.cardstyle.R$style: int CardTextNormal
+de.uvwxy.cardstyle.R$style: int CardTitle
+de.uvwxy.net.ConnectionType: de.uvwxy.net.ConnectionType[] values()
+de.uvwxy.net.ConnectionType: de.uvwxy.net.ConnectionType valueOf(java.lang.String)
+de.uvwxy.panzoom.PanZoomType: de.uvwxy.panzoom.PanZoomType[] values()
+de.uvwxy.panzoom.PanZoomType: de.uvwxy.panzoom.PanZoomType valueOf(java.lang.String)
+de.uvwxy.soundfinder.R$color: int card_border
+de.uvwxy.soundfinder.R$color: int card_grid_text
+de.uvwxy.soundfinder.R$color: int card_light_text
+de.uvwxy.soundfinder.R$color: int card_separator
+de.uvwxy.soundfinder.R$color: int card_text
+de.uvwxy.soundfinder.R$color: int card_title_text
+de.uvwxy.soundfinder.R$color: int stroke
+de.uvwxy.soundfinder.R$color: int text_light
+de.uvwxy.soundfinder.R$dimen: int activity_horizontal_margin
+de.uvwxy.soundfinder.R$dimen: int activity_vertical_margin
+de.uvwxy.soundfinder.R$dimen: int card_large_text
+de.uvwxy.soundfinder.R$dimen: int card_small_text
+de.uvwxy.soundfinder.R$drawable: int card
+de.uvwxy.soundfinder.R$drawable: int card_no_shadow
+de.uvwxy.soundfinder.R$drawable: int ic_mail
+de.uvwxy.soundfinder.R$drawable: int ic_www
+de.uvwxy.soundfinder.R$drawable: int logo_uvwxy
+de.uvwxy.soundfinder.R$id: int hBar0
+de.uvwxy.soundfinder.R$id: int hBar1
+de.uvwxy.soundfinder.R$id: int ivAppIcon
+de.uvwxy.soundfinder.R$id: int ivLogo
+de.uvwxy.soundfinder.R$id: int ivMailLink
+de.uvwxy.soundfinder.R$id: int ivWwwLink
+de.uvwxy.soundfinder.R$id: int llLicenses
+de.uvwxy.soundfinder.R$id: int pager
+de.uvwxy.soundfinder.R$id: int pager_title_strip
+de.uvwxy.soundfinder.R$id: int rlBottom
+de.uvwxy.soundfinder.R$id: int sbDist
+de.uvwxy.soundfinder.R$id: int sbTest
+de.uvwxy.soundfinder.R$id: int tbtnBearing
+de.uvwxy.soundfinder.R$id: int tvAboutApp
+de.uvwxy.soundfinder.R$id: int tvInfo
+de.uvwxy.soundfinder.R$id: int tvLicenseExplanation
+de.uvwxy.soundfinder.R$id: int tvLicenses
+de.uvwxy.soundfinder.R$id: int tvMailLink
+de.uvwxy.soundfinder.R$id: int tvMarketLink
+de.uvwxy.soundfinder.R$id: int tvTitle
+de.uvwxy.soundfinder.R$id: int vBar0
+de.uvwxy.soundfinder.R$id: int vBar1
+de.uvwxy.soundfinder.R$id: int vBarCorrectLeft
+de.uvwxy.soundfinder.R$id: int vBarCorrectRight
+de.uvwxy.soundfinder.R$id: int vBarDistance
+de.uvwxy.soundfinder.R$id: int vBarErrorLeft
+de.uvwxy.soundfinder.R$id: int vBarErrorRight
+de.uvwxy.soundfinder.R$layout: int activity_soundfinder
+de.uvwxy.soundfinder.R$layout: int cardpager
+de.uvwxy.soundfinder.R$layout: int fragment_about
+de.uvwxy.soundfinder.R$raw: int sound_beep
+de.uvwxy.soundfinder.R$raw: int sound_destination
+de.uvwxy.soundfinder.R$raw: int sound_error
+de.uvwxy.soundfinder.R$raw: int sound_noise_static
+de.uvwxy.soundfinder.R$string: int about_me
+de.uvwxy.soundfinder.R$string: int about_this_app
+de.uvwxy.soundfinder.R$string: int about_uvwxy
+de.uvwxy.soundfinder.R$string: int app_name
+de.uvwxy.soundfinder.R$string: int contact_
+de.uvwxy.soundfinder.R$string: int license_explanation
+de.uvwxy.soundfinder.R$string: int lorem
+de.uvwxy.soundfinder.R$string: int open_source_licenses
+de.uvwxy.soundfinder.R$string: int please_rate_this_app_if_you_like_it_
+de.uvwxy.soundfinder.R$style: int AppBaseTheme
+de.uvwxy.soundfinder.R$style: int AppTheme
+de.uvwxy.soundfinder.R$style: int CardBodyLL
+de.uvwxy.soundfinder.R$style: int CardHR
+de.uvwxy.soundfinder.R$style: int CardRootLL
+de.uvwxy.soundfinder.R$style: int CardRootSV
+de.uvwxy.soundfinder.R$style: int CardText
+de.uvwxy.soundfinder.R$style: int CardTextLarge
+de.uvwxy.soundfinder.R$style: int CardTextLargeRight
+de.uvwxy.soundfinder.R$style: int CardTextNormal
+de.uvwxy.soundfinder.R$style: int CardTitle
+de.uvwxy.soundfinder.SoundFinder
+de.uvwxy.soundfinder.SoundFinder: SoundFinder()
+de.uvwxy.units.Unit: de.uvwxy.units.Unit[] values()
+de.uvwxy.units.Unit: de.uvwxy.units.Unit valueOf(java.lang.String)
+de.uvwxy.units.UnitPrefix: de.uvwxy.units.UnitPrefix[] values()
+de.uvwxy.units.UnitPrefix: de.uvwxy.units.UnitPrefix valueOf(java.lang.String)
+de.uvwxy.whereami.ActivityMain
+de.uvwxy.whereami.ActivityMain: ActivityMain()
+de.uvwxy.whereami.R$attr: int adSize
+de.uvwxy.whereami.R$attr: int adSizes
+de.uvwxy.whereami.R$attr: int adUnitId
+de.uvwxy.whereami.R$attr: int cameraBearing
+de.uvwxy.whereami.R$attr: int cameraTargetLat
+de.uvwxy.whereami.R$attr: int cameraTargetLng
+de.uvwxy.whereami.R$attr: int cameraTilt
+de.uvwxy.whereami.R$attr: int cameraZoom
+de.uvwxy.whereami.R$attr: int mapType
+de.uvwxy.whereami.R$attr: int uiCompass
+de.uvwxy.whereami.R$attr: int uiRotateGestures
+de.uvwxy.whereami.R$attr: int uiScrollGestures
+de.uvwxy.whereami.R$attr: int uiTiltGestures
+de.uvwxy.whereami.R$attr: int uiZoomControls
+de.uvwxy.whereami.R$attr: int uiZoomGestures
+de.uvwxy.whereami.R$attr: int useViewLifecycle
+de.uvwxy.whereami.R$attr: int zOrderOnTop
+de.uvwxy.whereami.R$color: int card_border
+de.uvwxy.whereami.R$color: int card_grid_text
+de.uvwxy.whereami.R$color: int card_light_text
+de.uvwxy.whereami.R$color: int card_separator
+de.uvwxy.whereami.R$color: int card_text
+de.uvwxy.whereami.R$color: int card_title_text
+de.uvwxy.whereami.R$color: int common_action_bar_splitter
+de.uvwxy.whereami.R$color: int common_signin_btn_dark_text_default
+de.uvwxy.whereami.R$color: int common_signin_btn_dark_text_disabled
+de.uvwxy.whereami.R$color: int common_signin_btn_dark_text_focused
+de.uvwxy.whereami.R$color: int common_signin_btn_dark_text_pressed
+de.uvwxy.whereami.R$color: int common_signin_btn_default_background
+de.uvwxy.whereami.R$color: int common_signin_btn_light_text_default
+de.uvwxy.whereami.R$color: int common_signin_btn_light_text_disabled
+de.uvwxy.whereami.R$color: int common_signin_btn_light_text_focused
+de.uvwxy.whereami.R$color: int common_signin_btn_light_text_pressed
+de.uvwxy.whereami.R$color: int common_signin_btn_text_dark
+de.uvwxy.whereami.R$color: int common_signin_btn_text_light
+de.uvwxy.whereami.R$color: int stroke
+de.uvwxy.whereami.R$color: int text_light
+de.uvwxy.whereami.R$dimen: int activity_horizontal_margin
+de.uvwxy.whereami.R$dimen: int activity_vertical_margin
+de.uvwxy.whereami.R$dimen: int card_large_text
+de.uvwxy.whereami.R$dimen: int card_small_text
+de.uvwxy.whereami.R$drawable: int card
+de.uvwxy.whereami.R$drawable: int card_no_shadow
+de.uvwxy.whereami.R$drawable: int common_signin_btn_icon_dark
+de.uvwxy.whereami.R$drawable: int common_signin_btn_icon_disabled_dark
+de.uvwxy.whereami.R$drawable: int common_signin_btn_icon_disabled_focus_dark
+de.uvwxy.whereami.R$drawable: int common_signin_btn_icon_disabled_focus_light
+de.uvwxy.whereami.R$drawable: int common_signin_btn_icon_disabled_light
+de.uvwxy.whereami.R$drawable: int common_signin_btn_icon_focus_dark
+de.uvwxy.whereami.R$drawable: int common_signin_btn_icon_focus_light
+de.uvwxy.whereami.R$drawable: int common_signin_btn_icon_light
+de.uvwxy.whereami.R$drawable: int common_signin_btn_icon_normal_dark
+de.uvwxy.whereami.R$drawable: int common_signin_btn_icon_normal_light
+de.uvwxy.whereami.R$drawable: int common_signin_btn_icon_pressed_dark
+de.uvwxy.whereami.R$drawable: int common_signin_btn_icon_pressed_light
+de.uvwxy.whereami.R$drawable: int common_signin_btn_text_dark
+de.uvwxy.whereami.R$drawable: int common_signin_btn_text_disabled_dark
+de.uvwxy.whereami.R$drawable: int common_signin_btn_text_disabled_focus_dark
+de.uvwxy.whereami.R$drawable: int common_signin_btn_text_disabled_focus_light
+de.uvwxy.whereami.R$drawable: int common_signin_btn_text_disabled_light
+de.uvwxy.whereami.R$drawable: int common_signin_btn_text_focus_dark
+de.uvwxy.whereami.R$drawable: int common_signin_btn_text_focus_light
+de.uvwxy.whereami.R$drawable: int common_signin_btn_text_light
+de.uvwxy.whereami.R$drawable: int common_signin_btn_text_normal_dark
+de.uvwxy.whereami.R$drawable: int common_signin_btn_text_normal_light
+de.uvwxy.whereami.R$drawable: int common_signin_btn_text_pressed_dark
+de.uvwxy.whereami.R$drawable: int common_signin_btn_text_pressed_light
+de.uvwxy.whereami.R$drawable: int ic_launcher
+de.uvwxy.whereami.R$drawable: int ic_mail
+de.uvwxy.whereami.R$drawable: int ic_plusone_medium_off_client
+de.uvwxy.whereami.R$drawable: int ic_plusone_small_off_client
+de.uvwxy.whereami.R$drawable: int ic_plusone_standard_off_client
+de.uvwxy.whereami.R$drawable: int ic_plusone_tall_off_client
+de.uvwxy.whereami.R$drawable: int ic_www
+de.uvwxy.whereami.R$drawable: int logo_uvwxy
+de.uvwxy.whereami.R$id: int action_settings
+de.uvwxy.whereami.R$id: int btnSave
+de.uvwxy.whereami.R$id: int btnSend
+de.uvwxy.whereami.R$id: int cbStartUpdates
+de.uvwxy.whereami.R$id: int cbStopUpdates
+de.uvwxy.whereami.R$id: int cbUseGPS
+de.uvwxy.whereami.R$id: int cbUseNetwork
+de.uvwxy.whereami.R$id: int hBar0
+de.uvwxy.whereami.R$id: int hBar1
+de.uvwxy.whereami.R$id: int hybrid
+de.uvwxy.whereami.R$id: int ivAppIcon
+de.uvwxy.whereami.R$id: int ivLogo
+de.uvwxy.whereami.R$id: int ivMailLink
+de.uvwxy.whereami.R$id: int ivWwwLink
+de.uvwxy.whereami.R$id: int llLicenses
+de.uvwxy.whereami.R$id: int llSavedLocationsHeader
+de.uvwxy.whereami.R$id: int lvSavedLocations
+de.uvwxy.whereami.R$id: int map
+de.uvwxy.whereami.R$id: int none
+de.uvwxy.whereami.R$id: int normal
+de.uvwxy.whereami.R$id: int pager
+de.uvwxy.whereami.R$id: int pager_title_strip
+de.uvwxy.whereami.R$id: int rbAngleDegrees
+de.uvwxy.whereami.R$id: int rbAngleDegreesMinutesSeconds
+de.uvwxy.whereami.R$id: int rbFoot
+de.uvwxy.whereami.R$id: int rbKMH
+de.uvwxy.whereami.R$id: int rbKilometres
+de.uvwxy.whereami.R$id: int rbMPH
+de.uvwxy.whereami.R$id: int rbMetres
+de.uvwxy.whereami.R$id: int rbMetresPerSecond
+de.uvwxy.whereami.R$id: int rbMiles
+de.uvwxy.whereami.R$id: int rbYards
+de.uvwxy.whereami.R$id: int rbgAngles
+de.uvwxy.whereami.R$id: int rbgLengths
+de.uvwxy.whereami.R$id: int rbgVelocities
+de.uvwxy.whereami.R$id: int rlBottom
+de.uvwxy.whereami.R$id: int satellite
+de.uvwxy.whereami.R$id: int sbDist
+de.uvwxy.whereami.R$id: int sbTest
+de.uvwxy.whereami.R$id: int scrollView1
+de.uvwxy.whereami.R$id: int swUpdates
+de.uvwxy.whereami.R$id: int tbtnBearing
+de.uvwxy.whereami.R$id: int terrain
+de.uvwxy.whereami.R$id: int textView1
+de.uvwxy.whereami.R$id: int textView2
+de.uvwxy.whereami.R$id: int textView3
+de.uvwxy.whereami.R$id: int textView4
+de.uvwxy.whereami.R$id: int textView5
+de.uvwxy.whereami.R$id: int tvAboutApp
+de.uvwxy.whereami.R$id: int tvAcc
+de.uvwxy.whereami.R$id: int tvAlt
+de.uvwxy.whereami.R$id: int tvBearing
+de.uvwxy.whereami.R$id: int tvInfo
+de.uvwxy.whereami.R$id: int tvItemDistanceValue
+de.uvwxy.whereami.R$id: int tvItemTitle
+de.uvwxy.whereami.R$id: int tvLat
+de.uvwxy.whereami.R$id: int tvLicenseExplanation
+de.uvwxy.whereami.R$id: int tvLicenses
+de.uvwxy.whereami.R$id: int tvLon
+de.uvwxy.whereami.R$id: int tvMailLink
+de.uvwxy.whereami.R$id: int tvMarketLink
+de.uvwxy.whereami.R$id: int tvProvider
+de.uvwxy.whereami.R$id: int tvSavedLocationCount
+de.uvwxy.whereami.R$id: int tvSpeed
+de.uvwxy.whereami.R$id: int tvTitle
+de.uvwxy.whereami.R$id: int vBar0
+de.uvwxy.whereami.R$id: int vBar1
+de.uvwxy.whereami.R$id: int vBarCorrectLeft
+de.uvwxy.whereami.R$id: int vBarCorrectRight
+de.uvwxy.whereami.R$id: int vBarDistance
+de.uvwxy.whereami.R$id: int vBarErrorLeft
+de.uvwxy.whereami.R$id: int vBarErrorRight
+de.uvwxy.whereami.R$integer: int google_play_services_version
+de.uvwxy.whereami.R$layout: int activity_soundfinder
+de.uvwxy.whereami.R$layout: int cardpager
+de.uvwxy.whereami.R$layout: int fragment_about
+de.uvwxy.whereami.R$layout: int fragment_current_location
+de.uvwxy.whereami.R$layout: int fragment_map
+de.uvwxy.whereami.R$layout: int fragment_saved_locations
+de.uvwxy.whereami.R$layout: int fragment_settings
+de.uvwxy.whereami.R$layout: int list_item_location
+de.uvwxy.whereami.R$menu: int activity_main
+de.uvwxy.whereami.R$raw: int sound_beep
+de.uvwxy.whereami.R$raw: int sound_destination
+de.uvwxy.whereami.R$raw: int sound_error
+de.uvwxy.whereami.R$raw: int sound_noise_static
+de.uvwxy.whereami.R$string: int BTN_SAVE
+de.uvwxy.whereami.R$string: int BTN_SHARE
+de.uvwxy.whereami.R$string: int LBL_ACCURACY
+de.uvwxy.whereami.R$string: int LBL_ALTITUDE
+de.uvwxy.whereami.R$string: int LBL_BEARING
+de.uvwxy.whereami.R$string: int LBL_LATITUDE
+de.uvwxy.whereami.R$string: int LBL_LONGITUDE
+de.uvwxy.whereami.R$string: int LBL_PROVIDER
+de.uvwxy.whereami.R$string: int LBL_SPEED
+de.uvwxy.whereami.R$string: int LBL_UPDATES
+de.uvwxy.whereami.R$string: int MENU_AUDIO_NAV
+de.uvwxy.whereami.R$string: int MENU_CANCEL
+de.uvwxy.whereami.R$string: int MENU_DELETE
+de.uvwxy.whereami.R$string: int MENU_FAVORITE
+de.uvwxy.whereami.R$string: int MENU_RENAME
+de.uvwxy.whereami.R$string: int MENU_SHARE
+de.uvwxy.whereami.R$string: int MENU_SHOW_ON_MAP
+de.uvwxy.whereami.R$string: int about_me
+de.uvwxy.whereami.R$string: int about_this_app
+de.uvwxy.whereami.R$string: int about_uvwxy
+de.uvwxy.whereami.R$string: int action_settings
+de.uvwxy.whereami.R$string: int angles
+de.uvwxy.whereami.R$string: int app_name
+de.uvwxy.whereami.R$string: int auth_client_needs_enabling_title
+de.uvwxy.whereami.R$string: int auth_client_needs_installation_title
+de.uvwxy.whereami.R$string: int auth_client_needs_update_title
+de.uvwxy.whereami.R$string: int auth_client_play_services_err_notification_msg
+de.uvwxy.whereami.R$string: int auth_client_requested_by_msg
+de.uvwxy.whereami.R$string: int auth_client_using_bad_version_title
+de.uvwxy.whereami.R$string: int backgroundupdates
+de.uvwxy.whereami.R$string: int common_google_play_services_enable_button
+de.uvwxy.whereami.R$string: int common_google_play_services_enable_text
+de.uvwxy.whereami.R$string: int common_google_play_services_enable_title
+de.uvwxy.whereami.R$string: int common_google_play_services_install_button
+de.uvwxy.whereami.R$string: int common_google_play_services_install_text_phone
+de.uvwxy.whereami.R$string: int common_google_play_services_install_text_tablet
+de.uvwxy.whereami.R$string: int common_google_play_services_install_title
+de.uvwxy.whereami.R$string: int common_google_play_services_invalid_account_text
+de.uvwxy.whereami.R$string: int common_google_play_services_invalid_account_title
+de.uvwxy.whereami.R$string: int common_google_play_services_network_error_text
+de.uvwxy.whereami.R$string: int common_google_play_services_network_error_title
+de.uvwxy.whereami.R$string: int common_google_play_services_unknown_issue
+de.uvwxy.whereami.R$string: int common_google_play_services_unsupported_date_text
+de.uvwxy.whereami.R$string: int common_google_play_services_unsupported_text
+de.uvwxy.whereami.R$string: int common_google_play_services_unsupported_title
+de.uvwxy.whereami.R$string: int common_google_play_services_update_button
+de.uvwxy.whereami.R$string: int common_google_play_services_update_text
+de.uvwxy.whereami.R$string: int common_google_play_services_update_title
+de.uvwxy.whereami.R$string: int common_signin_button_text
+de.uvwxy.whereami.R$string: int common_signin_button_text_long
+de.uvwxy.whereami.R$string: int contact_
+de.uvwxy.whereami.R$string: int distance
+de.uvwxy.whereami.R$string: int distance_value
+de.uvwxy.whereami.R$string: int distances
+de.uvwxy.whereami.R$string: int empty_count
+de.uvwxy.whereami.R$string: int example_degree
+de.uvwxy.whereami.R$string: int example_dms
+de.uvwxy.whereami.R$string: int googlemaps
+de.uvwxy.whereami.R$string: int length_of_shared_message
+de.uvwxy.whereami.R$string: int license_explanation
+de.uvwxy.whereami.R$string: int location_count
+de.uvwxy.whereami.R$string: int lorem
+de.uvwxy.whereami.R$string: int onstartupdates
+de.uvwxy.whereami.R$string: int open_source_licenses
+de.uvwxy.whereami.R$string: int openstreetmap
+de.uvwxy.whereami.R$string: int please_rate_this_app_if_you_like_it_
+de.uvwxy.whereami.R$string: int select_a_provider
+de.uvwxy.whereami.R$string: int select_share_app
+de.uvwxy.whereami.R$string: int selectunitbelow
+de.uvwxy.whereami.R$string: int settings_location
+de.uvwxy.whereami.R$string: int settingsapprestart
+de.uvwxy.whereami.R$string: int settingusegps
+de.uvwxy.whereami.R$string: int settingusenetwork
+de.uvwxy.whereami.R$string: int shared_location
+de.uvwxy.whereami.R$string: int title
+de.uvwxy.whereami.R$string: int title_section1
+de.uvwxy.whereami.R$string: int title_section2
+de.uvwxy.whereami.R$string: int title_section3
+de.uvwxy.whereami.R$string: int title_section4
+de.uvwxy.whereami.R$string: int title_section5
+de.uvwxy.whereami.R$string: int title_section6
+de.uvwxy.whereami.R$string: int title_section7
+de.uvwxy.whereami.R$string: int uni_mpers
+de.uvwxy.whereami.R$string: int unit_foot
+de.uvwxy.whereami.R$string: int unit_km
+de.uvwxy.whereami.R$string: int unit_kmh
+de.uvwxy.whereami.R$string: int unit_metres
+de.uvwxy.whereami.R$string: int unit_miles
+de.uvwxy.whereami.R$string: int unit_mph
+de.uvwxy.whereami.R$string: int unit_yards
+de.uvwxy.whereami.R$string: int velocities
+de.uvwxy.whereami.R$style: int AppBaseTheme
+de.uvwxy.whereami.R$style: int AppTheme
+de.uvwxy.whereami.R$style: int CardBodyLL
+de.uvwxy.whereami.R$style: int CardHR
+de.uvwxy.whereami.R$style: int CardRootLL
+de.uvwxy.whereami.R$style: int CardRootSV
+de.uvwxy.whereami.R$style: int CardText
+de.uvwxy.whereami.R$style: int CardTextLarge
+de.uvwxy.whereami.R$style: int CardTextLargeRight
+de.uvwxy.whereami.R$style: int CardTextNormal
+de.uvwxy.whereami.R$style: int CardTitle
+de.uvwxy.whereami.R$styleable: int[] AdsAttrs
+de.uvwxy.whereami.R$styleable: int AdsAttrs_adSize
+de.uvwxy.whereami.R$styleable: int AdsAttrs_adSizes
+de.uvwxy.whereami.R$styleable: int AdsAttrs_adUnitId
+de.uvwxy.whereami.R$styleable: int[] MapAttrs
+de.uvwxy.whereami.R$styleable: int MapAttrs_cameraBearing
+de.uvwxy.whereami.R$styleable: int MapAttrs_cameraTargetLat
+de.uvwxy.whereami.R$styleable: int MapAttrs_cameraTargetLng
+de.uvwxy.whereami.R$styleable: int MapAttrs_cameraTilt
+de.uvwxy.whereami.R$styleable: int MapAttrs_cameraZoom
+de.uvwxy.whereami.R$styleable: int MapAttrs_mapType
+de.uvwxy.whereami.R$styleable: int MapAttrs_uiCompass
+de.uvwxy.whereami.R$styleable: int MapAttrs_uiRotateGestures
+de.uvwxy.whereami.R$styleable: int MapAttrs_uiScrollGestures
+de.uvwxy.whereami.R$styleable: int MapAttrs_uiTiltGestures
+de.uvwxy.whereami.R$styleable: int MapAttrs_uiZoomControls
+de.uvwxy.whereami.R$styleable: int MapAttrs_uiZoomGestures
+de.uvwxy.whereami.R$styleable: int MapAttrs_useViewLifecycle
+de.uvwxy.whereami.R$styleable: int MapAttrs_zOrderOnTop

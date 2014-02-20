@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.location.Location;
 import de.uvwxy.helper.IntentTools;
 import de.uvwxy.helper.IntentTools.ReturnStringCallback;
+import de.uvwxy.units.Unit;
 
 public class ActionShare {
 	public static void share(final Activity act, final Location loc) {
@@ -21,8 +22,15 @@ public class ActionShare {
 				} else if (act.getString(R.string.openstreetmap).equals(s)) {
 					type = IntentTools.TYPE_OSM;
 				}
+				Unit lat = Unit.DEGREES.setValue(loc.getLatitude()).to(ActivityMain.mUnitA);
+				Unit lon = Unit.DEGREES.setValue(loc.getLongitude()).to(ActivityMain.mUnitA);
+				Unit bearing = Unit.DEGREES.setValue(loc.getBearing());
+				Unit alt = Unit.METRE.setValue(loc.getAltitude()).to(ActivityMain.mUnitL);
+				Unit acc = Unit.METRE.setValue(loc.getAccuracy()).to(ActivityMain.mUnitL);
+				Unit speed = Unit.METRES_PER_SECOND.setValue(loc.getSpeed()).to(ActivityMain.mUnitV);
 
-				IntentTools.shareLocation(act, loc, type, act.getString(R.string.shared_location), //
+				IntentTools.shareLocation(act, lat, lon, alt, bearing, acc, speed, type,
+						act.getString(R.string.shared_location), //
 						act.getString(R.string.LBL_LATITUDE), //
 						act.getString(R.string.LBL_LONGITUDE), //
 						act.getString(R.string.LBL_ALTITUDE), //
