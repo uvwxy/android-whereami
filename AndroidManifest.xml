@@ -43,9 +43,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="de.uvwxy.soundfinder.SoundFinder" >
+        <activity android:name="de.uvwxy.soundfinder.SoundFinder" android:theme="@android:style/Theme.Light.NoTitleBar">
         </activity>
-        <activity android:name="de.uvwxy.cardpager.ActivityLicenseDisplay" >
+        <activity android:name="de.uvwxy.cardpager.ActivityLicenseDisplay" android:theme="@android:style/Theme.Light.NoTitleBar">
         </activity>
     </application>
 
