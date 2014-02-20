@@ -70,9 +70,9 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 				}
 			});
 			alertDialog.setNegativeButton(ctx.getString(R.string.MENU_CANCEL), null);
-			alertDialog.setMessage("Modify the name below:");
+			alertDialog.setMessage(R.string.modify_the_name_below_);
 			alertDialog.setView(et);
-			alertDialog.setTitle("Rename Location");
+			alertDialog.setTitle(R.string.rename_location);
 			alertDialog.show();
 
 		} else if (s.equals(ctx.getString(R.string.MENU_DELETE))) {
@@ -90,8 +90,8 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 			});
 
 			alertDialog.setNegativeButton(ctx.getString(R.string.MENU_CANCEL), null);
-			alertDialog.setMessage("Do you really want to delete the location \""
-					+ locationList.get(position).getName() + "\"?");
+			alertDialog.setMessage(String.format(getContext().getString(R.string.do_you_really_want_to_delete_the_location_s_),
+					locationList.get(position).getName()));
 			alertDialog.setTitle("Delete");
 			alertDialog.show();
 		}
@@ -117,7 +117,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 					}
 
 				};
-				IntentTools.userSelectString(ActivityMain.dhis, "Select Action:",
+				IntentTools.userSelectString(ActivityMain.dhis, getContext().getString(R.string.select_action_),
 						new String[] { ctx.getString(R.string.MENU_FAVORITE), //
 								ctx.getString(R.string.MENU_SHARE), //
 								ctx.getString(R.string.MENU_RENAME), //
@@ -139,7 +139,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 			String s = String.format("%s", u);
 			tvItemDistanceValue.setText(s);
 		} else {
-			tvItemDistanceValue.setText("[no location fix yet]");
+			tvItemDistanceValue.setText(R.string._no_location_fix_yet_);
 		}
 
 		return rootView;

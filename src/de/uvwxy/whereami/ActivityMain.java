@@ -105,8 +105,8 @@ public class ActivityMain extends ActivityCardPager {
 			x.setTitle(getApplication().getText(R.string.app_name).toString());
 			x.setPackageName("de.uvwxy.whereami");
 			x.setMarketUrl("market://search?q=de.uvwxy.whereami&c=apps");
-			x.setAboutApp("This app is a simple helper tool to create and manage private points of interest (POI).");
-			x.setLicenses(new String[] { "square_otto", "protobuf", "guava" });
+			x.setAboutApp(getString(R.string.app_description));
+			x.setLicenses(new String[] { "square_otto", "protobuf" });
 			return x;
 		}
 
@@ -214,22 +214,22 @@ public class ActivityMain extends ActivityCardPager {
 		pref = null;
 
 		boolean showAlert = true;
-		String locationProviderStateMessage = "Waiting for fix";
+		String locationProviderStateMessage = getString(R.string.waiting_for_fix);
 		if ((!provEnabledGPS && setEnabledGPS) && (!provEnabledWiFi && setEnabledWiFi)) {
-			locationProviderStateMessage = "GPS+Network location provider is not enabled!\n\nLocation updates will not work as specified in the settings.";
+			locationProviderStateMessage = getString(R.string.app_load_warn_no_gps_no_wifi);
 		} else if (!provEnabledGPS && setEnabledGPS) {
-			locationProviderStateMessage = "GPS location provider is not enabled!\n\nLocation updates will not work as specified in the settings.";
+			locationProviderStateMessage = getString(R.string.app_load_warn_no_gps);
 		} else if (!provEnabledWiFi && setEnabledWiFi) {
-			locationProviderStateMessage = "Network location provider not enabled!\n\nLocation updates will not work as specified in the settings.";
+			locationProviderStateMessage = getString(R.string.app_load_warn_no_wifi);
 		} else {
 			showAlert = false;
 		}
 
 		if (showAlert) {
 			AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-			alertDialog.setNegativeButton("OK", null);
+			alertDialog.setNegativeButton(R.string.ok, null);
 			alertDialog.setMessage(locationProviderStateMessage);
-			alertDialog.setTitle("Enable Provider");
+			alertDialog.setTitle(R.string.enable_provider);
 			alertDialog.show();
 		}
 	}

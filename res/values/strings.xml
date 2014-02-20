@@ -44,7 +44,7 @@
   <string name="unit_yards">Yards</string>
   <string name="velocities">Velocities</string>
   <string name="uni_mpers">m/s</string>
-  <string name="unit_kmh">kmh</string>
+  <string name="unit_kmh">km/h</string>
   <string name="unit_mph">mph</string>
   <string name="angles">Angles</string>
   <string name="example_degree">0.0000 °</string>
@@ -57,4 +57,22 @@
   <string name="shared_location">Shared Location</string>
   <string name="googlemaps">Google Maps</string>
   <string name="openstreetmap">OpenStreetMap</string>
+  <string name="app_description">This app is a simple helper tool to create and manage private points of interest (POI).</string>
+  <string name="app_load_warn_no_gps_no_wifi">GPS+Network location provider is not enabled!\n\nLocation updates will not work as specified in the settings.</string>
+  <string name="app_load_warn_no_gps">GPS location provider is not enabled!\n\nLocation updates will not work as specified in the settings.</string>
+  <string name="app_load_warn_no_wifi">Network location provider not enabled!\n\nLocation updates will not work as specified in the settings.</string>
+  <string name="waiting_for_fix">Waiting for fix</string>
+  <string name="enable_provider">Enable Provider</string>
+  <string name="ok">OK</string>
+  <string name="modify_the_name_below_">Modify the name below:</string>
+  <string name="rename_location">Rename Location</string>
+  <string name="do_you_really_want_to_delete_the_location_s_">Do you really want to delete the location \"%s\"?</string>
+  <string name="select_action_">Select Action:</string>
+  <string name="_no_location_fix_yet_">[no location fix yet]</string>
+  <string name="no_location_yet">No location yet</string>
+  <string name="failed_to_add_entry_to_db">Failed to add entry to db</string>
+  <string name="added_entry_to_db">Added entry to db</string>
+  <string name="cancel">Cancel</string>
+  <string name="please_provide_a_name_for_this_location_">Please provide a name for this location:</string>
+  <string name="save_location">Save location</string>
 </resources>

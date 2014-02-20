@@ -92,7 +92,7 @@ public class FragmentCurrentLocation extends Fragment {
 			public void onClick(View v) {
 				final Location loc = ActivityMain.mLastLocation;
 				if (loc == null) {
-					Toast.makeText(getActivity(), "No location yet", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getActivity(), R.string.no_location_yet, Toast.LENGTH_SHORT).show();
 					return;
 				}
 
@@ -113,9 +113,9 @@ public class FragmentCurrentLocation extends Fragment {
 						long ret = ActivityMain.mData.addEntry(Converter.createLoc(etName.getText().toString(), loc));
 
 						if (ret == -1) {
-							msg = "Failed to add entry to db";
+							msg = getActivity().getString(R.string.failed_to_add_entry_to_db);
 						} else {
-							msg = "Added entry to db";
+							msg = getActivity().getString(R.string.added_entry_to_db);
 							// TODO: listupdates!
 							ActivityMain.bus.post(new BusUpdateList());
 							//ActivityMain.data.getAllEntries(ActivityMain.listAdapter.getList(), );
@@ -125,9 +125,9 @@ public class FragmentCurrentLocation extends Fragment {
 					}
 				});
 				alertDialog.setView(etName);
-				alertDialog.setNegativeButton("Cancel", null);
-				alertDialog.setMessage("Please provide a name for this location:");
-				alertDialog.setTitle("Save location");
+				alertDialog.setNegativeButton(R.string.cancel, null);
+				alertDialog.setMessage(R.string.please_provide_a_name_for_this_location_);
+				alertDialog.setTitle(R.string.save_location);
 				alertDialog.show();
 			}
 		});
@@ -138,7 +138,7 @@ public class FragmentCurrentLocation extends Fragment {
 			public void onClick(View v) {
 				final Location loc = ActivityMain.mLastLocation;
 				if (loc == null) {
-					Toast.makeText(getActivity(), "No location yet", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getActivity(), R.string.no_location_yet, Toast.LENGTH_SHORT).show();
 					return;
 				}
 
