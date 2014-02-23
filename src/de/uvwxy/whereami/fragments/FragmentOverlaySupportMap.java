@@ -62,7 +62,7 @@ public class FragmentOverlaySupportMap extends SupportMapFragment {
 		ArrayList<Location> list = new ArrayList<Location>();
 		boolean all = false;
 		boolean fav = favorite;
-		ActivityMain.mData.getAllEntries(list, all, fav);
+		ActivityMain.dhis.mData.getAllEntries(list, all, fav);
 
 		for (Location l : list) {
 			MarkerOptions options = new MarkerOptions();

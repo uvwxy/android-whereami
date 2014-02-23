@@ -36,6 +36,8 @@ public class FragmentCurrentLocation extends Fragment {
 	public ToggleButton swUpdates = null;
 	private Button btnSave = null;
 	private Button btnSend = null;
+	
+	private ActivityMain dhis;
 
 	private void initGUI(View rootView) {
 		scrollView1 = (ScrollView) rootView.findViewById(R.id.scrollView1);
@@ -54,7 +56,8 @@ public class FragmentCurrentLocation extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_current_location, container, false);
-
+		dhis = ActivityMain.dhis;
+		
 		initGUI(rootView);
 
 		swUpdates.setChecked(ActivityMain.mLocationUpdatesEnabled);
@@ -100,19 +103,17 @@ public class FragmentCurrentLocation extends Fragment {
 
 				AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
 
-				alertDialog.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+				alertDialog.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						String msg = null;
-						long ret = ActivityMain.mData.addEntry(Converter.createLoc(etName.getText().toString(), loc));
+						long ret = dhis.mData.addEntry(Converter.createLoc(etName.getText().toString(), loc));
 
 						if (ret == -1) {
 							msg = getActivity().getString(R.string.failed_to_add_entry_to_db);
 						} else {
 							msg = getActivity().getString(R.string.added_entry_to_db);
-							// TODO: listupdates! ActivityMain.bus.post(new BusUpdateList());
-							//ActivityMain.data.getAllEntries(ActivityMain.listAdapter.getList(), );
-							//ActivityMain.listAdapter.notifyDataSetChanged();
+							dhis.updateLists();
 						}
 						Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
 					}

@@ -31,9 +31,11 @@ public class ListItemLocationAdapter extends ArrayAdapter<Location> {
 	private ArrayList<Location> locationList;
 
 	private Context ctx;
-
+	private ActivityMain dhis;
+	
 	public ListItemLocationAdapter(Context context, List<Location> list) {
 		super(context, R.layout.list_item_location, list);
+		this.dhis = ActivityMain.dhis;
 		this.ctx = context;
 		this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.locationList = (ArrayList<Location>) list;
@@ -51,14 +53,14 @@ public class ListItemLocationAdapter extends ArrayAdapter<Location> {
 		}
 
 		if (s.equals(ctx.getString(R.string.MENU_FAVORITE))) {
-			ActivityMain.mData.toggleFavorite(locationList.get(position));
-			//TODO: ActivityMain.bus.post(new BusUpdateList());
+			dhis.mData.toggleFavorite(locationList.get(position));
+			dhis.updateLists();
 
 		} else if (s.equals(ctx.getString(R.string.MENU_SHARE))) {
 			ActionShare.share(ActivityMain.act, loc);
 
 		} else if (s.equals(ctx.getString(R.string.MENU_SHOW_ON_MAP))) {
-			ActivityMain.dhis.moveToTab(3);
+			dhis.moveToTab(3);
 			backgroundLocationReload(loc);
 		} else if (s.equals(ctx.getString(R.string.MENU_AUDIO_NAV))) {
 			android.location.Location l = ActivityMain.mLastLocation;
@@ -77,8 +79,8 @@ public class ListItemLocationAdapter extends ArrayAdapter<Location> {
 			alertDialog.setPositiveButton("Rename", new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					ActivityMain.mData.rename(loc, et.getText().toString());
-					// TODO: ActivityMain.bus.post(new BusUpdateList());
+					dhis.mData.rename(loc, et.getText().toString());
+					dhis.updateLists();
 				}
 			});
 			alertDialog.setNegativeButton(ctx.getString(R.string.MENU_CANCEL), null);
@@ -95,9 +97,9 @@ public class ListItemLocationAdapter extends ArrayAdapter<Location> {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 
-					ActivityMain.mData.deleteEntry(locationList.get(position));
+					dhis.mData.deleteEntry(locationList.get(position));
 					locationList.remove(position);
-					// TODO: ActivityMain.bus.post(new BusUpdateList());
+					dhis.updateLists();
 				}
 			});
 

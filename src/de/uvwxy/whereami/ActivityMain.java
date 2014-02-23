@@ -67,7 +67,7 @@ public class ActivityMain extends ActivityCardPager {
 	public static Unit mUnitA = null;
 	public static int mUnitLBreak = 1500;
 
-	public static DBLocationConnection mData = null;
+	public DBLocationConnection mData = null;
 	public static de.uvwxy.whereami.LocationManager mLoc = null;
 
 	private static Context ctx;
@@ -303,6 +303,16 @@ public class ActivityMain extends ActivityCardPager {
 			break;
 		default:
 			mUnitA = Unit.DEGREES.setPrecision(6);
+		}
+	}
+
+	public void updateLists() {
+		if (fSavedLocations != null) {
+			fSavedLocations.updateList();
+		}
+
+		if (fSavedLocationsFav != null) {
+			fSavedLocationsFav.updateList();
 		}
 	}
 

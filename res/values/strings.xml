@@ -75,5 +75,6 @@
   <string name="cancel">Cancel</string>
   <string name="please_provide_a_name_for_this_location_">Please provide a name for this location:</string>
   <string name="save_location">Save location</string>
-  <string name="_no_fix_">[no fix]</string>
+  <string name="_no_fix_">[no fix]</string><string name="save">Save</string>
+
 </resources>

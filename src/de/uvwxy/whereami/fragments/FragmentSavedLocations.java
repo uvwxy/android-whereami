@@ -22,6 +22,8 @@ public class FragmentSavedLocations extends Fragment {
 	private ListItemLocationAdapter listAdapter = null;
 	public boolean isFav = false;
 
+	private ActivityMain dhis;
+	
 	public void setFav(boolean isFav) {
 		this.isFav = isFav;
 	}
@@ -35,8 +37,9 @@ public class FragmentSavedLocations extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_saved_locations, container, false);
 		initGUI(rootView);
-
-		ActivityMain.mData.getAllEntries(list, !isFav, isFav);
+		dhis = ActivityMain.dhis;
+		
+		dhis.mData.getAllEntries(list, !isFav, isFav);
 		listAdapter = new ListItemLocationAdapter(getActivity(), list);
 
 		tvSavedLocationCount.setText("" + list.size());
@@ -45,7 +48,7 @@ public class FragmentSavedLocations extends Fragment {
 	}
 
 	public void updateList() {
-		ActivityMain.mData.getAllEntries(list, !isFav, isFav);
+		dhis.mData.getAllEntries(list, !isFav, isFav);
 		tvSavedLocationCount.setText("" + list.size());
 		listAdapter.notifyDataSetChanged();
 	}
