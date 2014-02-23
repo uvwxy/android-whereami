@@ -3,9 +3,6 @@ package de.uvwxy.whereami;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.model.LatLng;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,21 +15,24 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.LatLng;
+
 import de.uvwxy.helper.IntentTools;
 import de.uvwxy.helper.IntentTools.ReturnStringCallback;
 import de.uvwxy.soundfinder.SoundFinder;
 import de.uvwxy.units.Unit;
+import de.uvwxy.whereami.db_location.Location;
 import de.uvwxy.whereami.fragments.FragmentOverlaySupportMap;
-import de.uvwxy.whereami.proto.Messages;
-import de.uvwxy.whereami.proto.Messages.Location;
 
-public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
+public class ListItemLocationAdapter extends ArrayAdapter<Location> {
 	private LayoutInflater inflater;
-	private ArrayList<Messages.Location> locationList;
+	private ArrayList<Location> locationList;
 
 	private Context ctx;
 
-	public ListItemLocationAdapter(Context context, List<Messages.Location> list) {
+	public ListItemLocationAdapter(Context context, List<Location> list) {
 		super(context, R.layout.list_item_location, list);
 		this.ctx = context;
 		this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -52,7 +52,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 
 		if (s.equals(ctx.getString(R.string.MENU_FAVORITE))) {
 			ActivityMain.mData.toggleFavorite(locationList.get(position));
-			ActivityMain.bus.post(new BusUpdateList());
+			//TODO: ActivityMain.bus.post(new BusUpdateList());
 
 		} else if (s.equals(ctx.getString(R.string.MENU_SHARE))) {
 			ActionShare.share(ActivityMain.act, loc);
@@ -78,7 +78,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					ActivityMain.mData.rename(loc, et.getText().toString());
-					ActivityMain.bus.post(new BusUpdateList());
+					// TODO: ActivityMain.bus.post(new BusUpdateList());
 				}
 			});
 			alertDialog.setNegativeButton(ctx.getString(R.string.MENU_CANCEL), null);
@@ -97,7 +97,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 
 					ActivityMain.mData.deleteEntry(locationList.get(position));
 					locationList.remove(position);
-					ActivityMain.bus.post(new BusUpdateList());
+					// TODO: ActivityMain.bus.post(new BusUpdateList());
 				}
 			});
 
@@ -110,7 +110,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 		}
 	}
 
-	public ArrayList<Messages.Location> getList() {
+	public ArrayList<Location> getList() {
 		return locationList;
 	}
 
@@ -144,7 +144,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 		TextView tvItemTitle = (TextView) rootView.findViewById(R.id.tvItemTitle);
 		TextView tvItemDistanceValue = (TextView) rootView.findViewById(R.id.tvItemDistanceValue);
 
-		Messages.Location item = locationList.get(position);
+		Location item = locationList.get(position);
 		tvItemTitle.setText("" + item.getName());
 		if (ActivityMain.mLastLocation != null) {
 			Unit u = Unit.METRE.setValue(LocationManager.getDistanceTo(item, ActivityMain.mLastLocation));
@@ -171,8 +171,8 @@ public class ListItemLocationAdapter extends ArrayAdapter<Messages.Location> {
 					e.printStackTrace();
 				}
 
-				if (ActivityMain.mMapFragment != null && ActivityMain.mMapFragment instanceof FragmentOverlaySupportMap) {
-					FragmentOverlaySupportMap m = (FragmentOverlaySupportMap) ActivityMain.mMapFragment;
+				if (ActivityMain.fMap != null && ActivityMain.fMap instanceof FragmentOverlaySupportMap) {
+					FragmentOverlaySupportMap m = (FragmentOverlaySupportMap) ActivityMain.fMap;
 					if (m.mMapView != null) {
 
 						m.mMapView.moveCamera(CameraUpdateFactory.newLatLngZoom(

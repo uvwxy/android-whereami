@@ -7,8 +7,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import de.uvwxy.whereami.proto.Messages;
-import de.uvwxy.whereami.proto.Messages.Location;
 
 public class DBLocationConnection {
 	private SQLiteDatabase db;
@@ -41,7 +39,7 @@ public class DBLocationConnection {
 		db.close();
 	}
 
-	public long addEntry(Messages.Location entry) {
+	public long addEntry(de.uvwxy.whereami.db_location.Location entry) {
 		ContentValues values = new ContentValues();
 
 		values.put(DBLocation.COL0_TIMESTAMP, entry.getTime());
@@ -60,7 +58,7 @@ public class DBLocationConnection {
 		return ret;
 	}
 
-	public void deleteEntry(Messages.Location entry) {
+	public void deleteEntry(de.uvwxy.whereami.db_location.Location entry) {
 		long id = entry.getTime();
 		db.delete(DBLocation.DB_TABLE_NAME, DBLocation.COL0_TIMESTAMP + " = " + id, null);
 		Log.d("DB", "Deleted " + id);
@@ -68,11 +66,12 @@ public class DBLocationConnection {
 
 	/**
 	 * Obtain all entries from the DB. The input list can not be null.
+	 * 
 	 * @param list
 	 * @param all
 	 * @param fav
 	 */
-	public void getAllEntries(ArrayList<Messages.Location> list, boolean all, boolean fav) {
+	public void getAllEntries(ArrayList<de.uvwxy.whereami.db_location.Location> list, boolean all, boolean fav) {
 		list.clear();
 
 		Cursor cursor = null;
@@ -85,7 +84,7 @@ public class DBLocationConnection {
 
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
-			Messages.Location temp = cursorToDBEntry(cursor);
+			de.uvwxy.whereami.db_location.Location temp = cursorToDBEntry(cursor);
 			list.add(temp);
 			cursor.moveToNext();
 		}
@@ -102,16 +101,15 @@ public class DBLocationConnection {
 		args.put(DBLocation.COL9_FAV, isFav == 0 ? 1 : 0);
 		db.update(DBLocation.DB_TABLE_NAME, args, DBLocation.COL0_TIMESTAMP + "=" + loc.getTime(), null);
 	}
-	
+
 	public void rename(Location loc, String newName) {
 		ContentValues args = new ContentValues();
 		args.put(DBLocation.COL2_NAME, newName);
 		db.update(DBLocation.DB_TABLE_NAME, args, DBLocation.COL0_TIMESTAMP + "=" + loc.getTime(), null);
 	}
 
-
-	private Messages.Location cursorToDBEntry(Cursor c) {
-		Messages.Location.Builder temp = Messages.Location.newBuilder();
+	private de.uvwxy.whereami.db_location.Location cursorToDBEntry(Cursor c) {
+		de.uvwxy.whereami.db_location.Location temp = new de.uvwxy.whereami.db_location.Location();
 		temp.setTime(c.getLong(0));
 		temp.setProvider(c.getString(1));
 		temp.setName(c.getString(2));
@@ -121,7 +119,7 @@ public class DBLocationConnection {
 		temp.setBearing(c.getDouble(6));
 		temp.setAccuracy(c.getDouble(7));
 		temp.setSpeed(c.getDouble(8));
-		return temp.build();
+		return temp;
 	}
 
 }

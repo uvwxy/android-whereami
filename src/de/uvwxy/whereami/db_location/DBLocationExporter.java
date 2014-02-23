@@ -9,13 +9,12 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 import android.util.Log;
-import de.uvwxy.whereami.proto.Messages;
 
 public class DBLocationExporter {
 	private String filePath;
-	private ArrayList<Messages.Location> dbArray;
+	private ArrayList<de.uvwxy.whereami.db_location.Location> dbArray;
 
-	public DBLocationExporter(String filePath, ArrayList<Messages.Location> dbArray) {
+	public DBLocationExporter(String filePath, ArrayList<de.uvwxy.whereami.db_location.Location> dbArray) {
 		super();
 		this.filePath = filePath;
 		this.dbArray = dbArray;
@@ -69,7 +68,7 @@ public class DBLocationExporter {
 		return numLinesWritten;
 	}
 
-	private String mkLine(Messages.Location entry) {
+	private String mkLine(de.uvwxy.whereami.db_location.Location entry) {
 		String chard = ",";
 		String ret = "\"" + entry.getName() + "\"" + chard //
 				+ entry.getLatitude() + chard //

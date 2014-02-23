@@ -4732,26 +4732,34 @@ com.google.android.gms.location.LocationRequestCreator -> com.google.android.gms
     void a(com.google.android.gms.location.LocationRequest,android.os.Parcel,int) -> a
     java.lang.Object[] newArray(int) -> newArray
     java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
-com.google.android.gms.maps.CameraUpdateFactory -> com.google.android.gms.maps.a:
+com.google.android.gms.maps.CameraUpdate -> com.google.android.gms.maps.a:
+    com.google.android.gms.dynamic.b xl -> a
+    com.google.android.gms.dynamic.b dP() -> a
+com.google.android.gms.maps.CameraUpdateFactory -> com.google.android.gms.maps.b:
     com.google.android.gms.maps.internal.ICameraUpdateFactoryDelegate xm -> a
+    com.google.android.gms.maps.internal.ICameraUpdateFactoryDelegate dQ() -> a
     void a(com.google.android.gms.maps.internal.ICameraUpdateFactoryDelegate) -> a
-com.google.android.gms.maps.GoogleMap -> com.google.android.gms.maps.b:
+    com.google.android.gms.maps.CameraUpdate newLatLngZoom(com.google.android.gms.maps.model.LatLng,float) -> a
+com.google.android.gms.maps.GoogleMap -> com.google.android.gms.maps.c:
     com.google.android.gms.maps.internal.IGoogleMapDelegate xn -> a
+    com.google.android.gms.maps.UiSettings xo -> b
     com.google.android.gms.maps.internal.IGoogleMapDelegate dR() -> a
+    void moveCamera(com.google.android.gms.maps.CameraUpdate) -> a
     com.google.android.gms.maps.model.Marker addMarker(com.google.android.gms.maps.model.MarkerOptions) -> a
+    com.google.android.gms.maps.UiSettings getUiSettings() -> b
     void setOnMapLongClickListener(com.google.android.gms.maps.GoogleMap$OnMapLongClickListener) -> a
     void setOnMarkerClickListener(com.google.android.gms.maps.GoogleMap$OnMarkerClickListener) -> a
-com.google.android.gms.maps.GoogleMap$7 -> com.google.android.gms.maps.c:
+com.google.android.gms.maps.GoogleMap$7 -> com.google.android.gms.maps.d:
     com.google.android.gms.maps.GoogleMap$OnMapLongClickListener xy -> a
     com.google.android.gms.maps.GoogleMap xq -> b
     void onMapLongClick(com.google.android.gms.maps.model.LatLng) -> a
-com.google.android.gms.maps.GoogleMap$8 -> com.google.android.gms.maps.d:
+com.google.android.gms.maps.GoogleMap$8 -> com.google.android.gms.maps.e:
     com.google.android.gms.maps.GoogleMap$OnMarkerClickListener xz -> a
     com.google.android.gms.maps.GoogleMap xq -> b
     boolean a(com.google.android.gms.maps.model.internal.d) -> a
-com.google.android.gms.maps.GoogleMap$OnMapLongClickListener -> com.google.android.gms.maps.e:
+com.google.android.gms.maps.GoogleMap$OnMapLongClickListener -> com.google.android.gms.maps.f:
     void onMapLongClick(com.google.android.gms.maps.model.LatLng) -> a
-com.google.android.gms.maps.GoogleMap$OnMarkerClickListener -> com.google.android.gms.maps.f:
+com.google.android.gms.maps.GoogleMap$OnMarkerClickListener -> com.google.android.gms.maps.g:
     boolean onMarkerClick(com.google.android.gms.maps.model.Marker) -> a
 com.google.android.gms.maps.GoogleMapOptions -> com.google.android.gms.maps.GoogleMapOptions:
     com.google.android.gms.maps.GoogleMapOptionsCreator CREATOR -> a
@@ -4790,13 +4798,13 @@ com.google.android.gms.maps.GoogleMapOptions -> com.google.android.gms.maps.Goog
     int getMapType() -> j
     com.google.android.gms.maps.model.CameraPosition getCamera() -> k
     com.google.android.gms.maps.GoogleMapOptions createFromAttributes(android.content.Context,android.util.AttributeSet) -> a
-com.google.android.gms.maps.GoogleMapOptionsCreator -> com.google.android.gms.maps.g:
+com.google.android.gms.maps.GoogleMapOptionsCreator -> com.google.android.gms.maps.h:
     com.google.android.gms.maps.GoogleMapOptions createFromParcel(android.os.Parcel) -> a
     com.google.android.gms.maps.GoogleMapOptions[] newArray(int) -> a
     void a(com.google.android.gms.maps.GoogleMapOptions,android.os.Parcel,int) -> a
     java.lang.Object[] newArray(int) -> newArray
     java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
-com.google.android.gms.maps.MapsInitializer -> com.google.android.gms.maps.h:
+com.google.android.gms.maps.MapsInitializer -> com.google.android.gms.maps.i:
     void initialize(android.content.Context) -> a
 com.google.android.gms.maps.SupportMapFragment -> com.google.android.gms.maps.SupportMapFragment:
     com.google.android.gms.maps.SupportMapFragment$b yb -> P
@@ -4814,7 +4822,7 @@ com.google.android.gms.maps.SupportMapFragment -> com.google.android.gms.maps.Su
     void onLowMemory() -> onLowMemory
     void onActivityCreated(android.os.Bundle) -> d
     void onSaveInstanceState(android.os.Bundle) -> f
-com.google.android.gms.maps.SupportMapFragment$a -> com.google.android.gms.maps.i:
+com.google.android.gms.maps.SupportMapFragment$a -> com.google.android.gms.maps.j:
     android.support.v4.app.Fragment yc -> a
     com.google.android.gms.maps.internal.IMapFragmentDelegate xS -> b
     void onInflate(android.app.Activity,android.os.Bundle,android.os.Bundle) -> a
@@ -4827,7 +4835,7 @@ com.google.android.gms.maps.SupportMapFragment$a -> com.google.android.gms.maps.
     void onLowMemory() -> e
     void onSaveInstanceState(android.os.Bundle) -> b
     com.google.android.gms.maps.internal.IMapFragmentDelegate ea() -> f
-com.google.android.gms.maps.SupportMapFragment$b -> com.google.android.gms.maps.j:
+com.google.android.gms.maps.SupportMapFragment$b -> com.google.android.gms.maps.k:
     android.support.v4.app.Fragment yc -> b
     com.google.android.gms.dynamic.d xT -> a
     android.app.Activity gr -> c
@@ -4835,7 +4843,11 @@ com.google.android.gms.maps.SupportMapFragment$b -> com.google.android.gms.maps.
     void eb() -> g
     void setActivity(android.app.Activity) -> a
     void a(com.google.android.gms.maps.SupportMapFragment$b,android.app.Activity) -> a
-com.google.android.gms.maps.a -> com.google.android.gms.maps.k:
+com.google.android.gms.maps.UiSettings -> com.google.android.gms.maps.l:
+    com.google.android.gms.maps.internal.IUiSettingsDelegate yd -> a
+    void setCompassEnabled(boolean) -> a
+    void setMyLocationButtonEnabled(boolean) -> b
+com.google.android.gms.maps.a -> com.google.android.gms.maps.m:
     void a(com.google.android.gms.maps.GoogleMapOptions,android.os.Parcel,int) -> a
 com.google.android.gms.maps.internal.ICameraUpdateFactoryDelegate -> com.google.android.gms.maps.a.a:
     com.google.android.gms.dynamic.b zoomIn() -> a
@@ -9248,6 +9260,11 @@ com.squareup.otto.ThreadEnforcer$1 -> com.a.a.n:
     void enforce(com.squareup.otto.Bus) -> a
 com.squareup.otto.ThreadEnforcer$2 -> com.a.a.o:
     void enforce(com.squareup.otto.Bus) -> a
+de.uvwxy.R -> de.uvwxy.a:
+de.uvwxy.R$string -> de.uvwxy.b:
+    int map_type_not_found_ -> map_type_not_found_
+    int not_set -> not_set
+    int save -> save
 de.uvwxy.audio.AudioParameters -> de.uvwxy.a.a:
     de.uvwxy.audio.AudioParameters backup -> h
     float volumeLeft -> a
@@ -9265,8 +9282,9 @@ de.uvwxy.cardpager.ActivityCardPager -> de.uvwxy.cardpager.a:
     de.uvwxy.cardpager.ActivityCardPager$SectionsPagerAdapter mSectionsPagerAdapter -> n
     android.support.v4.view.ViewPager mViewPager -> o
     void onCreate(android.os.Bundle) -> onCreate
-    android.support.v4.app.Fragment getFragment(int) -> a
-    java.lang.CharSequence getFragmentTitle(int) -> b
+    void moveToTab(int) -> a
+    android.support.v4.app.Fragment getFragment(int) -> b
+    java.lang.CharSequence getFragmentTitle(int) -> c
     int getFragmentCount() -> f
 de.uvwxy.cardpager.ActivityCardPager$SectionsPagerAdapter -> de.uvwxy.cardpager.b:
     de.uvwxy.cardpager.ActivityCardPager this$0 -> a
@@ -9281,13 +9299,21 @@ de.uvwxy.cardpager.ActivityLicenseDisplay$MyWebViewClient -> de.uvwxy.cardpager.
     de.uvwxy.cardpager.ActivityLicenseDisplay this$0 -> a
     boolean shouldOverrideUrlLoading(android.webkit.WebView,java.lang.String) -> shouldOverrideUrlLoading
 de.uvwxy.cardpager.FragmentAbout -> de.uvwxy.cardpager.d:
-    java.lang.String mTitle -> P
-    java.lang.String mAboutApp -> Q
-    java.lang.String mMarketUrl -> R
-    java.lang.String mDevUrl -> S
-    java.lang.String mDevMail -> T
-    java.lang.String mPackageName -> U
-    java.lang.String[] mLicenses -> V
+    android.widget.ImageView ivLogo -> P
+    android.widget.ImageView ivAppIcon -> Q
+    android.widget.ImageView ivWwwLink -> R
+    android.widget.ImageView ivMailLink -> S
+    android.widget.TextView tvTitle -> T
+    android.widget.TextView tvAboutApp -> U
+    android.widget.TextView tvLicenseExplanation -> V
+    android.widget.LinearLayout llLicenses -> W
+    java.lang.String mTitle -> X
+    java.lang.String mAboutApp -> Y
+    java.lang.String mMarketUrl -> Z
+    java.lang.String mDevUrl -> aa
+    java.lang.String mDevMail -> ab
+    java.lang.String mPackageName -> ac
+    java.lang.String[] mLicenses -> ad
     void setTitle(java.lang.String) -> a
     void setAboutApp(java.lang.String) -> b
     void setMarketUrl(java.lang.String) -> c
@@ -9333,8 +9359,8 @@ de.uvwxy.helper.BitmapTools -> de.uvwxy.c.a:
     android.graphics.Bitmap$CompressFormat COMPRESS_TYPE -> a
     android.graphics.drawable.Drawable getPackageIcon(android.content.Context,java.lang.String) -> a
 de.uvwxy.helper.IntentTools -> de.uvwxy.c.b:
-    void shareLocation(android.content.Context,android.location.Location,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> a
-    void shareLocation(android.content.Context,java.lang.String,double,double,double,double,double,double,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> a
+    void shareLocation(android.content.Context,de.uvwxy.units.Unit,de.uvwxy.units.Unit,de.uvwxy.units.Unit,de.uvwxy.units.Unit,de.uvwxy.units.Unit,de.uvwxy.units.Unit,int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> a
+    void shareLocation(android.content.Context,java.lang.String,de.uvwxy.units.Unit,de.uvwxy.units.Unit,de.uvwxy.units.Unit,de.uvwxy.units.Unit,de.uvwxy.units.Unit,de.uvwxy.units.Unit,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> a
     java.lang.String getOSMMapsUrl(double,double) -> a
     void userSelectString(android.app.Activity,java.lang.String,java.lang.String[],de.uvwxy.helper.IntentTools$ReturnStringCallback) -> a
     java.lang.String getGoogleMapsUrl(double,double) -> b
@@ -9523,6 +9549,20 @@ de.uvwxy.soundfinder.R$raw -> de.uvwxy.soundfinder.i:
     int sound_destination -> sound_destination
     int sound_error -> sound_error
     int sound_noise_static -> sound_noise_static
+de.uvwxy.soundfinder.R$string -> de.uvwxy.soundfinder.j:
+    int about_me -> about_me
+    int about_this_app -> about_this_app
+    int about_uvwxy -> about_uvwxy
+    int contact_ -> contact_
+    int difference_d_bearing_f_target_bearing_f_accuracy_f -> difference_d_bearing_f_target_bearing_f_accuracy_f
+    int license_explanation -> license_explanation
+    int location_error_too_high_f_f -> location_error_too_high_f_f
+    int lorem -> lorem
+    int map_type_not_found_ -> map_type_not_found_
+    int not_set -> not_set
+    int open_source_licenses -> open_source_licenses
+    int please_rate_this_app_if_you_like_it_ -> please_rate_this_app_if_you_like_it_
+    int save -> save
 de.uvwxy.soundfinder.SoundFinder -> de.uvwxy.soundfinder.SoundFinder:
     de.uvwxy.sensors.location.GPSWIFIReader locationReader -> B
     de.uvwxy.sensors.CompassReader compassReader -> C
@@ -9546,8 +9586,8 @@ de.uvwxy.soundfinder.SoundFinder -> de.uvwxy.soundfinder.SoundFinder:
     de.uvwxy.sensors.SensorReader$SensorResultCallback compassCallback -> I
     android.media.SoundPool$OnLoadCompleteListener onLoadCompleteListener -> J
     void findNode(android.app.Activity,double,double,double,double,double,double) -> a
-    android.support.v4.app.Fragment getFragment(int) -> a
-    java.lang.CharSequence getFragmentTitle(int) -> b
+    android.support.v4.app.Fragment getFragment(int) -> b
+    java.lang.CharSequence getFragmentTitle(int) -> c
     void onCreate(android.os.Bundle) -> onCreate
     int getFragmentCount() -> f
     void onPause() -> onPause
@@ -9565,16 +9605,16 @@ de.uvwxy.soundfinder.SoundFinder -> de.uvwxy.soundfinder.SoundFinder:
     double access$0(de.uvwxy.soundfinder.SoundFinder) -> a
     android.media.SoundPool access$1(de.uvwxy.soundfinder.SoundFinder) -> b
     de.uvwxy.audio.AudioParameters access$2(de.uvwxy.soundfinder.SoundFinder) -> c
-de.uvwxy.soundfinder.SoundFinder$1 -> de.uvwxy.soundfinder.j:
+de.uvwxy.soundfinder.SoundFinder$1 -> de.uvwxy.soundfinder.k:
     de.uvwxy.soundfinder.SoundFinder this$0 -> a
     void status(android.location.Location) -> a
-de.uvwxy.soundfinder.SoundFinder$2 -> de.uvwxy.soundfinder.k:
+de.uvwxy.soundfinder.SoundFinder$2 -> de.uvwxy.soundfinder.l:
     de.uvwxy.soundfinder.SoundFinder this$0 -> a
     void result(android.location.Location) -> a
-de.uvwxy.soundfinder.SoundFinder$3 -> de.uvwxy.soundfinder.l:
+de.uvwxy.soundfinder.SoundFinder$3 -> de.uvwxy.soundfinder.m:
     de.uvwxy.soundfinder.SoundFinder this$0 -> a
     void result(float[]) -> a
-de.uvwxy.soundfinder.SoundFinder$4 -> de.uvwxy.soundfinder.m:
+de.uvwxy.soundfinder.SoundFinder$4 -> de.uvwxy.soundfinder.n:
     de.uvwxy.soundfinder.SoundFinder this$0 -> a
     void onLoadComplete(android.media.SoundPool,int,int) -> onLoadComplete
 de.uvwxy.units.Conversion -> de.uvwxy.e.a:
@@ -9662,13 +9702,18 @@ de.uvwxy.whereami.ActivityMain -> de.uvwxy.whereami.ActivityMain:
     de.uvwxy.whereami.db_location.DBLocationConnection mData -> u
     de.uvwxy.whereami.LocationManager mLoc -> v
     com.squareup.otto.Bus bus -> w
-    android.content.Context ctx -> A
+    android.content.Context ctx -> G
     de.uvwxy.whereami.ActivityMain dhis -> x
     android.app.Activity act -> y
     android.location.Location mLastLocation -> z
-    com.google.android.gms.maps.SupportMapFragment mMapFragment -> B
-    android.support.v4.app.Fragment getFragment(int) -> a
-    java.lang.CharSequence getFragmentTitle(int) -> b
+    com.google.android.gms.maps.SupportMapFragment fMap -> A
+    de.uvwxy.cardpager.FragmentAbout fAbout -> B
+    de.uvwxy.whereami.fragments.FragmentSavedLocations fSavedLocations -> C
+    de.uvwxy.whereami.fragments.FragmentSavedLocations fSavedLocationsFav -> D
+    de.uvwxy.whereami.fragments.FragmentCurrentLocation fCurrenbtLocation -> E
+    de.uvwxy.whereami.fragments.FragmentSettings fSettings -> F
+    android.support.v4.app.Fragment getFragment(int) -> b
+    java.lang.CharSequence getFragmentTitle(int) -> c
     int getFragmentCount() -> f
     void onCreate(android.os.Bundle) -> onCreate
     void onResume() -> onResume
@@ -9690,6 +9735,7 @@ de.uvwxy.whereami.ListItemLocationAdapter -> de.uvwxy.whereami.e:
     android.content.Context ctx -> c
     void handleMenuItem(int,java.lang.String) -> a
     android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+    void backgroundLocationReload(de.uvwxy.whereami.proto.Messages$Location) -> a
     java.util.ArrayList access$0(de.uvwxy.whereami.ListItemLocationAdapter) -> a
     void access$1(de.uvwxy.whereami.ListItemLocationAdapter,int,java.lang.String) -> a
     android.content.Context access$2(de.uvwxy.whereami.ListItemLocationAdapter) -> b
@@ -9711,7 +9757,11 @@ de.uvwxy.whereami.ListItemLocationAdapter$3$1 -> de.uvwxy.whereami.i:
     de.uvwxy.whereami.ListItemLocationAdapter$3 this$1 -> a
     int val$position -> b
     void result(java.lang.String) -> a
-de.uvwxy.whereami.LocationManager -> de.uvwxy.whereami.j:
+de.uvwxy.whereami.ListItemLocationAdapter$4 -> de.uvwxy.whereami.j:
+    de.uvwxy.whereami.ListItemLocationAdapter this$0 -> a
+    de.uvwxy.whereami.proto.Messages$Location val$loc -> b
+    void run() -> run
+de.uvwxy.whereami.LocationManager -> de.uvwxy.whereami.k:
     android.content.Context ctx -> a
     de.uvwxy.sensors.location.LocationReader readerLocation -> b
     de.uvwxy.sensors.location.LocationReader$LocationResultCallback cbResult -> c
@@ -9720,14 +9770,14 @@ de.uvwxy.whereami.LocationManager -> de.uvwxy.whereami.j:
     de.uvwxy.sensors.location.LocationReader getReader() -> b
     double getDistanceTo(de.uvwxy.whereami.proto.Messages$Location,android.location.Location) -> a
     android.content.Context access$0(de.uvwxy.whereami.LocationManager) -> a
-de.uvwxy.whereami.LocationManager$1 -> de.uvwxy.whereami.k:
+de.uvwxy.whereami.LocationManager$1 -> de.uvwxy.whereami.l:
     de.uvwxy.whereami.LocationManager this$0 -> a
     void result(android.location.Location) -> a
-de.uvwxy.whereami.LocationManager$1$1 -> de.uvwxy.whereami.l:
+de.uvwxy.whereami.LocationManager$1$1 -> de.uvwxy.whereami.m:
     de.uvwxy.whereami.LocationManager$1 this$1 -> a
     android.location.Location val$l -> b
     void run() -> run
-de.uvwxy.whereami.LocationManager$2 -> de.uvwxy.whereami.m:
+de.uvwxy.whereami.LocationManager$2 -> de.uvwxy.whereami.n:
     de.uvwxy.whereami.LocationManager this$0 -> a
     void status(android.location.Location) -> a
 de.uvwxy.whereami.db_location.DBLocation -> de.uvwxy.whereami.a.a:
@@ -9774,7 +9824,7 @@ de.uvwxy.whereami.fragments.FragmentCurrentLocation -> de.uvwxy.whereami.b.a:
     void initClicks() -> A
     void onReceive(android.location.Location) -> a
     void onResume() -> j
-    void onDestroy() -> n
+    void onPause() -> k
 de.uvwxy.whereami.fragments.FragmentCurrentLocation$1 -> de.uvwxy.whereami.b.b:
     de.uvwxy.whereami.fragments.FragmentCurrentLocation this$0 -> a
     void onCheckedChanged(android.widget.CompoundButton,boolean) -> onCheckedChanged

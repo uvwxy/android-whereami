@@ -2,8 +2,6 @@ package de.uvwxy.whereami.fragments;
 
 import java.util.ArrayList;
 
-import android.location.Location;
-
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
@@ -15,7 +13,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import de.uvwxy.soundfinder.SoundFinder;
 import de.uvwxy.whereami.ActivityMain;
-import de.uvwxy.whereami.proto.Messages;
+import de.uvwxy.whereami.db_location.Location;
 
 public class FragmentOverlaySupportMap extends SupportMapFragment {
 	public GoogleMap mMapView = null;
@@ -31,15 +29,15 @@ public class FragmentOverlaySupportMap extends SupportMapFragment {
 		super.onViewCreated(view, savedInstanceState);
 		mMapView = getMap();
 		mMapView.setOnMarkerClickListener(mMarkerClick);
-		
+
 		mMapView.setOnMapLongClickListener(new OnMapLongClickListener() {
-			
+
 			@Override
 			public void onMapLongClick(LatLng point) {
 				float dist = 0;
-				Location l = ActivityMain.mLastLocation;
+				android.location.Location l = ActivityMain.mLastLocation;
 				if (l != null) {
-					Location t = new Location("");
+					android.location.Location t = new android.location.Location("");
 					t.setLatitude(point.latitude);
 					t.setLongitude(point.longitude);
 					dist = l.distanceTo(t);
@@ -61,12 +59,12 @@ public class FragmentOverlaySupportMap extends SupportMapFragment {
 	}
 
 	private void loadMarkers(GoogleMap map, boolean favorite) {
-		ArrayList<Messages.Location> list = new ArrayList<Messages.Location>();
+		ArrayList<Location> list = new ArrayList<Location>();
 		boolean all = false;
 		boolean fav = favorite;
 		ActivityMain.mData.getAllEntries(list, all, fav);
 
-		for (Messages.Location l : list) {
+		for (Location l : list) {
 			MarkerOptions options = new MarkerOptions();
 			options.position(new LatLng(l.getLatitude(), l.getLongitude()));
 			options.draggable(false);

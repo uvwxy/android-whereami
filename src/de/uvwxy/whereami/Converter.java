@@ -1,10 +1,10 @@
 package de.uvwxy.whereami;
 
-import de.uvwxy.whereami.proto.Messages;
+import de.uvwxy.whereami.db_location.Location;
 
 public class Converter {
-	public static Messages.Location createLoc(String name, android.location.Location androidLocation) {
-		Messages.Location.Builder b = Messages.Location.newBuilder();
+	public static de.uvwxy.whereami.db_location.Location createLoc(String name, android.location.Location androidLocation) {
+		Location b = new Location();
 
 		b.setLatitude(androidLocation.getLatitude());
 		b.setLongitude(androidLocation.getLongitude());
@@ -16,10 +16,10 @@ public class Converter {
 		b.setProvider(androidLocation.getProvider());
 		b.setName(name);
 
-		return b.build();
+		return b;
 	}
 
-	public static android.location.Location createLoc(Messages.Location protoLocation) {
+	public static android.location.Location createLoc(de.uvwxy.whereami.db_location.Location protoLocation) {
 		android.location.Location b = new android.location.Location(protoLocation.getProvider());
 
 		b.setLatitude(protoLocation.getLatitude());

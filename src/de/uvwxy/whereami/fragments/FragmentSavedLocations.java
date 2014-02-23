@@ -2,7 +2,6 @@ package de.uvwxy.whereami.fragments;
 
 import java.util.ArrayList;
 
-import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,18 +10,15 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.squareup.otto.Subscribe;
-
 import de.uvwxy.whereami.ActivityMain;
-import de.uvwxy.whereami.BusUpdateList;
 import de.uvwxy.whereami.ListItemLocationAdapter;
 import de.uvwxy.whereami.R;
-import de.uvwxy.whereami.proto.Messages;
+import de.uvwxy.whereami.db_location.Location;
 
 public class FragmentSavedLocations extends Fragment {
 	private TextView tvSavedLocationCount = null;
 	private ListView lvSavedLocations = null;
-	private ArrayList<Messages.Location> list = new ArrayList<Messages.Location>();
+	private ArrayList<Location> list = new ArrayList<Location>();
 	private ListItemLocationAdapter listAdapter = null;
 	public boolean isFav = false;
 
@@ -45,17 +41,10 @@ public class FragmentSavedLocations extends Fragment {
 
 		tvSavedLocationCount.setText("" + list.size());
 		lvSavedLocations.setAdapter(listAdapter);
-		ActivityMain.bus.register(this);
 		return rootView;
 	}
 
-	@Subscribe
-	public void onReceive(Location l) {
-		listAdapter.notifyDataSetChanged();
-	}
-
-	@Subscribe
-	public void onReceive(BusUpdateList u) {
+	public void updateList() {
 		ActivityMain.mData.getAllEntries(list, !isFav, isFav);
 		tvSavedLocationCount.setText("" + list.size());
 		listAdapter.notifyDataSetChanged();
@@ -64,6 +53,5 @@ public class FragmentSavedLocations extends Fragment {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		ActivityMain.bus.unregister(this);
 	}
 }

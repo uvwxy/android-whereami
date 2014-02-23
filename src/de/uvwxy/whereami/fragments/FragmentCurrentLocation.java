@@ -17,17 +17,11 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
-
-import com.squareup.otto.Subscribe;
-
 import de.uvwxy.units.Unit;
 import de.uvwxy.whereami.ActionShare;
 import de.uvwxy.whereami.ActivityMain;
-import de.uvwxy.whereami.BusUpdateList;
 import de.uvwxy.whereami.Converter;
 import de.uvwxy.whereami.R;
-import de.uvwxy.whereami.R.id;
-import de.uvwxy.whereami.R.layout;
 
 @SuppressWarnings("unused")
 public class FragmentCurrentLocation extends Fragment {
@@ -39,7 +33,7 @@ public class FragmentCurrentLocation extends Fragment {
 	private TextView tvSpeed = null;
 	private TextView tvAcc = null;
 	private TextView tvProvider = null;
-	public static ToggleButton swUpdates = null;
+	public ToggleButton swUpdates = null;
 	private Button btnSave = null;
 	private Button btnSend = null;
 
@@ -66,8 +60,8 @@ public class FragmentCurrentLocation extends Fragment {
 		swUpdates.setChecked(ActivityMain.mLocationUpdatesEnabled);
 		initClicks();
 
-		onReceive(ActivityMain.mLastLocation != null ? ActivityMain.mLastLocation : new Location("[no fix]"));
-		ActivityMain.bus.register(this);
+		updateLocation(ActivityMain.mLastLocation != null ? ActivityMain.mLastLocation : new Location(getActivity()
+				.getString(R.string._no_fix_)));
 
 		return rootView;
 	}
@@ -116,8 +110,7 @@ public class FragmentCurrentLocation extends Fragment {
 							msg = getActivity().getString(R.string.failed_to_add_entry_to_db);
 						} else {
 							msg = getActivity().getString(R.string.added_entry_to_db);
-							// TODO: listupdates!
-							ActivityMain.bus.post(new BusUpdateList());
+							// TODO: listupdates! ActivityMain.bus.post(new BusUpdateList());
 							//ActivityMain.data.getAllEntries(ActivityMain.listAdapter.getList(), );
 							//ActivityMain.listAdapter.notifyDataSetChanged();
 						}
@@ -147,8 +140,7 @@ public class FragmentCurrentLocation extends Fragment {
 		});
 	}
 
-	@Subscribe
-	public void onReceive(Location l) {
+	public void updateLocation(Location l) {
 
 		tvLat.setText(Unit.DEGREES.setPrecision(6).setValue(l.getLatitude()).to(ActivityMain.mUnitA).toString());
 		tvLon.setText(Unit.DEGREES.setPrecision(6).setValue(l.getLongitude()).to(ActivityMain.mUnitA).toString());
@@ -168,8 +160,8 @@ public class FragmentCurrentLocation extends Fragment {
 	}
 
 	@Override
-	public void onDestroy() {
-		super.onDestroy();
-		ActivityMain.bus.unregister(this);
+	public void onPause() {
+		super.onPause();
 	}
+
 }

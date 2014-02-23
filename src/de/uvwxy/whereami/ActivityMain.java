@@ -12,8 +12,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.google.android.gms.maps.SupportMapFragment;
-import com.squareup.otto.Bus;
-import com.squareup.otto.Subscribe;
 
 import de.uvwxy.cardpager.ActivityCardPager;
 import de.uvwxy.cardpager.FragmentAbout;
@@ -72,42 +70,60 @@ public class ActivityMain extends ActivityCardPager {
 	public static DBLocationConnection mData = null;
 	public static de.uvwxy.whereami.LocationManager mLoc = null;
 
-	public static Bus bus = new Bus();
 	private static Context ctx;
 	public static ActivityMain dhis = null;
 	public static Activity act = null;
 
 	public static Location mLastLocation;
 
-	static SupportMapFragment mMapFragment = null;
+	static SupportMapFragment fMap = null;
+	FragmentAbout fAbout = null;
+	FragmentSavedLocations fSavedLocations = null;
+	FragmentSavedLocations fSavedLocationsFav = null;
+	FragmentCurrentLocation fCurrentLocation = null;
+	FragmentSettings fSettings = null;
 
 	@Override
 	public Fragment getFragment(int position) {
 		switch (position) {
 
 		case 0:
-			return new FragmentCurrentLocation();
+			if (fCurrentLocation == null) {
+				fCurrentLocation = new FragmentCurrentLocation();
+			}
+			return fCurrentLocation;
 		case 1:
-			FragmentSavedLocations t1 = new FragmentSavedLocations();
-			t1.setFav(false);
-			return t1;
+			if (fSavedLocations == null) {
+				fSavedLocations = new FragmentSavedLocations();
+				fSavedLocations.setFav(false);
+			}
+			return fSavedLocations;
 		case 2:
-			FragmentSavedLocations t2 = new FragmentSavedLocations();
-			t2.setFav(true);
-			return t2;
+			if (fSavedLocationsFav == null) {
+				fSavedLocationsFav = new FragmentSavedLocations();
+				fSavedLocationsFav.setFav(true);
+			}
+			return fSavedLocationsFav;
 		case 3:
-			mMapFragment = new FragmentOverlaySupportMap();
-			return mMapFragment;
+			if (fMap == null) {
+				fMap = new FragmentOverlaySupportMap();
+			}
+			return fMap;
 		case 4:
-			return new FragmentSettings();
+			if (fSettings == null) {
+				fSettings = new FragmentSettings();
+			}
+			return fSettings;
 		case 5:
-			FragmentAbout x = new FragmentAbout();
-			x.setTitle(getApplication().getText(R.string.app_name).toString());
-			x.setPackageName("de.uvwxy.whereami");
-			x.setMarketUrl("market://search?q=de.uvwxy.whereami&c=apps");
-			x.setAboutApp(getString(R.string.app_description));
-			x.setLicenses(new String[] { "square_otto", "protobuf" });
-			return x;
+			if (fAbout == null) {
+				fAbout = new FragmentAbout();
+				fAbout.setTitle(getApplication().getText(R.string.app_name).toString());
+				fAbout.setPackageName("de.uvwxy.whereami");
+				fAbout.setMarketUrl("market://search?q=de.uvwxy.whereami&c=apps");
+				fAbout.setAboutApp(getString(R.string.app_description));
+				fAbout.setLicenses(new String[] { "square_otto", "protobuf" });
+			}
+			return fAbout;
 		}
 
 		Fragment fragment = new FragmentSettings();
@@ -161,14 +177,7 @@ public class ActivityMain extends ActivityCardPager {
 
 		setUnits(prefs);
 
-		bus.register(this);
-
 		alertIfProviderIsNotEnabled();
-	}
-
-	@Subscribe
-	public void onReceive(Location l) {
-		mLastLocation = l;
 	}
 
 	@Override
@@ -177,7 +186,6 @@ public class ActivityMain extends ActivityCardPager {
 		if (mLocationUpdatesEnabled) {
 			mLoc.getReader().startReading();
 		}
-		bus.post(new BusUpdateList());
 		setUnits();
 	}
 
@@ -189,8 +197,8 @@ public class ActivityMain extends ActivityCardPager {
 				.getBoolean(SETTINGS_STOP_UPDATES_ONPAUSE, SETTINGS_STOP_UPDATES_ONPAUSE_DEF)) {
 			mLoc.getReader().stopReading();
 			mLocationUpdatesEnabled = false;
-			if (FragmentCurrentLocation.swUpdates != null) {
-				FragmentCurrentLocation.swUpdates.setChecked(false);
+			if (fCurrentLocation != null && fCurrentLocation.swUpdates != null) {
+				fCurrentLocation.swUpdates.setChecked(false);
 			}
 		}
 
@@ -200,7 +208,6 @@ public class ActivityMain extends ActivityCardPager {
 	protected void onDestroy() {
 		super.onDestroy();
 		mLoc.getReader().stopReading();
-		mLoc.destroy();
 		mData.close();
 	}
 

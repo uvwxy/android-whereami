@@ -46,7 +46,7 @@ public class ActionShare {
 				new String[] { act.getString(R.string.googlemaps), act.getString(R.string.openstreetmap) }, selected);
 	}
 
-	public static void share(Activity parent, de.uvwxy.whereami.proto.Messages.Location location) {
+	public static void share(Activity parent, de.uvwxy.whereami.db_location.Location location) {
 		// convert from proto to android.location
 		share(parent, Converter.createLoc(location));
 	}

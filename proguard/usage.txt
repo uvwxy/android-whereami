@@ -2912,10 +2912,8 @@ com.google.android.gms.location.LocationStatusCodes
 com.google.android.gms.location.a
 com.google.android.gms.location.a$a
 com.google.android.gms.location.a$a$a
-com.google.android.gms.maps.CameraUpdate
 com.google.android.gms.maps.CameraUpdateFactory:
     private CameraUpdateFactory()
-    private static com.google.android.gms.maps.internal.ICameraUpdateFactoryDelegate dQ()
     public static com.google.android.gms.maps.CameraUpdate zoomIn()
     public static com.google.android.gms.maps.CameraUpdate zoomOut()
     public static com.google.android.gms.maps.CameraUpdate scrollBy(float,float)
@@ -2924,7 +2922,6 @@ com.google.android.gms.maps.CameraUpdateFactory:
     public static com.google.android.gms.maps.CameraUpdate zoomBy(float,android.graphics.Point)
     public static com.google.android.gms.maps.CameraUpdate newCameraPosition(com.google.android.gms.maps.model.CameraPosition)
     public static com.google.android.gms.maps.CameraUpdate newLatLng(com.google.android.gms.maps.model.LatLng)
-    public static com.google.android.gms.maps.CameraUpdate newLatLngZoom(com.google.android.gms.maps.model.LatLng,float)
     public static com.google.android.gms.maps.CameraUpdate newLatLngBounds(com.google.android.gms.maps.model.LatLngBounds,int)
     public static com.google.android.gms.maps.CameraUpdate newLatLngBounds(com.google.android.gms.maps.model.LatLngBounds,int,int,int)
 com.google.android.gms.maps.GoogleMap:
@@ -2933,11 +2930,9 @@ com.google.android.gms.maps.GoogleMap:
     public static final int MAP_TYPE_SATELLITE
     public static final int MAP_TYPE_TERRAIN
     public static final int MAP_TYPE_HYBRID
-    private com.google.android.gms.maps.UiSettings xo
     public final com.google.android.gms.maps.model.CameraPosition getCameraPosition()
     public final float getMaxZoomLevel()
     public final float getMinZoomLevel()
-    public final void moveCamera(com.google.android.gms.maps.CameraUpdate)
     public final void animateCamera(com.google.android.gms.maps.CameraUpdate)
     public final void animateCamera(com.google.android.gms.maps.CameraUpdate,com.google.android.gms.maps.GoogleMap$CancelableCallback)
     public final void animateCamera(com.google.android.gms.maps.CameraUpdate,int,com.google.android.gms.maps.GoogleMap$CancelableCallback)
@@ -2960,7 +2955,6 @@ com.google.android.gms.maps.GoogleMap:
     public final void setMyLocationEnabled(boolean)
     public final android.location.Location getMyLocation()
     public final void setLocationSource(com.google.android.gms.maps.LocationSource)
-    public final com.google.android.gms.maps.UiSettings getUiSettings()
     public final com.google.android.gms.maps.Projection getProjection()
     public final void setOnCameraChangeListener(com.google.android.gms.maps.GoogleMap$OnCameraChangeListener)
     public final void setOnMapClickListener(com.google.android.gms.maps.GoogleMap$OnMapClickListener)
@@ -3021,7 +3015,20 @@ com.google.android.gms.maps.SupportMapFragment:
     public static com.google.android.gms.maps.SupportMapFragment newInstance()
     public static com.google.android.gms.maps.SupportMapFragment newInstance(com.google.android.gms.maps.GoogleMapOptions)
     public void setArguments(android.os.Bundle)
-com.google.android.gms.maps.UiSettings
+com.google.android.gms.maps.UiSettings:
+    public void setZoomControlsEnabled(boolean)
+    public void setScrollGesturesEnabled(boolean)
+    public void setZoomGesturesEnabled(boolean)
+    public void setTiltGesturesEnabled(boolean)
+    public void setRotateGesturesEnabled(boolean)
+    public void setAllGesturesEnabled(boolean)
+    public boolean isZoomControlsEnabled()
+    public boolean isCompassEnabled()
+    public boolean isMyLocationButtonEnabled()
+    public boolean isScrollGesturesEnabled()
+    public boolean isZoomGesturesEnabled()
+    public boolean isTiltGesturesEnabled()
+    public boolean isRotateGesturesEnabled()
 com.google.android.gms.maps.internal.ILocationSourceDelegate$a:
     public ILocationSourceDelegate$a()
 com.google.android.gms.maps.internal.b$a:
@@ -5995,8 +6002,11 @@ com.squareup.otto.AnnotatedHandlerFinder:
 com.squareup.otto.Bus:
     public static final java.lang.String DEFAULT_IDENTIFIER
     143:144:public Bus(com.squareup.otto.ThreadEnforcer)
-de.uvwxy.R
+de.uvwxy.R:
+    9:9:public R()
 de.uvwxy.R$drawable
+de.uvwxy.R$string:
+    13:13:public R$string()
 de.uvwxy.audio.AudioParameters:
     28:33:public void restore()
     47:50:public void restoreOn(android.media.SoundPool)
@@ -6004,19 +6014,19 @@ de.uvwxy.battery.BatteryReader
 de.uvwxy.camera.CameraHelper
 de.uvwxy.camera.CameraPreview
 de.uvwxy.cardpager.ActivityCardPager:
-    31:31:public android.content.Context ctx()
+    37:37:public android.content.Context ctx()
 de.uvwxy.cardpager.ActivityLicenseDisplay:
     public static final java.lang.String LICENSE_KEY
 de.uvwxy.cardpager.FragmentAbout:
-    31:31:public java.lang.String getTitle()
-    39:39:public java.lang.String getAboutApp()
-    47:47:public java.lang.String getMarketUrl()
-    55:55:public java.lang.String getDevUrl()
-    59:60:public void setDevUrl(java.lang.String)
-    63:63:public java.lang.String getDevMail()
-    67:68:public void setDevMail(java.lang.String)
-    71:71:public java.lang.String getPackageName()
-    79:79:public java.lang.String[] getLicenses()
+    39:39:public java.lang.String getTitle()
+    47:47:public java.lang.String getAboutApp()
+    55:55:public java.lang.String getMarketUrl()
+    63:63:public java.lang.String getDevUrl()
+    67:68:public void setDevUrl(java.lang.String)
+    71:71:public java.lang.String getDevMail()
+    75:76:public void setDevMail(java.lang.String)
+    79:79:public java.lang.String getPackageName()
+    87:87:public java.lang.String[] getLicenses()
 de.uvwxy.cardstyle.R:
     9:9:public R()
 de.uvwxy.cardstyle.R$color
@@ -6050,24 +6060,24 @@ de.uvwxy.helper.IntentExtras
 de.uvwxy.helper.IntentTools:
     public static final int TYPE_GMAPS
     public static final int TYPE_OSM
-    42:42:public IntentTools()
-    44:48:public static void captureImage(android.app.Activity,java.lang.String,int)
-    51:54:public static void selectImage(android.app.Activity,int)
-    57:58:public static void showImage(android.content.Context,java.lang.String)
-    61:62:public static void showAudioFile(android.content.Context,java.lang.String)
-    65:70:public static void showFile(android.content.Context,java.lang.String,java.lang.String)
-    156:185:public static void userSelectStringE(android.content.Context,java.lang.String,java.util.List,de.uvwxy.helper.IntentTools$ReturnStringECallback)
-    204:209:public static java.lang.String getCorrectFormatStr(double)
-    213:215:public static void scanNode(android.app.Activity,int)
-    219:224:public static void safeUnregister(android.content.Context,android.content.BroadcastReceiver)
-    227:228:public static boolean settingsValuesIsSet(android.content.Context,java.lang.String,java.lang.String)
-    256:256:public static boolean saveEditor(android.content.SharedPreferences$Editor)
-    261:309:public static void getFromSettingsOrFromUser(android.content.Context,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,boolean,de.uvwxy.helper.SettingsCallback)
-    335:353:public static void addCopyTextOnClickListner(android.content.Context,android.widget.TextView,java.lang.String)
-    356:390:public static void showHelpDialog(android.content.Context,java.lang.String,java.lang.String,java.lang.String)
-    394:407:public static boolean showHelpOnce(android.content.Context,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
-    411:422:public static boolean isFirstLaunch(android.content.Context,java.lang.String)
-    432:436:public static void showNodeData(android.app.Activity,int)
+    40:40:public IntentTools()
+    42:46:public static void captureImage(android.app.Activity,java.lang.String,int)
+    49:52:public static void selectImage(android.app.Activity,int)
+    55:56:public static void showImage(android.content.Context,java.lang.String)
+    59:60:public static void showAudioFile(android.content.Context,java.lang.String)
+    63:68:public static void showFile(android.content.Context,java.lang.String,java.lang.String)
+    155:184:public static void userSelectStringE(android.content.Context,java.lang.String,java.util.List,de.uvwxy.helper.IntentTools$ReturnStringECallback)
+    203:208:public static java.lang.String getCorrectFormatStr(double)
+    212:214:public static void scanNode(android.app.Activity,int)
+    218:223:public static void safeUnregister(android.content.Context,android.content.BroadcastReceiver)
+    226:227:public static boolean settingsValuesIsSet(android.content.Context,java.lang.String,java.lang.String)
+    255:255:public static boolean saveEditor(android.content.SharedPreferences$Editor)
+    260:308:public static void getFromSettingsOrFromUser(android.content.Context,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,boolean,de.uvwxy.helper.SettingsCallback)
+    341:359:public static void addCopyTextOnClickListner(android.content.Context,android.widget.TextView,java.lang.String)
+    362:396:public static void showHelpDialog(android.content.Context,java.lang.String,java.lang.String,java.lang.String)
+    400:413:public static boolean showHelpOnce(android.content.Context,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+    417:428:public static boolean isFirstLaunch(android.content.Context,java.lang.String)
+    438:442:public static void showNodeData(android.app.Activity,int)
 de.uvwxy.helper.IntentTools$2
 de.uvwxy.helper.IntentTools$3
 de.uvwxy.helper.IntentTools$4
@@ -6153,7 +6163,8 @@ de.uvwxy.soundfinder.R$layout:
     62:62:public R$layout()
 de.uvwxy.soundfinder.R$raw:
     67:67:public R$raw()
-de.uvwxy.soundfinder.R$string
+de.uvwxy.soundfinder.R$string:
+    73:73:public R$string()
 de.uvwxy.soundfinder.R$style
 de.uvwxy.soundfinder.SoundFinder:
     public static final java.lang.String EXTRA_LOCATION_LAT
@@ -6171,7 +6182,7 @@ de.uvwxy.units.Unit:
 de.uvwxy.units.UnitConversion:
     5:5:public UnitConversion()
 de.uvwxy.whereami.ActionShare:
-    8:8:public ActionShare()
+    9:9:public ActionShare()
 de.uvwxy.whereami.ActivityMain:
     public static final java.lang.String SETTINGS
     public static final java.lang.String SETTINGS_UPDATES_ON_STARTUP
@@ -6198,12 +6209,11 @@ de.uvwxy.whereami.ActivityMain:
     public static final int SETTINGS_ANGLE_DEGREES
     public static final int SETTINGS_ANGLE_MINUTES_SECONDS
     public static final int SETTINGS_ANGLE_TYPE_DEF
-    171:172:public void onReceive(android.location.Location)
 de.uvwxy.whereami.BuildConfig
 de.uvwxy.whereami.Converter:
     5:5:public Converter()
 de.uvwxy.whereami.ListItemLocationAdapter:
-    101:101:public java.util.ArrayList getList()
+    114:114:public java.util.ArrayList getList()
 de.uvwxy.whereami.LocationManager:
     63:63:public static double getBearingTo(de.uvwxy.whereami.proto.Messages$Location,android.location.Location)
     67:67:public double getDistanceToHome()
