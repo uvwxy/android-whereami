@@ -21,9 +21,9 @@ import de.uvwxy.units.Unit;
 import de.uvwxy.units.UnitPrefix;
 import de.uvwxy.whereami.db_location.DBLocationConnection;
 import de.uvwxy.whereami.fragments.FragmentCurrentLocation;
+import de.uvwxy.whereami.fragments.FragmentOverlaySupportMap;
 import de.uvwxy.whereami.fragments.FragmentSavedLocations;
 import de.uvwxy.whereami.fragments.FragmentSettings;
-import de.uvwxy.whereami.fragments.FragmentOverlaySupportMap;
 
 public class ActivityMain extends ActivityCardPager {
 	public static final String SETTINGS = "WAI_SETTINGS";
@@ -74,7 +74,7 @@ public class ActivityMain extends ActivityCardPager {
 	public static ActivityMain dhis = null;
 	public static Activity act = null;
 
-	public static Location mLastLocation;
+	public Location mLastLocation;
 
 	static SupportMapFragment fMap = null;
 	FragmentAbout fAbout = null;
@@ -121,7 +121,7 @@ public class ActivityMain extends ActivityCardPager {
 				fAbout.setPackageName("de.uvwxy.whereami");
 				fAbout.setMarketUrl("market://search?q=de.uvwxy.whereami&c=apps");
 				fAbout.setAboutApp(getString(R.string.app_description));
-				fAbout.setLicenses(new String[] { "square_otto", "protobuf" });
+				fAbout.setLicenses(new String[] { "lombok" });
 			}
 			return fAbout;
 		}
@@ -165,6 +165,7 @@ public class ActivityMain extends ActivityCardPager {
 
 		mData = new DBLocationConnection(this);
 		mData.openWrite();
+
 		mLoc = new de.uvwxy.whereami.LocationManager(getApplicationContext());
 
 		SharedPreferences prefs = IntentTools.getSettings(getApplicationContext(), SETTINGS);
@@ -313,6 +314,16 @@ public class ActivityMain extends ActivityCardPager {
 
 		if (fSavedLocationsFav != null) {
 			fSavedLocationsFav.updateList();
+		}
+	}
+
+	public void refreshLists() {
+		if (fSavedLocations != null) {
+			fSavedLocations.refreshList();
+		}
+
+		if (fSavedLocationsFav != null) {
+			fSavedLocationsFav.refreshList();
 		}
 	}
 

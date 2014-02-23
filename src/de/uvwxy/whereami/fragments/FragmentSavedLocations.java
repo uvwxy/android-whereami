@@ -52,6 +52,10 @@ public class FragmentSavedLocations extends Fragment {
 		tvSavedLocationCount.setText("" + list.size());
 		listAdapter.notifyDataSetChanged();
 	}
+	
+	public void refreshList() {
+		listAdapter.notifyDataSetChanged();
+	}
 
 	@Override
 	public void onDestroy() {

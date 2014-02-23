@@ -35,7 +35,7 @@ public class FragmentOverlaySupportMap extends SupportMapFragment {
 			@Override
 			public void onMapLongClick(LatLng point) {
 				float dist = 0;
-				android.location.Location l = ActivityMain.mLastLocation;
+				android.location.Location l = ActivityMain.dhis.mLastLocation;
 				if (l != null) {
 					android.location.Location t = new android.location.Location("");
 					t.setLatitude(point.latitude);

@@ -63,7 +63,7 @@ public class FragmentCurrentLocation extends Fragment {
 		swUpdates.setChecked(ActivityMain.mLocationUpdatesEnabled);
 		initClicks();
 
-		updateLocation(ActivityMain.mLastLocation != null ? ActivityMain.mLastLocation : new Location(getActivity()
+		updateLocation(dhis.mLastLocation != null ? dhis.mLastLocation : new Location(getActivity()
 				.getString(R.string._no_fix_)));
 
 		return rootView;
@@ -87,7 +87,7 @@ public class FragmentCurrentLocation extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-				final Location loc = ActivityMain.mLastLocation;
+				final Location loc = dhis.mLastLocation;
 				if (loc == null) {
 					Toast.makeText(getActivity(), R.string.no_location_yet, Toast.LENGTH_SHORT).show();
 					return;
@@ -130,7 +130,7 @@ public class FragmentCurrentLocation extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-				final Location loc = ActivityMain.mLastLocation;
+				final Location loc = dhis.mLastLocation;
 				if (loc == null) {
 					Toast.makeText(getActivity(), R.string.no_location_yet, Toast.LENGTH_SHORT).show();
 					return;

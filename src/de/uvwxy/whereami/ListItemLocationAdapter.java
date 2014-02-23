@@ -63,7 +63,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Location> {
 			dhis.moveToTab(3);
 			backgroundLocationReload(loc);
 		} else if (s.equals(ctx.getString(R.string.MENU_AUDIO_NAV))) {
-			android.location.Location l = ActivityMain.mLastLocation;
+			android.location.Location l = dhis.mLastLocation;
 			if (l != null) {
 				SoundFinder.findNode(ActivityMain.dhis, loc.getLatitude(), //
 						loc.getLongitude(), loc.getAltitude(), 25, 25, //
@@ -148,8 +148,8 @@ public class ListItemLocationAdapter extends ArrayAdapter<Location> {
 
 		Location item = locationList.get(position);
 		tvItemTitle.setText("" + item.getName());
-		if (ActivityMain.mLastLocation != null) {
-			Unit u = Unit.METRE.setValue(LocationManager.getDistanceTo(item, ActivityMain.mLastLocation));
+		if (dhis.mLastLocation != null) {
+			Unit u = Unit.METRE.setValue(LocationManager.getDistanceTo(item, dhis.mLastLocation));
 			u = u.to(ActivityMain.mUnitL);
 			String s = String.format("%s", u);
 			tvItemDistanceValue.setText(s);

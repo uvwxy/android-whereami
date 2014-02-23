@@ -413,6 +413,7 @@ de.uvwxy.cardstyle.R$color: int text_light
 de.uvwxy.cardstyle.R$dimen: int activity_horizontal_margin
 de.uvwxy.cardstyle.R$dimen: int activity_vertical_margin
 de.uvwxy.cardstyle.R$dimen: int card_large_text
+de.uvwxy.cardstyle.R$dimen: int card_medium_text
 de.uvwxy.cardstyle.R$dimen: int card_small_text
 de.uvwxy.cardstyle.R$drawable: int card
 de.uvwxy.cardstyle.R$drawable: int card_no_shadow
@@ -445,12 +446,13 @@ de.uvwxy.cardstyle.R$string: int not_set
 de.uvwxy.cardstyle.R$string: int open_source_licenses
 de.uvwxy.cardstyle.R$string: int please_rate_this_app_if_you_like_it_
 de.uvwxy.cardstyle.R$string: int save
-de.uvwxy.cardstyle.R$style: int AppBaseTheme
 de.uvwxy.cardstyle.R$style: int AppTheme
 de.uvwxy.cardstyle.R$style: int CardBodyLL
 de.uvwxy.cardstyle.R$style: int CardHR
 de.uvwxy.cardstyle.R$style: int CardRootLL
 de.uvwxy.cardstyle.R$style: int CardRootSV
+de.uvwxy.cardstyle.R$style: int CardStyleTheme
+de.uvwxy.cardstyle.R$style: int CardSubTitle
 de.uvwxy.cardstyle.R$style: int CardText
 de.uvwxy.cardstyle.R$style: int CardTextLarge
 de.uvwxy.cardstyle.R$style: int CardTextLargeRight
@@ -471,6 +473,7 @@ de.uvwxy.soundfinder.R$color: int text_light
 de.uvwxy.soundfinder.R$dimen: int activity_horizontal_margin
 de.uvwxy.soundfinder.R$dimen: int activity_vertical_margin
 de.uvwxy.soundfinder.R$dimen: int card_large_text
+de.uvwxy.soundfinder.R$dimen: int card_medium_text
 de.uvwxy.soundfinder.R$dimen: int card_small_text
 de.uvwxy.soundfinder.R$drawable: int card
 de.uvwxy.soundfinder.R$drawable: int card_no_shadow
@@ -524,12 +527,13 @@ de.uvwxy.soundfinder.R$string: int not_set
 de.uvwxy.soundfinder.R$string: int open_source_licenses
 de.uvwxy.soundfinder.R$string: int please_rate_this_app_if_you_like_it_
 de.uvwxy.soundfinder.R$string: int save
-de.uvwxy.soundfinder.R$style: int AppBaseTheme
 de.uvwxy.soundfinder.R$style: int AppTheme
 de.uvwxy.soundfinder.R$style: int CardBodyLL
 de.uvwxy.soundfinder.R$style: int CardHR
 de.uvwxy.soundfinder.R$style: int CardRootLL
 de.uvwxy.soundfinder.R$style: int CardRootSV
+de.uvwxy.soundfinder.R$style: int CardStyleTheme
+de.uvwxy.soundfinder.R$style: int CardSubTitle
 de.uvwxy.soundfinder.R$style: int CardText
 de.uvwxy.soundfinder.R$style: int CardTextLarge
 de.uvwxy.soundfinder.R$style: int CardTextLargeRight
@@ -583,6 +587,7 @@ de.uvwxy.whereami.R$color: int text_light
 de.uvwxy.whereami.R$dimen: int activity_horizontal_margin
 de.uvwxy.whereami.R$dimen: int activity_vertical_margin
 de.uvwxy.whereami.R$dimen: int card_large_text
+de.uvwxy.whereami.R$dimen: int card_medium_text
 de.uvwxy.whereami.R$dimen: int card_small_text
 de.uvwxy.whereami.R$drawable: int card
 de.uvwxy.whereami.R$drawable: int card_no_shadow
@@ -825,6 +830,8 @@ de.uvwxy.whereami.R$style: int CardBodyLL
 de.uvwxy.whereami.R$style: int CardHR
 de.uvwxy.whereami.R$style: int CardRootLL
 de.uvwxy.whereami.R$style: int CardRootSV
+de.uvwxy.whereami.R$style: int CardStyleTheme
+de.uvwxy.whereami.R$style: int CardSubTitle
 de.uvwxy.whereami.R$style: int CardText
 de.uvwxy.whereami.R$style: int CardTextLarge
 de.uvwxy.whereami.R$style: int CardTextLargeRight
@@ -849,3 +856,5 @@ de.uvwxy.whereami.R$styleable: int MapAttrs_uiZoomControls
 de.uvwxy.whereami.R$styleable: int MapAttrs_uiZoomGestures
 de.uvwxy.whereami.R$styleable: int MapAttrs_useViewLifecycle
 de.uvwxy.whereami.R$styleable: int MapAttrs_zOrderOnTop
+lombok.AccessLevel: lombok.AccessLevel[] values()
+lombok.AccessLevel: lombok.AccessLevel valueOf(java.lang.String)

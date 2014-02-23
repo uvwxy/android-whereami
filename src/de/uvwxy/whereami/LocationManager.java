@@ -22,10 +22,11 @@ public class LocationManager {
 
 				@Override
 				public void run() {
+					ActivityMain.dhis.mLastLocation = l;
+					ActivityMain.dhis.refreshLists();
 					if (ActivityMain.dhis.fCurrentLocation != null) {
 						ActivityMain.dhis.fCurrentLocation.updateLocation(l);
 					}
-
 				}
 			});
 		}
