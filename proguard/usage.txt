@@ -4045,8 +4045,8 @@ de.uvwxy.whereami.Converter:
 de.uvwxy.whereami.ListItemLocationAdapter:
     116:116:public java.util.ArrayList getList()
 de.uvwxy.whereami.LocationManager:
-    58:58:public static double getBearingTo(de.uvwxy.whereami.db_location.Location,android.location.Location)
-    62:62:public double getDistanceToHome()
+    59:59:public static double getBearingTo(de.uvwxy.whereami.db_location.Location,android.location.Location)
+    63:63:public double getDistanceToHome()
 de.uvwxy.whereami.R
 de.uvwxy.whereami.R$attr
 de.uvwxy.whereami.R$color

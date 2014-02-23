@@ -6555,13 +6555,14 @@ de.uvwxy.whereami.ActivityMain -> de.uvwxy.whereami.ActivityMain:
     void onResume() -> onResume
     void onPause() -> onPause
     void onDestroy() -> onDestroy
-    void alertIfProviderIsNotEnabled() -> i
+    void alertIfProviderIsNotEnabled() -> j
     void setUnits() -> g
     void setUnits(android.content.SharedPreferences) -> a
     void readLength(android.content.SharedPreferences) -> b
     void readSpeed(android.content.SharedPreferences) -> c
     void readAngle(android.content.SharedPreferences) -> d
     void updateLists() -> h
+    void refreshLists() -> i
 de.uvwxy.whereami.Converter -> de.uvwxy.whereami.c:
     de.uvwxy.whereami.db_location.Location createLoc(java.lang.String,android.location.Location) -> a
     android.location.Location createLoc(de.uvwxy.whereami.db_location.Location) -> a
@@ -6730,6 +6731,7 @@ de.uvwxy.whereami.fragments.FragmentSavedLocations -> de.uvwxy.whereami.b.i:
     void initGUI(android.view.View) -> a
     android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
     void updateList() -> A
+    void refreshList() -> B
     void onDestroy() -> n
 de.uvwxy.whereami.fragments.FragmentSettings -> de.uvwxy.whereami.b.j:
     android.widget.CheckBox cbStartUpdates -> P
