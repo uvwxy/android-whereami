@@ -257,22 +257,22 @@ public class ActivityMain extends ActivityCardPager {
 		int t = prefs.getInt(SETTINGS_LENGHT_TYPE, SETTINGS_LENGHT_TYPE_DEF);
 		switch (t) {
 		case SETTINGS_METRES:
-			mUnitL = Unit.METRE.setPrefix(UnitPrefix.NONE);
+			mUnitL = Unit.from(Unit.METRE).setPrefix(UnitPrefix.NONE);
 			break;
 		case SETTINGS_KILOMETRES:
-			mUnitL = Unit.METRE.setPrefix(UnitPrefix.KILO);
+			mUnitL = Unit.from(Unit.METRE).setPrefix(UnitPrefix.KILO);
 			break;
 		case SETTINGS_FOOT:
-			mUnitL = Unit.FOOT;
+			mUnitL = Unit.from(Unit.FOOT);
 			break;
 		case SETTINGS_MILES:
-			mUnitL = Unit.MILE;
+			mUnitL = Unit.from(Unit.MILE);
 			break;
 		case SETTINGS_YARDS:
-			mUnitL = Unit.YARD;
+			mUnitL = Unit.from(Unit.YARD);
 			break;
 		default:
-			mUnitL = Unit.METRE.setPrefix(UnitPrefix.NONE);
+			mUnitL = Unit.from(Unit.METRE).setPrefix(UnitPrefix.NONE);
 		}
 	}
 
@@ -280,16 +280,16 @@ public class ActivityMain extends ActivityCardPager {
 		int t = prefs.getInt(SETTINGS_VELOCTIY_TYPE, SETTINGS_VELOCITY_TYPE_DEF);
 		switch (t) {
 		case SETTINGS_METRES_PER_SECOND:
-			mUnitV = Unit.METRES_PER_SECOND;
+			mUnitV = Unit.from(Unit.METRES_PER_SECOND);
 			break;
 		case SETTINGS_KMH:
-			mUnitV = Unit.KILOMETRES_PER_HOUR;
+			mUnitV = Unit.from(Unit.KILOMETRES_PER_HOUR);
 			break;
 		case SETTINGS_MPH:
-			mUnitV = Unit.MILES_PER_HOUR;
+			mUnitV = Unit.from(Unit.MILES_PER_HOUR);
 			break;
 		default:
-			mUnitV = Unit.METRES_PER_SECOND;
+			mUnitV = Unit.from(Unit.METRES_PER_SECOND);
 		}
 	}
 
@@ -297,13 +297,13 @@ public class ActivityMain extends ActivityCardPager {
 		int t = prefs.getInt(SETTINGS_ANGLE_TYPE, SETTINGS_ANGLE_TYPE_DEF);
 		switch (t) {
 		case SETTINGS_ANGLE_DEGREES:
-			mUnitA = Unit.DEGREES.setPrecision(6);
+			mUnitA = Unit.from(Unit.DEGREES).setPrecision(6);
 			break;
 		case SETTINGS_ANGLE_MINUTES_SECONDS:
-			mUnitA = Unit.DEGREES_MINUTES_SECONDS;
+			mUnitA = Unit.from(Unit.DEGREES_MINUTES_SECONDS);
 			break;
 		default:
-			mUnitA = Unit.DEGREES.setPrecision(6);
+			mUnitA = Unit.from(Unit.DEGREES).setPrecision(6);
 		}
 	}
 

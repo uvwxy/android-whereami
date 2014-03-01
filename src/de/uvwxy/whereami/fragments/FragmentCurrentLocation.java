@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -135,6 +136,7 @@ public class FragmentCurrentLocation extends Fragment {
 					Toast.makeText(getActivity(), R.string.no_location_yet, Toast.LENGTH_SHORT).show();
 					return;
 				}
+				Log.d("WAI", dhis.mLastLocation.toString());
 
 				ActionShare.share(getActivity(), loc);
 			}
@@ -143,14 +145,14 @@ public class FragmentCurrentLocation extends Fragment {
 
 	public void updateLocation(Location l) {
 
-		tvLat.setText(Unit.DEGREES.setPrecision(6).setValue(l.getLatitude()).to(ActivityMain.mUnitA).toString());
-		tvLon.setText(Unit.DEGREES.setPrecision(6).setValue(l.getLongitude()).to(ActivityMain.mUnitA).toString());
-		tvBearing.setText(Unit.DEGREES.setPrecision(1).setValue(l.getBearing()).toString());
+		tvLat.setText(Unit.from(Unit.DEGREES).setPrecision(6).setValue(l.getLatitude()).to(ActivityMain.mUnitA).toString());
+		tvLon.setText(Unit.from(Unit.DEGREES).setPrecision(6).setValue(l.getLongitude()).to(ActivityMain.mUnitA).toString());
+		tvBearing.setText(Unit.from(Unit.DEGREES).setPrecision(1).setValue(l.getBearing()).toString());
 
-		tvAlt.setText(Unit.METRE.setValue(l.getAltitude()).to(ActivityMain.mUnitL).toString());
-		tvAcc.setText(Unit.METRE.setValue(l.getAccuracy()).to(ActivityMain.mUnitL).toString());
+		tvAlt.setText(Unit.from(Unit.METRE).setValue(l.getAltitude()).to(ActivityMain.mUnitL).toString());
+		tvAcc.setText(Unit.from(Unit.METRE).setValue(l.getAccuracy()).to(ActivityMain.mUnitL).toString());
 
-		tvSpeed.setText(Unit.METRES_PER_SECOND.setValue(l.getSpeed()).to(ActivityMain.mUnitV).toString());
+		tvSpeed.setText(Unit.from(Unit.METRES_PER_SECOND).setValue(l.getSpeed()).to(ActivityMain.mUnitV).toString());
 
 		tvProvider.setText(l.getProvider());
 	}

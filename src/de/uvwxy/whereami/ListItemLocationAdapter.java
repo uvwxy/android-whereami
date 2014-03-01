@@ -149,7 +149,7 @@ public class ListItemLocationAdapter extends ArrayAdapter<Location> {
 		Location item = locationList.get(position);
 		tvItemTitle.setText("" + item.getName());
 		if (dhis.mLastLocation != null) {
-			Unit u = Unit.METRE.setValue(LocationManager.getDistanceTo(item, dhis.mLastLocation));
+			Unit u = Unit.from(Unit.METRE).setValue(LocationManager.getDistanceTo(item, dhis.mLastLocation));
 			u = u.to(ActivityMain.mUnitL);
 			String s = String.format("%s", u);
 			tvItemDistanceValue.setText(s);
