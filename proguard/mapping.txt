@@ -6456,36 +6456,28 @@ de.uvwxy.soundfinder.SoundFinder$4 -> de.uvwxy.soundfinder.n:
     void onLoadComplete(android.media.SoundPool,int,int) -> onLoadComplete
 de.uvwxy.units.Conversion -> de.uvwxy.e.a:
     java.lang.String ID_DELIM -> a
-    de.uvwxy.units.Unit a -> b
-    de.uvwxy.units.Unit b -> c
+    java.lang.String a -> b
+    java.lang.String b -> c
     double factor -> d
-    java.lang.String createKey(de.uvwxy.units.Unit,de.uvwxy.units.Unit) -> a
+    java.lang.String createKey(java.lang.String,java.lang.String) -> a
     java.lang.String getKey() -> a
     de.uvwxy.units.Unit to(de.uvwxy.units.Unit,double) -> a
 de.uvwxy.units.Unit -> de.uvwxy.e.b:
-    de.uvwxy.units.Unit METRE -> a
-    de.uvwxy.units.Unit FOOT -> b
-    de.uvwxy.units.Unit MILE -> c
-    de.uvwxy.units.Unit YARD -> d
-    de.uvwxy.units.Unit METRES_PER_SECOND -> e
-    de.uvwxy.units.Unit KILOMETRES_PER_HOUR -> f
-    de.uvwxy.units.Unit MILES_PER_HOUR -> g
-    de.uvwxy.units.Unit DEGREES -> h
-    de.uvwxy.units.Unit DEGREES_MINUTES_SECONDS -> i
-    java.lang.String[] unit -> j
-    de.uvwxy.units.UnitPrefix[] prefix -> k
-    int[] precision -> l
-    de.uvwxy.units.UnitPartition conv -> m
-    double v -> n
-    de.uvwxy.units.Unit[] ENUM$VALUES -> o
-    de.uvwxy.units.Unit to(de.uvwxy.units.Unit) -> a
-    java.lang.String toString() -> toString
-    de.uvwxy.units.Unit setValue(double) -> a
-    double getValue() -> a
+    de.uvwxy.units.UnitPartition conv -> a
+    java.lang.String name -> b
+    int[] precision -> c
+    de.uvwxy.units.UnitPrefix[] prefix -> d
+    java.lang.String[] unit -> e
+    double v -> f
+    de.uvwxy.units.Unit from(java.lang.String) -> a
+    de.uvwxy.units.Unit valueOf(java.lang.String) -> b
+    java.lang.String getName() -> a
+    double getValue() -> b
     de.uvwxy.units.Unit setPrecision(int) -> a
     de.uvwxy.units.Unit setPrefix(de.uvwxy.units.UnitPrefix) -> a
-    de.uvwxy.units.Unit[] values() -> values
-    de.uvwxy.units.Unit valueOf(java.lang.String) -> valueOf
+    de.uvwxy.units.Unit setValue(double) -> a
+    de.uvwxy.units.Unit to(de.uvwxy.units.Unit) -> a
+    java.lang.String toString() -> toString
 de.uvwxy.units.UnitConversion -> de.uvwxy.e.c:
     java.util.HashMap conversions -> a
     void addConversion(de.uvwxy.units.Conversion) -> a

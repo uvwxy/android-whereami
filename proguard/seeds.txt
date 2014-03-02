@@ -450,6 +450,7 @@ de.uvwxy.cardstyle.R$style: int AppTheme
 de.uvwxy.cardstyle.R$style: int CardBodyLL
 de.uvwxy.cardstyle.R$style: int CardHR
 de.uvwxy.cardstyle.R$style: int CardRootLL
+de.uvwxy.cardstyle.R$style: int CardRootRL
 de.uvwxy.cardstyle.R$style: int CardRootSV
 de.uvwxy.cardstyle.R$style: int CardStyleTheme
 de.uvwxy.cardstyle.R$style: int CardSubTitle
@@ -531,6 +532,7 @@ de.uvwxy.soundfinder.R$style: int AppTheme
 de.uvwxy.soundfinder.R$style: int CardBodyLL
 de.uvwxy.soundfinder.R$style: int CardHR
 de.uvwxy.soundfinder.R$style: int CardRootLL
+de.uvwxy.soundfinder.R$style: int CardRootRL
 de.uvwxy.soundfinder.R$style: int CardRootSV
 de.uvwxy.soundfinder.R$style: int CardStyleTheme
 de.uvwxy.soundfinder.R$style: int CardSubTitle
@@ -541,8 +543,6 @@ de.uvwxy.soundfinder.R$style: int CardTextNormal
 de.uvwxy.soundfinder.R$style: int CardTitle
 de.uvwxy.soundfinder.SoundFinder
 de.uvwxy.soundfinder.SoundFinder: SoundFinder()
-de.uvwxy.units.Unit: de.uvwxy.units.Unit[] values()
-de.uvwxy.units.Unit: de.uvwxy.units.Unit valueOf(java.lang.String)
 de.uvwxy.units.UnitPrefix: de.uvwxy.units.UnitPrefix[] values()
 de.uvwxy.units.UnitPrefix: de.uvwxy.units.UnitPrefix valueOf(java.lang.String)
 de.uvwxy.whereami.ActivityMain
@@ -829,6 +829,7 @@ de.uvwxy.whereami.R$style: int AppTheme
 de.uvwxy.whereami.R$style: int CardBodyLL
 de.uvwxy.whereami.R$style: int CardHR
 de.uvwxy.whereami.R$style: int CardRootLL
+de.uvwxy.whereami.R$style: int CardRootRL
 de.uvwxy.whereami.R$style: int CardRootSV
 de.uvwxy.whereami.R$style: int CardStyleTheme
 de.uvwxy.whereami.R$style: int CardSubTitle

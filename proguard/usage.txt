@@ -4005,14 +4005,31 @@ de.uvwxy.soundfinder.SoundFinder:
     public static final java.lang.String EXTRA_LOCATION_DESTINATION_RADIUS
     static final float ALPHA
 de.uvwxy.units.Unit:
-    59:60:public de.uvwxy.units.Unit setUnitString(java.lang.String)
-    64:65:public varargs de.uvwxy.units.Unit setUnitString(java.lang.String[])
-    74:75:public varargs de.uvwxy.units.Unit setPrecision(int[])
-    84:85:public varargs de.uvwxy.units.Unit setPrefix(de.uvwxy.units.UnitPrefix[])
+    public static final java.lang.String BAR
+    public static final java.lang.String DEGREES
+    public static final java.lang.String DEGREES_MINUTES_SECONDS
+    public static final java.lang.String FOOT
+    public static final java.lang.String HECTO_PASCAL
+    public static final java.lang.String KILOMETRES_PER_HOUR
+    public static final java.lang.String METRE
+    public static final java.lang.String METRES_PER_SECOND
+    public static final java.lang.String MILE
+    public static final java.lang.String MILES_PER_HOUR
+    public static final java.lang.String MILLI_BAR
+    public static final java.lang.String PASCAL
+    public static final java.lang.String POUNDS_PER_SQUARE_INCH
+    public static final java.lang.String STANDARD_ATMOSPHERE
+    public static final java.lang.String TECHNICAL_ATMOSPHERE
+    public static final java.lang.String TORR
+    public static final java.lang.String YARD
+    102:103:public varargs de.uvwxy.units.Unit setPrecision(int[])
+    112:113:public varargs de.uvwxy.units.Unit setPrefix(de.uvwxy.units.UnitPrefix[])
+    117:118:public de.uvwxy.units.Unit setUnitString(java.lang.String)
+    122:123:public varargs de.uvwxy.units.Unit setUnitString(java.lang.String[])
 de.uvwxy.units.UnitConversion:
-    5:5:public UnitConversion()
+    7:7:public UnitConversion()
 de.uvwxy.whereami.ActionShare:
-    9:9:public ActionShare()
+    10:10:public ActionShare()
 de.uvwxy.whereami.ActivityMain:
     public static final java.lang.String SETTINGS
     public static final java.lang.String SETTINGS_UPDATES_ON_STARTUP
