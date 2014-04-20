@@ -6,7 +6,6 @@ import java.util.List;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,23 +14,18 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.model.LatLng;
-
 import de.uvwxy.helper.IntentTools;
 import de.uvwxy.helper.IntentTools.ReturnStringCallback;
 import de.uvwxy.soundfinder.SoundFinder;
 import de.uvwxy.units.Unit;
 import de.uvwxy.whereami.db_location.Location;
-import de.uvwxy.whereami.fragments.FragmentOverlaySupportMap;
 
 public class ListItemLocationAdapter extends ArrayAdapter<Location> {
 	private LayoutInflater inflater;
 	private ArrayList<Location> locationList;
 
 	private Context ctx;
-	private ActivityMain dhis;
+	private ActivityMain dhis; 
 	
 	public ListItemLocationAdapter(Context context, List<Location> list) {
 		super(context, R.layout.list_item_location, list);
@@ -59,9 +53,9 @@ public class ListItemLocationAdapter extends ArrayAdapter<Location> {
 		} else if (s.equals(ctx.getString(R.string.MENU_SHARE))) {
 			ActionShare.share(ActivityMain.act, loc);
 
-		} else if (s.equals(ctx.getString(R.string.MENU_SHOW_ON_MAP))) {
-			dhis.moveToTab(3);
-			backgroundLocationReload(loc);
+		} else if (s.equals(ctx.getString(R.string.MENU_SHOW_ON_MAP))) {			
+			IntentTools.showLocation(ActivityMain.act, loc.getLatitude(), loc.getLongitude());
+			
 		} else if (s.equals(ctx.getString(R.string.MENU_AUDIO_NAV))) {
 			android.location.Location l = dhis.mLastLocation;
 			if (l != null) {
@@ -158,31 +152,5 @@ public class ListItemLocationAdapter extends ArrayAdapter<Location> {
 		}
 
 		return rootView;
-	}
-
-	private void backgroundLocationReload(final Location loc) {
-		Handler h = new Handler(ctx.getMainLooper());
-
-		h.post(new Runnable() {
-
-			@Override
-			public void run() {
-				try {
-					Thread.sleep(2500);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-
-				if (ActivityMain.fMap != null && ActivityMain.fMap instanceof FragmentOverlaySupportMap) {
-					FragmentOverlaySupportMap m = (FragmentOverlaySupportMap) ActivityMain.fMap;
-					if (m.mMapView != null) {
-
-						m.mMapView.moveCamera(CameraUpdateFactory.newLatLngZoom(
-								new LatLng(loc.getLatitude(), loc.getLongitude()), 10f));
-					}
-				}
-			}
-		});
-
 	}
 }

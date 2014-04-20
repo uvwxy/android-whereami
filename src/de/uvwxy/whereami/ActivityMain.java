@@ -10,9 +10,6 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-
-import com.google.android.gms.maps.SupportMapFragment;
-
 import de.uvwxy.cardpager.ActivityCardPager;
 import de.uvwxy.cardpager.FragmentAbout;
 import de.uvwxy.helper.IntentTools;
@@ -21,7 +18,6 @@ import de.uvwxy.units.Unit;
 import de.uvwxy.units.UnitPrefix;
 import de.uvwxy.whereami.db_location.DBLocationConnection;
 import de.uvwxy.whereami.fragments.FragmentCurrentLocation;
-import de.uvwxy.whereami.fragments.FragmentOverlaySupportMap;
 import de.uvwxy.whereami.fragments.FragmentSavedLocations;
 import de.uvwxy.whereami.fragments.FragmentSettings;
 
@@ -76,7 +72,6 @@ public class ActivityMain extends ActivityCardPager {
 
 	public Location mLastLocation;
 
-	static SupportMapFragment fMap = null;
 	FragmentAbout fAbout = null;
 	FragmentSavedLocations fSavedLocations = null;
 	FragmentSavedLocations fSavedLocationsFav = null;
@@ -105,16 +100,11 @@ public class ActivityMain extends ActivityCardPager {
 			}
 			return fSavedLocationsFav;
 		case 3:
-			if (fMap == null) {
-				fMap = new FragmentOverlaySupportMap();
-			}
-			return fMap;
-		case 4:
 			if (fSettings == null) {
 				fSettings = new FragmentSettings();
 			}
 			return fSettings;
-		case 5:
+		case 4:
 			if (fAbout == null) {
 				fAbout = new FragmentAbout();
 				fAbout.setTitle(getApplication().getText(R.string.app_name).toString());
@@ -141,10 +131,8 @@ public class ActivityMain extends ActivityCardPager {
 		case 2:
 			return getString(R.string.title_section3).toUpperCase(l);
 		case 3:
-			return getString(R.string.title_section4).toUpperCase(l);
-		case 4:
 			return getString(R.string.title_section5).toUpperCase(l);
-		case 5:
+		case 4:
 			return getString(R.string.title_section6).toUpperCase(l);
 		}
 		return null;

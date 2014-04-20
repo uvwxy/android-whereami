@@ -106,6 +106,12 @@
                     android:text="@string/BTN_SHARE"
                     style="@style/CardTitle" />
             </LinearLayout>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:id="@+id/btnShow"
+                android:text="@string/MENU_SHOW_ON_MAP"
+                style="@style/CardTitle" />
         </LinearLayout>
     </LinearLayout>
 

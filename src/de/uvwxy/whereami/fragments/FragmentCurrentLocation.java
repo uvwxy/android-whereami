@@ -18,6 +18,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+import de.uvwxy.helper.IntentTools;
 import de.uvwxy.units.Unit;
 import de.uvwxy.whereami.ActionShare;
 import de.uvwxy.whereami.ActivityMain;
@@ -37,6 +38,7 @@ public class FragmentCurrentLocation extends Fragment {
 	public ToggleButton swUpdates = null;
 	private Button btnSave = null;
 	private Button btnSend = null;
+	private Button btnShow = null;
 	
 	private ActivityMain dhis;
 
@@ -52,6 +54,7 @@ public class FragmentCurrentLocation extends Fragment {
 		swUpdates = (ToggleButton) rootView.findViewById(R.id.swUpdates);
 		btnSave = (Button) rootView.findViewById(R.id.btnSave);
 		btnSend = (Button) rootView.findViewById(R.id.btnSend);
+		btnShow = (Button) rootView.findViewById(R.id.btnShow);
 	}
 
 	@Override
@@ -139,6 +142,17 @@ public class FragmentCurrentLocation extends Fragment {
 				Log.d("WAI", dhis.mLastLocation.toString());
 
 				ActionShare.share(getActivity(), loc);
+			}
+		});
+		
+		btnShow.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				final Location loc = dhis.mLastLocation;
+				if (loc != null){
+					IntentTools.showLocation(getActivity(), loc.getLatitude(), loc.getLongitude());
+				}
 			}
 		});
 	}
