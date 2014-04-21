@@ -10,6 +10,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import de.uvwxy.cardpager.ActivityCardPager;
 import de.uvwxy.cardpager.FragmentAbout;
 import de.uvwxy.helper.IntentTools;
@@ -140,7 +141,7 @@ public class ActivityMain extends ActivityCardPager {
 
 	@Override
 	public int getFragmentCount() {
-		return 6;
+		return 5;
 	}
 
 	@Override
@@ -243,6 +244,7 @@ public class ActivityMain extends ActivityCardPager {
 
 	private void readLength(SharedPreferences prefs) {
 		int t = prefs.getInt(SETTINGS_LENGHT_TYPE, SETTINGS_LENGHT_TYPE_DEF);
+		Log.d("WAI",  "PREFS: " + t);
 		switch (t) {
 		case SETTINGS_METRES:
 			mUnitL = Unit.from(Unit.METRE).setPrefix(UnitPrefix.NONE);
