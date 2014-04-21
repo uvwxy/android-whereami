@@ -1868,10 +1868,9 @@ de.uvwxy.units.Unit:
     public static final java.lang.String TECHNICAL_ATMOSPHERE
     public static final java.lang.String TORR
     public static final java.lang.String YARD
-    102:103:public varargs de.uvwxy.units.Unit setPrecision(int[])
-    112:113:public varargs de.uvwxy.units.Unit setPrefix(de.uvwxy.units.UnitPrefix[])
-    117:118:public de.uvwxy.units.Unit setUnitString(java.lang.String)
-    122:123:public varargs de.uvwxy.units.Unit setUnitString(java.lang.String[])
+    104:105:public varargs de.uvwxy.units.Unit setPrecision(int[])
+    124:125:public de.uvwxy.units.Unit setUnitString(java.lang.String)
+    129:130:public varargs de.uvwxy.units.Unit setUnitString(java.lang.String[])
 de.uvwxy.units.UnitConversion:
     7:7:public UnitConversion()
 de.uvwxy.whereami.ActionShare:

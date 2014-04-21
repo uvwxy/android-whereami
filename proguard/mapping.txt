@@ -2260,6 +2260,8 @@ de.uvwxy.units.Unit -> de.uvwxy.e.b:
     double getValue() -> b
     de.uvwxy.units.Unit setPrecision(int) -> a
     de.uvwxy.units.Unit setPrefix(de.uvwxy.units.UnitPrefix) -> a
+    de.uvwxy.units.Unit setPrefix(de.uvwxy.units.UnitPrefix[]) -> a
+    de.uvwxy.units.UnitPrefix[] getPrefix() -> c
     de.uvwxy.units.Unit setValue(double) -> a
     de.uvwxy.units.Unit to(de.uvwxy.units.Unit) -> a
     java.lang.String toString() -> toString
